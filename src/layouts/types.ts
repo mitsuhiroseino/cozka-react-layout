@@ -52,6 +52,11 @@ export type LayoutPropsBase<L extends LayoutType> = {
    * 子要素
    */
   children?: ReactNode;
+
+  /**
+   * 子要素のスタイル
+   */
+  childStyle?: CSSProperties;
 };
 
 /**

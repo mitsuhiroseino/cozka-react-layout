@@ -8,9 +8,14 @@ import { CenterLayoutProps } from './types';
  */
 const layout: Layout<CenterLayoutProps> = {
   name: 'center',
-  getContainerStyle: () => {
+  defaultProps: {
+    orientation: 'horizontal',
+  },
+  getContainerStyle: (props) => {
+    const { orientation } = props;
     return {
       display: 'flex',
+      flexDirection: orientation === 'vertical' ? 'column' : 'row',
       justifyContent: 'center',
       alignItems: 'center',
     };
