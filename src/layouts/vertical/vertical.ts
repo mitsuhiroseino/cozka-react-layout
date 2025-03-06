@@ -31,12 +31,12 @@ const layout: Layout<VerticalLayoutProps> = {
     } = props;
     return {
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: 'column',
       gap: spacing,
       columnGap: hSpacing,
       rowGap: vSpacing,
-      ...HORIZONTAL_ALIGN[hAlign],
-      ...VERTICAL_ALIGN[`${wrapChildren}`][vAlign],
+      ...HORIZONTAL_ALIGN[`${wrapChildren}`][hAlign],
+      ...VERTICAL_ALIGN[vAlign],
     };
   },
   getChildStyle: (props) => {

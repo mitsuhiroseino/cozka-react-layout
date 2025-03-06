@@ -39,10 +39,11 @@ export default function App() {
 
 #### `WithLayoutOptions`
 
-| Property         | Type                                       | Description                                                                          |
-| ---------------- | ------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `styleProp`      | `'style'` \| `'css'` \| `'sx'` \| `string` | The property to apply layout styles to (default: `style`).                           |
-| `styleApplyMode` | `'merge'` \| `'append'`                    | How to apply styles when `styleProp` already has existing styles (default: `merge`). |
+| Property         | Type                                       | Description                                                                                   |
+| ---------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `styleProp`      | `'style'` \| `'css'` \| `'sx'` \| `string` | The property to apply layout styles to (default: `style`).                                    |
+| `styleApplyMode` | `'merge'` \| `'append'`                    | How to apply styles when `styleProp` already has existing styles (default: `merge`).          |
+| `displayName?`   | `string`                                   | displayName of the component being created (default: `withLayout(${Component.displayName})`). |
 
 #### Return Value
 
@@ -80,9 +81,10 @@ These properties can be passed to the returned component. Available properties v
 
 #### `fit` (Fits child elements to the parent)
 
-| Property | Type    | Description |
-| -------- | ------- | ----------- |
-| `layout` | `'fit'` |             |
+| Property      | Type                           | Description                                                             |
+| ------------- | ------------------------------ | ----------------------------------------------------------------------- |
+| `layout`      | `'fit'`                        |                                                                         |
+| `orientation` | `'horizontal'` \| `'vertical'` | Direction in which child elements are arranged (default: `horizontal`). |
 
 #### `horizontal` (Aligns child elements horizontally)
 

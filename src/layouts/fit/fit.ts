@@ -1,4 +1,5 @@
 import { Layout } from '../types';
+import { ORIENTATION } from './_constants';
 import { FitLayoutProps } from './types';
 
 /**
@@ -8,15 +9,20 @@ import { FitLayoutProps } from './types';
  */
 const layout: Layout<FitLayoutProps> = {
   name: 'fit',
-  getContainerStyle: () => {
+  defaultProps: {
+    orientation: 'horizontal',
+  },
+  getContainerStyle: (props) => {
+    const { orientation } = props;
     return {
       display: 'grid',
+      ...ORIENTATION[orientation],
     };
   },
   getChildStyle: () => {
     return {
-      height: '100%',
-      width: '100%',
+      minHeight: 0,
+      minWidth: 0,
     };
   },
 };

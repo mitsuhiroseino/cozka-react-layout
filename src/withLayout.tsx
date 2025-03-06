@@ -25,18 +25,22 @@ export default function withLayout<P = {}, T = unknown>(
    * レイアウト機能を追加したコンテナー
    */
   const Layout = forwardRef<T, P & LayoutProps>((props, ref) => {
-    const { layout = 'horizontal', scroll, children, ...rest } = props;
+    const { layout, scroll, children, ...rest } = props;
     // restからlayout用のプロパティを削除
     for (const key in LAYOUT_PROPS_KEYS) {
       delete rest[key];
     }
     // layoutを取得
     const { getContainerStyle, getChildStyle, defaultProps } = LAYOUTS[
-      layout
+      layout || 'horizontal'
     ] as Layout;
     const argProps = { ...props };
     if (defaultProps) {
-      Object.assign(argProps, defaultProps);
+      for (const key in defaultProps) {
+        if (argProps[key] === undefined) {
+          argProps[key] = defaultProps[key];
+        }
+      }
     }
     // コンテナーのスタイル
     const containerStyle = getContainerStyle

@@ -24,6 +24,7 @@ export const LAYOUT_PROPS_KEYS: {
   children: 1,
   childHeight: 1,
   childWidth: 1,
+  orientation: 1,
   spacing: 1,
   hSpacing: 1,
   vSpacing: 1,

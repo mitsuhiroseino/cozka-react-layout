@@ -5,6 +5,7 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import CleanCSS from 'clean-css';
 import path from 'path';
+import copy from 'rollup-plugin-copy';
 import sass from 'rollup-plugin-sass';
 
 const INPUT = './src/index.ts';
@@ -45,6 +46,14 @@ const options = [
             },
           },
         },
+      }),
+      copy({
+        targets: [
+          {
+            src: ['LICENSE', 'README.md', 'README.ja.md'],
+            dest: 'dist',
+          },
+        ],
       }),
     ],
   }),
