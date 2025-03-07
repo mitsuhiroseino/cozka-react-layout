@@ -1,4 +1,4 @@
-import { StyleProxyOptions } from '@gusok/react-style-proxy';
+import { StyleProxyOptions } from '@cozka/react-style-proxy';
 
 export { LayoutProps } from './layouts/types';
 

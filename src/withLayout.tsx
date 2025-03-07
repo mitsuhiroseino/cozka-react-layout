@@ -1,5 +1,5 @@
-import proxyStyle from '@gusok/react-style-proxy';
-import transformContent from '@gusok/react-utils/transformContent';
+import proxyStyle from '@cozka/react-style-proxy';
+import { transformContent } from '@cozka/react-utils';
 import { cloneElement, createElement, ElementType, forwardRef } from 'react';
 import { LAYOUT_PROPS_KEYS } from './_constants';
 import * as LAYOUTS from './layouts';

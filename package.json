@@ -1,6 +1,6 @@
 {
-  "name": "@gusok/react-layout",
-  "version": "0.4.0",
+  "name": "@cozka/react-layout",
+  "version": "0.5.0",
   "keywords": [
     "react",
     "layout",
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mitsuhiroseino/gusok-react-layout.git"
+    "url": "https://github.com/mitsuhiroseino/cozka-react-layout.git"
   },
   "license": "MIT",
   "author": "Mitsuhiro Seino",
@@ -22,16 +22,16 @@
     "test": "jest"
   },
   "dependencies": {
-    "@gusok/react-style-proxy": "^0.1.0",
-    "@gusok/react-utils": "^0.1.1"
+    "@cozka/react-style-proxy": "^0.2.0",
+    "@cozka/react-utils": "^0.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/plugin-transform-runtime": "^7.17.10",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.21.4",
+    "@cozka/rollup-create-dist-packagejson": "^0.7.0",
     "@eslint/js": "^9.3.0",
-    "@gusok/rollup-create-dist-packagejson": "^0.6.6",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.2",

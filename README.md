@@ -1,19 +1,19 @@
-# @gusok/react-layout
+# @cozka/react-layout
 
-`@gusok/react-layout` is a library that provides a Higher-Order Component (HOC) to add layout functionality to React components. It controls the positioning of child elements and applies a unified layout.
+`@cozka/react-layout` is a library that provides a Higher-Order Component (HOC) to add layout functionality to React components. It controls the positioning of child elements and applies a unified layout.
 
 **[日本語の README はこちら](./README.ja.md)**
 
 ## Installation
 
 ```sh
-npm install @gusok/react-layout
+npm install @cozka/react-layout
 ```
 
 ## Usage
 
 ```tsx
-import withLayout from '@gusok/react-layout';
+import withLayout from '@cozka/react-layout';
 
 const LayoutBox = withLayout('div');
 

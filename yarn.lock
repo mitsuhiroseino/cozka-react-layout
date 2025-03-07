@@ -1329,6 +1329,86 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cozka/react-layout@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@cozka/react-layout@workspace:."
+  dependencies:
+    "@babel/core": "npm:^7.17.9"
+    "@babel/plugin-transform-runtime": "npm:^7.17.10"
+    "@babel/preset-env": "npm:^7.16.11"
+    "@babel/preset-typescript": "npm:^7.21.4"
+    "@cozka/react-style-proxy": "npm:^0.2.0"
+    "@cozka/react-utils": "npm:^0.2.0"
+    "@cozka/rollup-create-dist-packagejson": "npm:^0.7.0"
+    "@eslint/js": "npm:^9.3.0"
+    "@rollup/plugin-babel": "npm:^5.3.1"
+    "@rollup/plugin-commonjs": "npm:^24.0.1"
+    "@rollup/plugin-node-resolve": "npm:^15.0.2"
+    "@rollup/plugin-typescript": "npm:^8.3.2"
+    "@types/fs-extra": "npm:^11.0.1"
+    "@types/jest": "npm:^29.5.0"
+    "@types/jsesc": "npm:^3"
+    "@types/lodash": "npm:^4.14.195"
+    "@types/lodash-es": "npm:^4.17.6"
+    "@types/node": "npm:^20.2.5"
+    "@types/react": "npm:^19"
+    babel-jest: "npm:^29.5.0"
+    clean-css: "npm:^5.3.3"
+    eslint: "npm:^9.3.0"
+    eslint-config-prettier: "npm:^9.1.0"
+    fs-extra: "npm:^11.2.0"
+    globals: "npm:^15.3.0"
+    jest: "npm:^29.5.0"
+    prettier: "npm:^3.2.5"
+    prettier-plugin-organize-imports: "npm:^3.2.4"
+    prettier-plugin-packagejson: "npm:^2.5.8"
+    react: "npm:^17.0.0"
+    rimraf: "npm:^3.0.2"
+    rollup: "npm:^3.26.0"
+    rollup-plugin-copy: "npm:^3.5.0"
+    rollup-plugin-sass: "npm:^1.15.2"
+    ts-jest: "npm:^29.1.0"
+    tslib: "npm:^2.5.0"
+    tsx: "npm:^4.19.2"
+    type-fest: "npm:^4.34.1"
+    typescript: "npm:^5.0.0"
+    typescript-eslint: "npm:^7.10.0"
+  peerDependencies:
+    react: ^18.0.0 || ^19.0.0
+  languageName: unknown
+  linkType: soft
+
+"@cozka/react-style-proxy@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@cozka/react-style-proxy@npm:0.2.0"
+  checksum: 10c0/14fbda5cff87f441109967a9404faea4e70735d32497fac89b6d12c65b0d1c413ed7360e6ba08de06ae039282f9c84db1798ad9b425b5f0f1ed35a600d0bc35d
+  languageName: node
+  linkType: hard
+
+"@cozka/react-utils@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@cozka/react-utils@npm:0.2.0"
+  peerDependencies:
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  checksum: 10c0/5581f12ef1df7134a93d6222ff625a90b5792209f2b25526307966aed1b8cec0d52b72aad4f9c2ed14688c5347155afc0d1fc16aec839d19ce9be097708d0509
+  languageName: node
+  linkType: hard
+
+"@cozka/rollup-create-dist-packagejson@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "@cozka/rollup-create-dist-packagejson@npm:0.7.0"
+  dependencies:
+    fast-glob: "npm:^3.3.3"
+    fs-extra: "npm:^11.3.0"
+    sort-package-json: "npm:^2.15.0"
+    tslib: "npm:^2.8.1"
+  peerDependencies:
+    rollup: ^4.0.0
+  checksum: 10c0/9acc343acfdcf12e63f9bab279a7afa943011ee575d0708385c954434bc6f5cbd5724e0cbe0a848dbb09586591fc8d7d3f3e9041f645089423f67d06eb775af1
+  languageName: node
+  linkType: hard
+
 "@esbuild/aix-ppc64@npm:0.25.0":
   version: 0.25.0
   resolution: "@esbuild/aix-ppc64@npm:0.25.0"
@@ -1580,85 +1660,6 @@ __metadata:
     "@eslint/core": "npm:^0.12.0"
     levn: "npm:^0.4.1"
   checksum: 10c0/0a1aff1ad63e72aca923217e556c6dfd67d7cd121870eb7686355d7d1475d569773528a8b2111b9176f3d91d2ea81f7413c34600e8e5b73d59e005d70780b633
-  languageName: node
-  linkType: hard
-
-"@gusok/react-layout@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@gusok/react-layout@workspace:."
-  dependencies:
-    "@babel/core": "npm:^7.17.9"
-    "@babel/plugin-transform-runtime": "npm:^7.17.10"
-    "@babel/preset-env": "npm:^7.16.11"
-    "@babel/preset-typescript": "npm:^7.21.4"
-    "@eslint/js": "npm:^9.3.0"
-    "@gusok/react-style-proxy": "npm:^0.1.0"
-    "@gusok/react-utils": "npm:^0.1.1"
-    "@gusok/rollup-create-dist-packagejson": "npm:^0.6.6"
-    "@rollup/plugin-babel": "npm:^5.3.1"
-    "@rollup/plugin-commonjs": "npm:^24.0.1"
-    "@rollup/plugin-node-resolve": "npm:^15.0.2"
-    "@rollup/plugin-typescript": "npm:^8.3.2"
-    "@types/fs-extra": "npm:^11.0.1"
-    "@types/jest": "npm:^29.5.0"
-    "@types/jsesc": "npm:^3"
-    "@types/lodash": "npm:^4.14.195"
-    "@types/lodash-es": "npm:^4.17.6"
-    "@types/node": "npm:^20.2.5"
-    "@types/react": "npm:^19"
-    babel-jest: "npm:^29.5.0"
-    clean-css: "npm:^5.3.3"
-    eslint: "npm:^9.3.0"
-    eslint-config-prettier: "npm:^9.1.0"
-    fs-extra: "npm:^11.2.0"
-    globals: "npm:^15.3.0"
-    jest: "npm:^29.5.0"
-    prettier: "npm:^3.2.5"
-    prettier-plugin-organize-imports: "npm:^3.2.4"
-    prettier-plugin-packagejson: "npm:^2.5.8"
-    react: "npm:^17.0.0"
-    rimraf: "npm:^3.0.2"
-    rollup: "npm:^3.26.0"
-    rollup-plugin-copy: "npm:^3.5.0"
-    rollup-plugin-sass: "npm:^1.15.2"
-    ts-jest: "npm:^29.1.0"
-    tslib: "npm:^2.5.0"
-    tsx: "npm:^4.19.2"
-    type-fest: "npm:^4.34.1"
-    typescript: "npm:^5.0.0"
-    typescript-eslint: "npm:^7.10.0"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0 || ^19.0.0
-  languageName: unknown
-  linkType: soft
-
-"@gusok/react-style-proxy@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@gusok/react-style-proxy@npm:0.1.0"
-  checksum: 10c0/a1d6660f6eb72766b68c60f6b9c42719c9d8a72188c8c96c01fb2c4ac36469f15ed0fa5270a186db087b4068abf446c7809038954226ac1a3b49f94ece204367
-  languageName: node
-  linkType: hard
-
-"@gusok/react-utils@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@gusok/react-utils@npm:0.1.1"
-  peerDependencies:
-    react: ^18.0.0 || ^19.0.0
-  checksum: 10c0/039e1081aba1bf7ee26c1cdfd25269931235df66ece10b9c4cc0f957e92a2dcb38e1c9264ee31a1b311f8134b8fed3af35b0d6760bcee8a37d3b4b0bf9ce2203
-  languageName: node
-  linkType: hard
-
-"@gusok/rollup-create-dist-packagejson@npm:^0.6.6":
-  version: 0.6.6
-  resolution: "@gusok/rollup-create-dist-packagejson@npm:0.6.6"
-  dependencies:
-    fast-glob: "npm:^3.3.3"
-    fs-extra: "npm:^11.3.0"
-    sort-package-json: "npm:^2.15.0"
-    tslib: "npm:^2.8.1"
-  peerDependencies:
-    rollup: ^4.0.0
-  checksum: 10c0/bb8e4382f1d09a6f62ee1b5d9bca9c9f914ba50b200c42c964ce2210f910a3ee101ac422085088d1bc0c27f441914950f3152c8d43d4fbb2793b57a502a5ee91
   languageName: node
   linkType: hard
 
@@ -2713,11 +2714,11 @@ __metadata:
   linkType: hard
 
 "acorn@npm:^8.14.0":
-  version: 8.14.0
-  resolution: "acorn@npm:8.14.0"
+  version: 8.14.1
+  resolution: "acorn@npm:8.14.1"
   bin:
     acorn: bin/acorn
-  checksum: 10c0/6d4ee461a7734b2f48836ee0fbb752903606e576cc100eb49340295129ca0b452f3ba91ddd4424a1d4406a98adfb2ebb6bd0ff4c49d7a0930c10e462719bbfd7
+  checksum: 10c0/dbd36c1ed1d2fa3550140000371fcf721578095b18777b85a79df231ca093b08edc6858d75d6e48c73e431c174dcf9214edbd7e6fa5911b93bd8abfa54e47123
   languageName: node
   linkType: hard
 
@@ -3347,9 +3348,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.73":
-  version: 1.5.112
-  resolution: "electron-to-chromium@npm:1.5.112"
-  checksum: 10c0/fc597268d6d3d7458b55141c436802a6c51078855f021823cdb380b80ad1a69e1c2899fdfc9cffa501d47feb3791ea6a75893fe802a608c7845e979a48f5ac25
+  version: 1.5.113
+  resolution: "electron-to-chromium@npm:1.5.113"
+  checksum: 10c0/837fe2fd26adbc4f3ad8e758d14067a14f636f9c2923b5ded8adb93426bbe3fdc83b48ddf9f2cf03be31b5becb0c31144db19c823b696fd52a7bc4583f4bde00
   languageName: node
   linkType: hard
 
