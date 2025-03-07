@@ -12,12 +12,20 @@ const layout: Layout<CenterLayoutProps> = {
     orientation: 'horizontal',
   },
   getContainerStyle: (props) => {
-    const { orientation } = props;
+    const {
+      orientation,
+      spacing,
+      hSpacing = spacing,
+      vSpacing = spacing,
+    } = props;
     return {
       display: 'flex',
       flexDirection: orientation === 'vertical' ? 'column' : 'row',
       justifyContent: 'center',
       alignItems: 'center',
+      gap: spacing,
+      columnGap: hSpacing,
+      rowGap: vSpacing,
     };
   },
   getChildStyle: (props) => {

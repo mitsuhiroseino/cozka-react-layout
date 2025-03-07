@@ -60,31 +60,14 @@ export type LayoutPropsBase<L extends LayoutType> = {
 };
 
 /**
- * 横位置
+ * 子要素を並べる方向
  */
-export type HAlign = 'left' | 'center' | 'right';
-
-/**
- * 縦位置
- */
-export type VAlign = 'top' | 'middle' | 'bottom';
-
-/**
- * 親要素のサイズに子要素のサイズを合わせる配置
- *
- * - `fit`
- *   - 足りないとき: 伸ばす
- *   - 超えるとき: 縮める
- * - `stretch`
- *   - 足りないとき: 伸ばす
- *   - 超えるとき: そのまま
- */
-export type SizingAlign = 'fit' | 'stretch';
-
-/**
- * 均等割りにした際の余白の割り振り
- */
-export type SpaceAlign = 'space-between' | 'space-around' | 'space-evenly';
+export type OrientationProps = {
+  /**
+   * 並べる方向
+   */
+  orientation?: Orientation;
+};
 
 /**
  * 子要素のサイズ
@@ -149,3 +132,38 @@ export type Layout<P = {}> = {
    */
   getChildStyle?: (props: P) => CSSProperties;
 };
+
+/**
+ * 横位置
+ */
+export type HAlign = 'left' | 'center' | 'right';
+
+/**
+ * 縦位置
+ */
+export type VAlign = 'top' | 'middle' | 'bottom';
+
+/**
+ * 親要素のサイズに子要素のサイズを合わせる配置
+ *
+ * - `fit`
+ *   - 足りないとき: 伸ばす
+ *   - 超えるとき: 縮める
+ * - `expand`
+ *   - 足りないとき: 伸ばす
+ *   - 超えるとき: そのまま
+ * - `narrow`
+ *   - 足りないとき: そのまま
+ *   - 超えるとき: 縮める
+ */
+export type SizingAlign = 'fit' | 'expand' | 'narrow';
+
+/**
+ * 均等割りにした際の余白の割り振り
+ */
+export type SpaceAlign = 'space-between' | 'space-around' | 'space-evenly';
+
+/**
+ * 並べる方向
+ */
+export type Orientation = 'horizontal' | 'vertical';

@@ -1,8 +1,5 @@
-import { LayoutPropsBase } from '../types';
+import { LayoutPropsBase, OrientationProps, SpacingProps } from '../types';
 
-export type FitLayoutProps = LayoutPropsBase<'fit'> & {
-  /**
-   * 子要素を並べる方向
-   */
-  orientation?: 'horizontal' | 'vertical';
-};
+export type FitLayoutProps = LayoutPropsBase<'fit'> &
+  SpacingProps &
+  OrientationProps;

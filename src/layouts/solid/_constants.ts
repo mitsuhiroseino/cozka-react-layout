@@ -42,10 +42,13 @@ export const VERTICAL_ALIGN: {
   bottom: {
     alignContent: 'flex-end',
   },
-  stretch: {
+  fit: {
     alignContent: 'stretch',
   },
-  fit: {
+  expand: {
+    alignContent: 'stretch',
+  },
+  narrow: {
     alignContent: 'stretch',
   },
   'space-between': {
@@ -65,20 +68,18 @@ export const VERTICAL_ALIGN: {
 export const CHILD_VERTICAL_ALIGN: {
   [vAlign in SolidVAlign]?: (props: SolidLayoutProps) => CSSProperties;
 } = {
-  stretch: (props) => {
-    const { childHeight, childWidth } = props;
-    return {
-      minHeight: childHeight,
-      width: childWidth,
-    };
-  },
-  fit: (props) => {
-    const { childWidth } = props;
-    return {
-      height: 'auto',
-      width: childWidth,
-    };
-  },
+  fit: ({ childWidth }) => ({
+    height: 'auto',
+    width: childWidth,
+  }),
+  expand: ({ childHeight, childWidth }) => ({
+    minHeight: childHeight,
+    width: childWidth,
+  }),
+  narrow: ({ childWidth }) => ({
+    minHeight: 0,
+    width: childWidth,
+  }),
 };
 
 /**
@@ -86,10 +87,7 @@ export const CHILD_VERTICAL_ALIGN: {
  */
 export const DEFAULT_CHILD_VERTICAL_ALIGN: (
   props: SolidLayoutProps,
-) => CSSProperties = (props) => {
-  const { childHeight, childWidth } = props;
-  return {
-    height: childHeight,
-    width: childWidth,
-  };
-};
+) => CSSProperties = ({ childHeight, childWidth }) => ({
+  height: childHeight,
+  width: childWidth,
+});

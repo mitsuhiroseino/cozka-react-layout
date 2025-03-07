@@ -21,8 +21,14 @@ export const HORIZONTAL_ALIGN: {
   right: {
     justifyContent: 'flex-end',
   },
-  stretch: {
+  fit: {
     justifyContent: 'stretch',
+  },
+  expand: {
+    justifyContent: 'flex-start',
+  },
+  narrow: {
+    justifyContent: 'flex-start',
   },
   'space-between': {
     justifyContent: 'space-between',
@@ -56,11 +62,15 @@ export const VERTICAL_ALIGN: {
       alignItems: 'flex-end',
       flexWrap: 'nowrap',
     },
-    stretch: {
+    fit: {
       alignItems: 'stretch',
       flexWrap: 'nowrap',
     },
-    fit: {
+    expand: {
+      alignItems: 'stretch',
+      flexWrap: 'nowrap',
+    },
+    narrow: {
       alignItems: 'stretch',
       flexWrap: 'nowrap',
     },
@@ -90,11 +100,15 @@ export const VERTICAL_ALIGN: {
       alignContent: 'flex-end',
       flexWrap: 'wrap',
     },
-    stretch: {
+    fit: {
       alignContent: 'stretch',
       flexWrap: 'wrap',
     },
-    fit: {
+    expand: {
+      alignContent: 'stretch',
+      flexWrap: 'wrap',
+    },
+    narrow: {
       alignContent: 'stretch',
       flexWrap: 'wrap',
     },
@@ -121,11 +135,6 @@ export const CHILD_HORIZONTAL_ALIGN: {
     props: HorizontalLayoutProps,
   ) => CSSProperties;
 } = {
-  stretch: (props) => ({
-    flexGrow: 1,
-    flexShrink: 0,
-    flexBasis: _getFlexBasis(props),
-  }),
   fit: (props) => {
     const { wrapChildren } = props;
     let flexShrink;
@@ -139,8 +148,21 @@ export const CHILD_HORIZONTAL_ALIGN: {
       flexGrow: 1,
       flexShrink,
       flexBasis: _getFlexBasis(props),
+      minWidth: 0,
     };
   },
+  expand: (props) => ({
+    flexGrow: 1,
+    flexShrink: 0,
+    flexBasis: _getFlexBasis(props),
+    minWidth: 0,
+  }),
+  narrow: (props) => ({
+    flexGrow: 0,
+    flexShrink: 1,
+    flexBasis: _getFlexBasis(props),
+    minWidth: 0,
+  }),
 };
 
 /**
@@ -148,7 +170,9 @@ export const CHILD_HORIZONTAL_ALIGN: {
  */
 export const DEFAULT_CHILD_HORIZONTAL_ALIGN: (
   props: HorizontalLayoutProps,
-) => CSSProperties = ({ childWidth }) => ({ minWidth: childWidth });
+) => CSSProperties = ({ childWidth }) => ({
+  minWidth: childWidth,
+});
 
 /**
  * 子要素の縦位置のためのスタイル
@@ -158,8 +182,15 @@ export const CHILD_VERTICAL_ALIGN: {
     props: HorizontalLayoutProps,
   ) => CSSProperties;
 } = {
-  stretch: ({ childHeight }) => ({ minHeight: childHeight }),
-  fit: () => ({ minHeight: 0 }),
+  fit: () => ({
+    minHeight: 0,
+  }),
+  expand: ({ childHeight }) => ({
+    minHeight: childHeight,
+  }),
+  narrow: () => ({
+    minHeight: 0,
+  }),
 };
 
 /**
@@ -167,17 +198,19 @@ export const CHILD_VERTICAL_ALIGN: {
  */
 export const DEFAULT_CHILD_VERTICAL_ALIGN: (
   props: HorizontalLayoutProps,
-) => CSSProperties = ({ childHeight }) => ({ height: childHeight });
+) => CSSProperties = ({ childHeight }) => ({
+  height: childHeight,
+});
 
 function _getFlexBasis({ evenSize, childWidth }: HorizontalLayoutProps) {
   if (evenSize) {
     // 均等
     return 0;
   } else if (childWidth != null) {
-    // 指定の高さ
+    // 指定の幅
     return _unit(childWidth);
   } else {
-    // 要素毎の高さ
+    // 要素毎の幅
     return 'auto';
   }
 }

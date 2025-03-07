@@ -13,9 +13,17 @@ const layout: Layout<FitLayoutProps> = {
     orientation: 'horizontal',
   },
   getContainerStyle: (props) => {
-    const { orientation } = props;
+    const {
+      orientation,
+      spacing,
+      hSpacing = spacing,
+      vSpacing = spacing,
+    } = props;
     return {
       display: 'grid',
+      gap: spacing,
+      columnGap: hSpacing,
+      rowGap: vSpacing,
       ...ORIENTATION[orientation],
     };
   },

@@ -73,11 +73,15 @@ These properties can be passed to the returned component. Available properties v
 
 #### `center` (Centers child elements)
 
-| Property       | Type       | Description               |
-| -------------- | ---------- | ------------------------- |
-| `layout`       | `'center'` |                           |
-| `childHeight?` | `number`   | Height of child elements. |
-| `childWidth?`  | `number`   | Width of child elements.  |
+| Property       | Type                           | Description                                                             |
+| -------------- | ------------------------------ | ----------------------------------------------------------------------- |
+| `layout`       | `'center'`                     |                                                                         |
+| `childHeight?` | `number`                       | Height of child elements.                                               |
+| `childWidth?`  | `number`                       | Width of child elements.                                                |
+| `orientation`  | `'horizontal'` \| `'vertical'` | Direction in which child elements are arranged (default: `horizontal`). |
+| `spacing?`     | `number`                       | Spacing between elements.                                               |
+| `hSpacing?`    | `number`                       | Horizontal spacing.                                                     |
+| `vSpacing?`    | `number`                       | Vertical spacing.                                                       |
 
 #### `fit` (Fits child elements to the parent)
 
@@ -85,6 +89,9 @@ These properties can be passed to the returned component. Available properties v
 | ------------- | ------------------------------ | ----------------------------------------------------------------------- |
 | `layout`      | `'fit'`                        |                                                                         |
 | `orientation` | `'horizontal'` \| `'vertical'` | Direction in which child elements are arranged (default: `horizontal`). |
+| `spacing?`    | `number`                       | Spacing between elements.                                               |
+| `hSpacing?`   | `number`                       | Horizontal spacing.                                                     |
+| `vSpacing?`   | `number`                       | Vertical spacing.                                                       |
 
 #### `horizontal` (Aligns child elements horizontally)
 
@@ -130,16 +137,16 @@ These properties can be passed to the returned component. Available properties v
 
 ### `solid` (Adjust the number of child elements to fit within the parent's width)
 
-| Property         | Type                                                                           | Description                                              |
-| ---------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------- |
-| `layout`         | `'solid'`                                                                      |                                                          |
-| `childHeight?`   | `number`                                                                       | Height of child elements                                 |
-| `childMinWidth?` | `number`                                                                       | Minimum width of child elements                          |
-| `spacing?`       | `number`                                                                       | Spacing between child elements                           |
-| `hSpacing?`      | `number`                                                                       | Horizontal spacing between child elements                |
-| `vSpacing?`      | `number`                                                                       | Vertical spacing between child elements                  |
-| `hAlign`         | [Horizontal Alignment](#horizontal-alignment) (excluding `'fit'`, `'stretch'`) | Horizontal alignment of child elements (default: `left`) |
-| `vAlign?`        | [Vertical Alignment](#vertical-alignment)                                      | Vertical alignment of child elements (default: `top`)    |
+| Property         | Type                                                                                      | Description                                              |
+| ---------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `layout`         | `'solid'`                                                                                 |                                                          |
+| `childHeight?`   | `number`                                                                                  | Height of child elements                                 |
+| `childMinWidth?` | `number`                                                                                  | Minimum width of child elements                          |
+| `spacing?`       | `number`                                                                                  | Spacing between child elements                           |
+| `hSpacing?`      | `number`                                                                                  | Horizontal spacing between child elements                |
+| `vSpacing?`      | `number`                                                                                  | Vertical spacing between child elements                  |
+| `hAlign`         | [Horizontal Alignment](#horizontal-alignment) (excluding `'fit'`, `'expand'`, `'narrow'`) | Horizontal alignment of child elements (default: `left`) |
+| `vAlign?`        | [Vertical Alignment](#vertical-alignment)                                                 | Vertical alignment of child elements (default: `top`)    |
 
 ### `vertical` (Arrange child elements vertically)
 
@@ -166,7 +173,8 @@ These properties can be passed to the returned component. Available properties v
 | `'middle'`        | Align to center              |
 | `'bottom'`        | Align to bottom              |
 | `'fit'`           | Stretch to fit parent        |
-| `'stretch'`       | Expand to fill parent        |
+| `'expand'`        | Expand to fill parent        |
+| `'narrow'`        | Narrow to fill parent        |
 | `'space-between'` | Distribute spacing evenly    |
 | `'space-around'`  | Add spacing around edges     |
 | `'space-evenly'`  | Distribute all spaces evenly |
@@ -179,7 +187,8 @@ These properties can be passed to the returned component. Available properties v
 | `'center'`        | Align to center              |
 | `'right'`         | Align to right               |
 | `'fit'`           | Stretch to fit parent        |
-| `'stretch'`       | Expand to fill parent        |
+| `'expand'`        | Expand to fill parent        |
+| `'narrow'`        | Narrow to fill parent        |
 | `'space-between'` | Distribute spacing evenly    |
 | `'space-around'`  | Add spacing around edges     |
 | `'space-evenly'`  | Distribute all spaces evenly |

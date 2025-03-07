@@ -4,6 +4,7 @@ import {
   CHILD_VERTICAL_ALIGN,
   DEFAULT_CHILD_VERTICAL_ALIGN,
   HORIZONTAL_ALIGN,
+  VERTICAL_ALIGN,
 } from './_constants';
 import { SolidLayoutProps } from './types';
 
@@ -33,6 +34,7 @@ const layout: Layout<SolidLayoutProps> = {
       columnGap: hSpacing,
       rowGap: vSpacing,
       ...HORIZONTAL_ALIGN[hAlign],
+      ...VERTICAL_ALIGN[vAlign],
     };
   },
   getChildStyle: (props) => {

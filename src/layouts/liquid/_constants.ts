@@ -16,10 +16,13 @@ export const VERTICAL_ALIGN: {
   bottom: {
     alignContent: 'flex-end',
   },
-  stretch: {
+  fit: {
     alignContent: 'stretch',
   },
-  fit: {
+  expand: {
+    alignContent: 'stretch',
+  },
+  narrow: {
     alignContent: 'stretch',
   },
   'space-between': {
@@ -39,17 +42,15 @@ export const VERTICAL_ALIGN: {
 export const CHILD_VERTICAL_ALIGN: {
   [vAlign in LiguidVAlign]?: (props: LiquidLayoutProps) => CSSProperties;
 } = {
-  stretch: (props) => {
-    const { childHeight } = props;
-    return {
-      minHeight: childHeight,
-    };
-  },
-  fit: () => {
-    return {
-      height: 'auto',
-    };
-  },
+  fit: () => ({
+    height: 'auto',
+  }),
+  expand: ({ childHeight }) => ({
+    minHeight: childHeight,
+  }),
+  narrow: ({ childHeight }) => ({
+    minHeight: childHeight,
+  }),
 };
 
 /**
@@ -57,7 +58,6 @@ export const CHILD_VERTICAL_ALIGN: {
  */
 export const DEFAULT_CHILD_VERTICAL_ALIGN: (
   props: LiquidLayoutProps,
-) => CSSProperties = (props) => {
-  const { childHeight } = props;
-  return { height: childHeight };
-};
+) => CSSProperties = ({ childHeight }) => ({
+  height: childHeight,
+});
