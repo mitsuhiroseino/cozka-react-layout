@@ -1,3 +1,6 @@
+import { ORIENTATION } from '../_constants';
+import _getFlexChildHeightStyle from '../_getFlexChildHeightStyle';
+import _getFlexChildWidthStyle from '../_getFlexChildWidthStyle';
 import { Layout } from '../types';
 import { CenterLayoutProps } from './types';
 
@@ -20,20 +23,25 @@ const layout: Layout<CenterLayoutProps> = {
     } = props;
     return {
       display: 'flex',
-      flexDirection: orientation === 'vertical' ? 'column' : 'row',
       justifyContent: 'center',
       alignItems: 'center',
       gap: spacing,
       columnGap: hSpacing,
       rowGap: vSpacing,
+      ...ORIENTATION[orientation],
     };
   },
   getChildStyle: (props) => {
-    const { childHeight, childWidth } = props;
+    const {
+      orientation,
+      childHeight,
+      childHeightSizing,
+      childWidth,
+      childWidthSizing,
+    } = props;
     return {
-      flex: '0 0 auto',
-      height: childHeight,
-      width: childWidth,
+      ..._getFlexChildHeightStyle(orientation, childHeight, childHeightSizing),
+      ..._getFlexChildWidthStyle(orientation, childWidth, childWidthSizing),
     };
   },
 };

@@ -2,7 +2,6 @@ import {
   ChildSizeProps,
   HAlign,
   LayoutPropsBase,
-  SizingAlign,
   SpaceAlign,
   SpacingProps,
   VAlign,
@@ -38,9 +37,9 @@ export type VerticalLayoutProps = LayoutPropsBase<'vertical'> &
 /**
  * 縦並びの横位置の値
  */
-export type VerticalHAlign = HAlign | SpaceAlign | SizingAlign;
+export type VerticalHAlign = HAlign | SpaceAlign;
 
 /**
  * 縦並びの縦位置の値
  */
-export type VerticalVAlign = VAlign | SpaceAlign | SizingAlign;
+export type VerticalVAlign = VAlign | SpaceAlign;

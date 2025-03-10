@@ -7,5 +7,5 @@ import {
 
 export type CenterLayoutProps = LayoutPropsBase<'center'> &
   ChildSizeProps &
-  SpacingProps &
-  OrientationProps;
+  OrientationProps &
+  SpacingProps;

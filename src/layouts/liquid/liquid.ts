@@ -1,10 +1,6 @@
-import _unit from '../_unit';
+import _getClossAxisStyle from '../_getClossAxisStyle';
 import { Layout } from '../types';
-import {
-  CHILD_VERTICAL_ALIGN,
-  DEFAULT_CHILD_VERTICAL_ALIGN,
-  VERTICAL_ALIGN,
-} from './_constants';
+import { ALIGN, ORIENTATION } from './_constants';
 import { LiquidLayoutProps } from './types';
 
 /**
@@ -15,32 +11,34 @@ import { LiquidLayoutProps } from './types';
 const layout: Layout<LiquidLayoutProps> = {
   name: 'liquid',
   defaultProps: {
-    vAlign: 'top',
+    orientation: 'horizontal',
+    align: 'top',
   },
   getContainerStyle: (props) => {
     const {
-      vAlign,
+      orientation,
+      align,
       spacing,
       hSpacing = spacing,
       vSpacing = spacing,
-      childMinWidth,
     } = props;
 
     return {
       display: 'grid',
-      gridTemplateColumns: `repeat(auto-fit, minmax(${_unit(childMinWidth ?? '100%')}, 1fr))`,
       justifyContent: 'stretch',
       columnGap: hSpacing,
       rowGap: vSpacing,
-      ...VERTICAL_ALIGN[vAlign],
+      ...ORIENTATION[orientation](props),
+      ...ALIGN[orientation][align],
     };
   },
   getChildStyle: (props) => {
-    const { vAlign } = props;
-    const verticalAlign =
-      CHILD_VERTICAL_ALIGN[vAlign] || DEFAULT_CHILD_VERTICAL_ALIGN;
-
-    return verticalAlign(props);
+    const { orientation, crossSize, crossSizing } = props;
+    if (orientation === 'vertical') {
+      return _getClossAxisStyle('width', crossSize, crossSizing);
+    } else {
+      return _getClossAxisStyle('height', crossSize, crossSizing);
+    }
   },
 };
 export default layout;

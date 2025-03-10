@@ -1,4 +1,5 @@
-import { CSSProperties, ReactElement, ReactNode } from 'react';
+import { Property } from 'csstype';
+import { CSSProperties, ReactNode } from 'react';
 import { AbsoluteLayoutProps } from './absolute';
 import { CenterLayoutProps } from './center';
 import { FitLayoutProps } from './fit';
@@ -76,12 +77,39 @@ export type ChildSizeProps = {
   /**
    * 子要素の高さ
    */
-  childHeight?: number | string;
+  childHeight?: ChildSize;
 
   /**
    * 子要素の高さ
    */
-  childWidth?: number | string;
+  childWidth?: ChildSize;
+
+  /**
+   * 子要素の高さの調整
+   * デフォルトは`none`
+   */
+  childHeightSizing?: ChildSizing;
+
+  /**
+   * 子要素の幅の調整
+   * デフォルトは`none`
+   */
+  childWidthSizing?: ChildSizing;
+};
+
+/**
+ * 交差方向の子要素のサイズに関するプロパティ
+ */
+export type ChildCrossSizeProps = {
+  /**
+   * 交差軸方向の子要素のサイズ
+   */
+  crossSize?: ChildSize;
+
+  /**
+   * 交差軸方向の子要素の調整
+   */
+  crossSizing?: ChildSizing;
 };
 
 /**
@@ -144,8 +172,26 @@ export type HAlign = 'left' | 'center' | 'right';
 export type VAlign = 'top' | 'middle' | 'bottom';
 
 /**
- * 親要素のサイズに子要素のサイズを合わせる配置
+ * 均等割りにした際の余白の割り振り
+ */
+export type SpaceAlign = 'space-between' | 'space-around' | 'space-evenly';
+
+/**
+ * 並べる方向
+ */
+export type Orientation = 'horizontal' | 'vertical';
+
+/**
+ * 子要素の高さ or 幅
+ */
+export type ChildSize = CSSProperties['flexBasis'];
+
+/**
+ * 親要素のサイズに子要素のサイズを合わせる方法
  *
+ * - `none`
+ *   - 足りないとき: そのまま
+ *   - 超えるとき: そのまま
  * - `fit`
  *   - 足りないとき: 伸ばす
  *   - 超えるとき: 縮める
@@ -156,14 +202,4 @@ export type VAlign = 'top' | 'middle' | 'bottom';
  *   - 足りないとき: そのまま
  *   - 超えるとき: 縮める
  */
-export type SizingAlign = 'fit' | 'expand' | 'narrow';
-
-/**
- * 均等割りにした際の余白の割り振り
- */
-export type SpaceAlign = 'space-between' | 'space-around' | 'space-evenly';
-
-/**
- * 並べる方向
- */
-export type Orientation = 'horizontal' | 'vertical';
+export type ChildSizing = 'none' | 'fit' | 'expand' | 'narrow';

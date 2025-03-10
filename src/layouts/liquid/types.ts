@@ -1,24 +1,26 @@
 import {
-  ChildSizeProps,
+  ChildCrossSizeProps,
+  ChildSize,
   LayoutPropsBase,
-  SizingAlign,
+  OrientationProps,
   SpaceAlign,
   SpacingProps,
   VAlign,
 } from '../types';
 
 export type LiquidLayoutProps = LayoutPropsBase<'liquid'> &
-  Pick<ChildSizeProps, 'childHeight'> &
+  ChildCrossSizeProps &
+  OrientationProps &
   SpacingProps & {
     /**
-     * 子要素の最小幅
+     * 主軸方向の子要素の最小サイズ
      */
-    childMinWidth?: string | number;
+    mainMinSize?: ChildSize;
 
     /**
-     * 子要素の縦位置
+     * 子要素の位置
      */
-    vAlign?: LiguidVAlign;
+    align?: LiguidVAlign;
   };
 
-export type LiguidVAlign = VAlign | SizingAlign | SpaceAlign;
+export type LiguidVAlign = VAlign | SpaceAlign;

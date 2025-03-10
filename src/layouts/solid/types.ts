@@ -1,8 +1,9 @@
 import {
-  ChildSizeProps,
+  ChildCrossSizeProps,
+  ChildSize,
   HAlign,
   LayoutPropsBase,
-  SizingAlign,
+  OrientationProps,
   SpaceAlign,
   SpacingProps,
   VAlign,
@@ -12,8 +13,14 @@ import {
  * solidのプロパティ
  */
 export type SolidLayoutProps = LayoutPropsBase<'solid'> &
-  ChildSizeProps &
+  ChildCrossSizeProps &
+  OrientationProps &
   SpacingProps & {
+    /**
+     * 主軸方向の子要素の最小サイズ
+     */
+    mainSize?: ChildSize;
+
     /**
      * 子要素の横位置
      */
@@ -33,4 +40,4 @@ export type SolidHAlign = HAlign | SpaceAlign;
 /**
  * 横並びの縦位置の値
  */
-export type SolidVAlign = VAlign | SpaceAlign | SizingAlign;
+export type SolidVAlign = VAlign | SpaceAlign;

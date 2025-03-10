@@ -1,12 +1,7 @@
+import _getClossAxisStyle from '../_getClossAxisStyle';
+import _getMainAxisStyle from '../_getMainAxisStyle';
 import { Layout } from '../types';
-import {
-  CHILD_HORIZONTAL_ALIGN,
-  CHILD_VERTICAL_ALIGN,
-  DEFAULT_CHILD_HORIZONTAL_ALIGN,
-  DEFAULT_CHILD_VERTICAL_ALIGN,
-  HORIZONTAL_ALIGN,
-  VERTICAL_ALIGN,
-} from './_constants';
+import { HORIZONTAL_ALIGN, VERTICAL_ALIGN } from './_constants';
 import { VerticalLayoutProps } from './types';
 
 /**
@@ -40,15 +35,22 @@ const layout: Layout<VerticalLayoutProps> = {
     };
   },
   getChildStyle: (props) => {
-    const { hAlign, vAlign } = props;
-    const horizontalAlign =
-      CHILD_HORIZONTAL_ALIGN[hAlign] || DEFAULT_CHILD_HORIZONTAL_ALIGN;
-    const verticalAlign =
-      CHILD_VERTICAL_ALIGN[vAlign] || DEFAULT_CHILD_VERTICAL_ALIGN;
+    const {
+      childHeight,
+      childHeightSizing,
+      childWidth,
+      childWidthSizing,
+      wrapChildren,
+    } = props;
 
     return {
-      ...horizontalAlign(props),
-      ...verticalAlign(props),
+      ..._getMainAxisStyle(
+        'height',
+        childHeight,
+        childHeightSizing,
+        wrapChildren,
+      ),
+      ..._getClossAxisStyle('width', childWidth, childWidthSizing),
     };
   },
 };

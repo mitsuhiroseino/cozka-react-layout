@@ -9,8 +9,12 @@ import { MatrixLayoutProps } from './types';
  */
 const layout: Layout<MatrixLayoutProps> = {
   name: 'matrix',
+  defaultProps: {
+    orientation: 'horizontal',
+  },
   getContainerStyle: (props) => {
     const {
+      orientation,
       hCount,
       vCount,
       hTemplate,
@@ -26,6 +30,7 @@ const layout: Layout<MatrixLayoutProps> = {
 
     return {
       display: 'grid',
+      gridAutoFlow: orientation === 'vertical' ? 'column' : 'row',
       gridTemplateColumns,
       gridTemplateRows,
       columnGap: hSpacing,

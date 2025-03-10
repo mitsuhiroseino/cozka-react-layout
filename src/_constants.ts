@@ -32,7 +32,7 @@ export const LAYOUT_PROPS_KEYS: {
   hAlign: 1,
   wrapChildren: 1,
   evenSize: 1,
-  childMinWidth: 1,
+  mainMinSize: 1,
   hCount: 1,
   vCount: 1,
   hTemplate: 1,

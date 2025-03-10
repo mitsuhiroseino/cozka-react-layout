@@ -36,9 +36,9 @@ export default function withLayout<P = {}, T = unknown>(
       delete rest[key];
     }
     // layoutを取得
-    const { getContainerStyle, getChildStyle, defaultProps } = LAYOUTS[
-      layout || 'horizontal'
-    ] as Layout;
+    const { getContainerStyle, getChildStyle, defaultProps } = (LAYOUTS[
+      layout
+    ] || LAYOUTS.horizontal) as Layout;
     const argProps = { ...props };
     if (defaultProps) {
       for (const key in defaultProps) {
