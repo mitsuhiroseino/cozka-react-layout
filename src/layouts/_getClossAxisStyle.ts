@@ -1,4 +1,5 @@
 import { CSSProperties } from 'react';
+import _unit from './_unit';
 import { ChildSize, ChildSizing } from './types';
 
 const MIN_SIZE = {
@@ -40,11 +41,16 @@ export default function _getClossAxisStyle(
     };
   } else if (sizing === 'narrow') {
     // 縮める
-    return {
-      [type]: size,
-      [minSize]: 0,
-      [maxSize]: '100%',
-    };
+    if (size == null) {
+      return {
+        [minSize]: '100%',
+      };
+    } else {
+      return {
+        [type]: `min(${_unit(size)}, 100%)`,
+        [minSize]: 0,
+      };
+    }
   } else if (size != null) {
     // 指定のサイズ
     return {
@@ -54,7 +60,6 @@ export default function _getClossAxisStyle(
   } else {
     // 指定なし
     return {
-      [type]: 'auto',
       [minSize]: 0,
     };
   }

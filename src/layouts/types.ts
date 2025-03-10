@@ -71,6 +71,21 @@ export type OrientationProps = {
 };
 
 /**
+ * 子要素の位置
+ */
+export type AlignProps = {
+  /**
+   * 子要素の横位置
+   */
+  hAlign?: HAlign;
+
+  /**
+   * 子要素の縦位置
+   */
+  vAlign?: VAlign;
+};
+
+/**
  * 子要素のサイズ
  */
 export type ChildSizeProps = {
@@ -98,38 +113,23 @@ export type ChildSizeProps = {
 };
 
 /**
- * 交差方向の子要素のサイズに関するプロパティ
- */
-export type ChildCrossSizeProps = {
-  /**
-   * 交差軸方向の子要素のサイズ
-   */
-  crossSize?: ChildSize;
-
-  /**
-   * 交差軸方向の子要素の調整
-   */
-  crossSizing?: ChildSizing;
-};
-
-/**
  * 要素間の余白
  */
 export type SpacingProps = {
   /**
    * 余白
    */
-  spacing?: CSSProperties['gap'];
+  spacing?: Spacing;
 
   /**
    * 横方向の余白
    */
-  hSpacing?: CSSProperties['columnGap'];
+  hSpacing?: Spacing;
 
   /**
    * 縦方向の余白
    */
-  vSpacing?: CSSProperties['rowGap'];
+  vSpacing?: Spacing;
 };
 
 /**
@@ -164,12 +164,12 @@ export type Layout<P = {}> = {
 /**
  * 横位置
  */
-export type HAlign = 'left' | 'center' | 'right';
+export type HAlign = 'left' | 'center' | 'right' | SpaceAlign;
 
 /**
  * 縦位置
  */
-export type VAlign = 'top' | 'middle' | 'bottom';
+export type VAlign = 'top' | 'middle' | 'bottom' | SpaceAlign;
 
 /**
  * 均等割りにした際の余白の割り振り
@@ -185,6 +185,8 @@ export type Orientation = 'horizontal' | 'vertical';
  * 子要素の高さ or 幅
  */
 export type ChildSize = CSSProperties['flexBasis'];
+
+export type Spacing = CSSProperties['gap'];
 
 /**
  * 親要素のサイズに子要素のサイズを合わせる方法

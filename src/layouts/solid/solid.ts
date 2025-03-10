@@ -1,7 +1,6 @@
 import _getClossAxisStyle from '../_getClossAxisStyle';
-import _unit from '../_unit';
+import _getGridContainerStyle from '../_getGridContainerStyle';
 import { Layout } from '../types';
-import { HORIZONTAL_ALIGN, ORIENTATION, VERTICAL_ALIGN } from './_constants';
 import { SolidLayoutProps } from './types';
 
 /**
@@ -12,6 +11,7 @@ import { SolidLayoutProps } from './types';
 const layout: Layout<SolidLayoutProps> = {
   name: 'solid',
   defaultProps: {
+    orientation: 'horizontal',
     hAlign: 'left',
     vAlign: 'top',
   },
@@ -23,22 +23,30 @@ const layout: Layout<SolidLayoutProps> = {
       spacing,
       hSpacing = spacing,
       vSpacing = spacing,
+      childHeight,
+      childWidth,
     } = props;
-    return {
-      display: 'grid',
-      columnGap: hSpacing,
-      rowGap: vSpacing,
-      ...ORIENTATION[orientation](props),
-      ...HORIZONTAL_ALIGN[orientation][hAlign],
-      ...VERTICAL_ALIGN[orientation][vAlign],
-    };
+    return _getGridContainerStyle(orientation, {
+      hAlign,
+      vAlign,
+      hSpacing,
+      vSpacing,
+      childHeight: childHeight,
+      childWidth: childWidth,
+    });
   },
   getChildStyle: (props) => {
-    const { orientation, crossSize, crossSizing } = props;
+    const {
+      orientation,
+      childHeight,
+      childHeightSizing,
+      childWidth,
+      childWidthSizing,
+    } = props;
     if (orientation === 'vertical') {
-      return _getClossAxisStyle('width', crossSize, crossSizing);
+      return _getClossAxisStyle('width', childWidth, childWidthSizing);
     } else {
-      return _getClossAxisStyle('height', crossSize, crossSizing);
+      return _getClossAxisStyle('height', childHeight, childHeightSizing);
     }
   },
 };

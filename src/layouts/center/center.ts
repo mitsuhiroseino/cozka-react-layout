@@ -1,6 +1,6 @@
-import { ORIENTATION } from '../_constants';
 import _getFlexChildHeightStyle from '../_getFlexChildHeightStyle';
 import _getFlexChildWidthStyle from '../_getFlexChildWidthStyle';
+import _getFlexContainerStyle from '../_getFlexContainerStyle';
 import { Layout } from '../types';
 import { CenterLayoutProps } from './types';
 
@@ -21,15 +21,12 @@ const layout: Layout<CenterLayoutProps> = {
       hSpacing = spacing,
       vSpacing = spacing,
     } = props;
-    return {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: spacing,
-      columnGap: hSpacing,
-      rowGap: vSpacing,
-      ...ORIENTATION[orientation],
-    };
+    return _getFlexContainerStyle(orientation, {
+      vAlign: 'middle',
+      hAlign: 'center',
+      hSpacing,
+      vSpacing,
+    });
   },
   getChildStyle: (props) => {
     const {

@@ -1338,7 +1338,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.16.11"
     "@babel/preset-typescript": "npm:^7.21.4"
     "@cozka/react-style-proxy": "npm:^0.2.0"
-    "@cozka/react-utils": "npm:^0.3.0"
+    "@cozka/react-utils": "npm:^0.3.2"
     "@cozka/rollup-create-dist-packagejson": "npm:^0.7.0"
     "@eslint/js": "npm:^9.3.0"
     "@rollup/plugin-babel": "npm:^5.3.1"
@@ -1385,12 +1385,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cozka/react-utils@npm:^0.3.0":
-  version: 0.3.1
-  resolution: "@cozka/react-utils@npm:0.3.1"
+"@cozka/react-utils@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "@cozka/react-utils@npm:0.3.2"
   peerDependencies:
     react: ^18.0.0 || ^19.0.0
-  checksum: 10c0/4fc84f0831c74baa796e29fa0110c14b71f7e7d0043b7846f965544a4c818b0fc2f9d00bd93f46f56ec890fb728867df8992abd92121969ca4d16bfbd06862c5
+  checksum: 10c0/8c5ae2e857d7586496f84499adbaebf1d5fe5fb0437f9dcdda601bd31d2161c97b0b9d4b5f7693c0bf365c2536435f626f71441ad3bf9c72e1ad7b310da9931c
   languageName: node
   linkType: hard
 

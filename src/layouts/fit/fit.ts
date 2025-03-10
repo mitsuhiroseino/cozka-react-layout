@@ -1,5 +1,4 @@
 import { Layout } from '../types';
-import { ORIENTATION } from './_constants';
 import { FitLayoutProps } from './types';
 
 /**
@@ -21,10 +20,19 @@ const layout: Layout<FitLayoutProps> = {
     } = props;
     return {
       display: 'grid',
-      gap: spacing,
       columnGap: hSpacing,
       rowGap: vSpacing,
-      ...ORIENTATION[orientation],
+      ...(orientation === 'vertical'
+        ? {
+            gridAutoFlow: 'row',
+            gridTemplateColumns: '1fr',
+            gridTemplateRows: 'auto',
+          }
+        : {
+            gridAutoFlow: 'column',
+            gridTemplateColumns: 'auto',
+            gridTemplateRows: '1fr',
+          }),
     };
   },
   getChildStyle: () => {

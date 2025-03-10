@@ -1,26 +1,38 @@
 import {
-  ChildCrossSizeProps,
+  AlignProps,
   ChildSize,
+  ChildSizeProps,
   LayoutPropsBase,
   OrientationProps,
-  SpaceAlign,
   SpacingProps,
-  VAlign,
 } from '../types';
 
+/**
+ * liquidのプロパティ
+ *
+ * - orientation=`horizontal` or 未指定の場合、下記のプロパティは無効
+ *   - `hAlign`
+ *   - `childWidth`
+ *   - `childWidthSizing`
+ *   - `childMinHeight`
+ * - orientation=`vertical`の場合、下記のプロパティは無効
+ *   - `vAlign`
+ *   - `childHeight`
+ *   - `childHeightSizing`
+ *   - `childMinWidth`
+ */
 export type LiquidLayoutProps = LayoutPropsBase<'liquid'> &
-  ChildCrossSizeProps &
+  AlignProps &
+  ChildSizeProps &
   OrientationProps &
   SpacingProps & {
     /**
-     * 主軸方向の子要素の最小サイズ
+     * 子要素の最小の高さ
      */
-    mainMinSize?: ChildSize;
+    childMinHeight?: ChildSize;
 
     /**
-     * 子要素の位置
+     * 子要素の最小の幅
      */
-    align?: LiguidVAlign;
+    childMinWidth?: ChildSize;
   };
-
-export type LiguidVAlign = VAlign | SpaceAlign;

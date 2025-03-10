@@ -1,5 +1,6 @@
 import proxyStyle from '@cozka/react-style-proxy';
 import createReactElement from '@cozka/react-utils/createReactElement';
+import ensureComponent from '@cozka/react-utils/ensureComponent';
 import transformContent from '@cozka/react-utils/transformContent';
 import { cloneElement, ElementType, forwardRef } from 'react';
 import { LAYOUT_PROPS_KEYS } from './_constants';
@@ -17,10 +18,8 @@ export default function withLayout<P = {}, T = unknown>(
   Component: ElementType<P>,
   options: WidthLayoutOptions = {},
 ) {
-  const name =
-    typeof Component === 'string'
-      ? Component
-      : (Component.displayName ?? 'unknown');
+  const Comp = ensureComponent(Component);
+  const name = Comp.displayName ?? 'unknown';
   const {
     displayName = `withLayout(${name})`,
     jsxRuntime = createReactElement,

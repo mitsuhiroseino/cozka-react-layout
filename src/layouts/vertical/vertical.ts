@@ -1,7 +1,7 @@
 import _getClossAxisStyle from '../_getClossAxisStyle';
+import _getFlexContainerStyle from '../_getFlexContainerStyle';
 import _getMainAxisStyle from '../_getMainAxisStyle';
 import { Layout } from '../types';
-import { HORIZONTAL_ALIGN, VERTICAL_ALIGN } from './_constants';
 import { VerticalLayoutProps } from './types';
 
 /**
@@ -19,20 +19,18 @@ const layout: Layout<VerticalLayoutProps> = {
     const {
       hAlign,
       vAlign,
-      wrapChildren = false,
+      wrapChildren,
       spacing,
       hSpacing = spacing,
       vSpacing = spacing,
     } = props;
-    return {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: spacing,
-      columnGap: hSpacing,
-      rowGap: vSpacing,
-      ...HORIZONTAL_ALIGN[`${wrapChildren}`][hAlign],
-      ...VERTICAL_ALIGN[vAlign],
-    };
+    return _getFlexContainerStyle('vertical', {
+      hAlign,
+      vAlign,
+      wrapChildren,
+      hSpacing,
+      vSpacing,
+    });
   },
   getChildStyle: (props) => {
     const {
