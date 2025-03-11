@@ -19,8 +19,6 @@ export const LAYOUT_PROPS_KEYS: {
 } = {
   childHeight: 1,
   childHeightSizing: 1,
-  childMinHeight: 1,
-  childMinWidth: 1,
   children: 1,
   childStyle: 1,
   childWidth: 1,

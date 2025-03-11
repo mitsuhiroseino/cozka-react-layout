@@ -37,6 +37,16 @@ type Options = {
    * 上書きするスタイル
    */
   style?: CSSProperties;
+
+  /**
+   * グリッドトラックを親要素の幅が許す限り作成する
+   */
+  fill?: boolean;
+
+  /**
+   * 子要素のサイズを固定する
+   */
+  fixed?: boolean;
 };
 
 /**
@@ -57,10 +67,12 @@ export default function _getGridContainerStyle(
     childHeight,
     childWidth,
     style: override,
+    fill,
+    fixed,
   } = options;
   let style: CSSProperties = {
     display: 'grid',
-    ...ORIENTATION[orientation](childHeight, childWidth),
+    ...ORIENTATION[orientation](childHeight, childWidth, fill, fixed),
   };
   if (hAlign) {
     style = { ...style, ...HALIGN[hAlign] };
@@ -87,21 +99,35 @@ const ORIENTATION: {
   [orientation in Orientation]: (
     height: ChildSize,
     width: ChildSize,
+    fill: boolean,
+    fixed: boolean,
   ) => CSSProperties;
 } = {
-  horizontal: (childHeight, childWidth) => {
+  horizontal: (childHeight, childWidth, fill, fixed) => {
     return {
       gridAutoFlow: 'row',
-      gridTemplateColumns: `repeat(auto-fit, minmax(${_unit(childWidth ?? '0')}, 1fr))`,
+      gridTemplateColumns: _getGridTemplate(childWidth, fill, fixed),
     };
   },
-  vertical: (childHeight, childWidth) => {
+  vertical: (childHeight, childWidth, fill, fixed) => {
     return {
       gridAutoFlow: 'column',
-      gridTemplateRows: `repeat(auto-fit, minmax(${_unit(childHeight ?? '0')}, 1fr))`,
+      gridTemplateRows: _getGridTemplate(childHeight, fill, fixed),
     };
   },
 };
+
+function _getGridTemplate(
+  childSize: string | number,
+  fill: boolean,
+  fixed: boolean,
+) {
+  const mode = fill ? 'auto-fill' : 'auto-fit';
+  const size = fixed
+    ? _unit(childSize ?? 'minmax(max-content, max-content)')
+    : `minmax(${_unit(childSize ?? '0')}, 1fr)`;
+  return `repeat(${mode}, ${size})`;
+}
 
 /**
  * 「横位置」のためのスタイル

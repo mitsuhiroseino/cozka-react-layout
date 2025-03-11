@@ -1,4 +1,4 @@
-import _getClossAxisStyle from '../_getClossAxisStyle';
+import _getGridChildSizeStyle from '../_getGridChildSizeStyle';
 import _getGridContainerStyle from '../_getGridContainerStyle';
 import { Layout } from '../types';
 import { SolidLayoutProps } from './types';
@@ -26,6 +26,7 @@ const layout: Layout<SolidLayoutProps> = {
       childHeight,
       childWidth,
     } = props;
+
     return _getGridContainerStyle(orientation, {
       hAlign,
       vAlign,
@@ -33,6 +34,7 @@ const layout: Layout<SolidLayoutProps> = {
       vSpacing,
       childHeight: childHeight,
       childWidth: childWidth,
+      fixed: true,
     });
   },
   getChildStyle: (props) => {
@@ -43,11 +45,14 @@ const layout: Layout<SolidLayoutProps> = {
       childWidth,
       childWidthSizing,
     } = props;
-    if (orientation === 'vertical') {
-      return _getClossAxisStyle('width', childWidth, childWidthSizing);
-    } else {
-      return _getClossAxisStyle('height', childHeight, childHeightSizing);
-    }
+
+    return _getGridChildSizeStyle(
+      orientation,
+      childHeight,
+      childHeightSizing,
+      childWidth,
+      childWidthSizing,
+    );
   },
 };
 export default layout;

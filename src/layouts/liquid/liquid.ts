@@ -1,4 +1,4 @@
-import _getClossAxisStyle from '../_getClossAxisStyle';
+import _getGridChildSizeStyle from '../_getGridChildSizeStyle';
 import _getGridContainerStyle from '../_getGridContainerStyle';
 import { Layout } from '../types';
 import { LiquidLayoutProps } from './types';
@@ -23,8 +23,8 @@ const layout: Layout<LiquidLayoutProps> = {
       spacing,
       hSpacing = spacing,
       vSpacing = spacing,
-      childMinHeight,
-      childMinWidth,
+      childHeight,
+      childWidth,
     } = props;
     let options;
     if (orientation === 'vertical') {
@@ -47,8 +47,8 @@ const layout: Layout<LiquidLayoutProps> = {
       ...options,
       hSpacing,
       vSpacing,
-      childHeight: childMinHeight,
-      childWidth: childMinWidth,
+      childHeight,
+      childWidth,
     });
   },
   getChildStyle: (props) => {
@@ -59,11 +59,14 @@ const layout: Layout<LiquidLayoutProps> = {
       childWidth,
       childWidthSizing,
     } = props;
-    if (orientation === 'vertical') {
-      return _getClossAxisStyle('width', childWidth, childWidthSizing);
-    } else {
-      return _getClossAxisStyle('height', childHeight, childHeightSizing);
-    }
+
+    return _getGridChildSizeStyle(
+      orientation,
+      childHeight,
+      childHeightSizing,
+      childWidth,
+      childWidthSizing,
+    );
   },
 };
 export default layout;
