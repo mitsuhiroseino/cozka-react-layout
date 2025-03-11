@@ -42,7 +42,7 @@ export default function _getMainAxisStyle(
       flexBasis: size ?? 0,
       [minSize]: 0,
     };
-  } else if (size != null) {
+  } else if (size != null && size !== '') {
     // 指定の幅
     return {
       flexGrow: 0,

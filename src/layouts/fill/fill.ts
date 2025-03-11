@@ -1,13 +1,13 @@
 import { Layout } from '../types';
-import { FitLayoutProps } from './types';
+import { FillLayoutProps } from './types';
 
 /**
- * fitレイアウト
+ * fillレイアウト
  *
- * - 子要素を親と同じ大きさで配置する
+ * - 子要素で親要素を満たす
  */
-const layout: Layout<FitLayoutProps> = {
-  name: 'fit',
+const layout: Layout<FillLayoutProps> = {
+  name: 'fill',
   defaultProps: {
     orientation: 'horizontal',
   },

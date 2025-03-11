@@ -1,22 +1,20 @@
 import { AbsoluteLayoutProps } from './layouts/absolute';
 import { CenterLayoutProps } from './layouts/center';
-import { FitLayoutProps } from './layouts/fit';
-import { HorizontalLayoutProps } from './layouts/horizontal';
+import { FillLayoutProps } from './layouts/fill';
 import { LiquidLayoutProps } from './layouts/liquid';
 import { MatrixLayoutProps } from './layouts/matrix';
 import { SolidLayoutProps } from './layouts/solid';
-import { VerticalLayoutProps } from './layouts/vertical';
+import { StackLayoutProps } from './layouts/stack';
 
 export const LAYOUT_PROPS_KEYS: {
   [K in keyof Required<
     AbsoluteLayoutProps &
       CenterLayoutProps &
-      FitLayoutProps &
-      HorizontalLayoutProps &
+      FillLayoutProps &
       LiquidLayoutProps &
       MatrixLayoutProps &
       SolidLayoutProps &
-      VerticalLayoutProps
+      StackLayoutProps
   >]: number;
 } = {
   childHeight: 1,

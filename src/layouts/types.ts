@@ -1,13 +1,11 @@
-import { Property } from 'csstype';
 import { CSSProperties, ReactNode } from 'react';
 import { AbsoluteLayoutProps } from './absolute';
 import { CenterLayoutProps } from './center';
-import { FitLayoutProps } from './fit';
-import { HorizontalLayoutProps } from './horizontal';
+import { FillLayoutProps } from './fill';
 import { LiquidLayoutProps } from './liquid';
 import { MatrixLayoutProps } from './matrix';
 import { SolidLayoutProps } from './solid';
-import { VerticalLayoutProps } from './vertical';
+import { StackLayoutProps } from './stack';
 
 /**
  * レイアウト種別
@@ -15,12 +13,11 @@ import { VerticalLayoutProps } from './vertical';
 export type LayoutType =
   | 'absolute'
   | 'center'
-  | 'fit'
-  | 'horizontal'
+  | 'fill'
   | 'liquid'
   | 'matrix'
   | 'solid'
-  | 'vertical';
+  | 'stack';
 
 /**
  * 各レイアウトのプロパティ
@@ -28,12 +25,11 @@ export type LayoutType =
 export type LayoutProps =
   | AbsoluteLayoutProps
   | CenterLayoutProps
-  | FitLayoutProps
-  | HorizontalLayoutProps
+  | FillLayoutProps
   | LiquidLayoutProps
   | MatrixLayoutProps
   | SolidLayoutProps
-  | VerticalLayoutProps;
+  | StackLayoutProps;
 
 /**
  * レイアウトの共通プロパティ
@@ -110,6 +106,16 @@ export type ChildSizeProps = {
    * デフォルトは`none`
    */
   childWidthSizing?: ChildSizing;
+};
+
+/**
+ * 子要素グループ
+ */
+export type ChildrenProps = {
+  /**
+   * 子要素が親要素の領域を超えたら折り返す
+   */
+  wrapChildren?: boolean;
 };
 
 /**

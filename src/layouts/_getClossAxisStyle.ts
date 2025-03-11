@@ -51,7 +51,7 @@ export default function _getClossAxisStyle(
         [minSize]: 0,
       };
     }
-  } else if (size != null) {
+  } else if (size != null && size !== '') {
     // 指定のサイズ
     return {
       [type]: size,

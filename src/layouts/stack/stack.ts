@@ -1,22 +1,24 @@
-import _getClossAxisStyle from '../_getClossAxisStyle';
+import _getFlexChildHeightStyle from '../_getFlexChildHeightStyle';
+import _getFlexChildWidthStyle from '../_getFlexChildWidthStyle';
 import _getFlexContainerStyle from '../_getFlexContainerStyle';
-import _getMainAxisStyle from '../_getMainAxisStyle';
 import { Layout } from '../types';
-import { VerticalLayoutProps } from './types';
+import { StackLayoutProps } from './types';
 
 /**
- * verticalレイアウト
+ * stackレイアウト
  *
- * - 子要素を縦並びで配置する
+ * - 子要素を並べて配置する
  */
-const layout: Layout<VerticalLayoutProps> = {
-  name: 'vertical',
+const layout: Layout<StackLayoutProps> = {
+  name: 'stack',
   defaultProps: {
+    orientation: 'horizontal',
     hAlign: 'left',
     vAlign: 'top',
   },
   getContainerStyle: (props) => {
     const {
+      orientation,
       hAlign,
       vAlign,
       wrapChildren,
@@ -24,7 +26,7 @@ const layout: Layout<VerticalLayoutProps> = {
       hSpacing = spacing,
       vSpacing = spacing,
     } = props;
-    return _getFlexContainerStyle('vertical', {
+    return _getFlexContainerStyle(orientation, {
       hAlign,
       vAlign,
       wrapChildren,
@@ -34,6 +36,7 @@ const layout: Layout<VerticalLayoutProps> = {
   },
   getChildStyle: (props) => {
     const {
+      orientation,
       childHeight,
       childHeightSizing,
       childWidth,
@@ -42,13 +45,18 @@ const layout: Layout<VerticalLayoutProps> = {
     } = props;
 
     return {
-      ..._getMainAxisStyle(
-        'height',
+      ..._getFlexChildHeightStyle(
+        orientation,
         childHeight,
         childHeightSizing,
         wrapChildren,
       ),
-      ..._getClossAxisStyle('width', childWidth, childWidthSizing),
+      ..._getFlexChildWidthStyle(
+        orientation,
+        childWidth,
+        childWidthSizing,
+        wrapChildren,
+      ),
     };
   },
 };

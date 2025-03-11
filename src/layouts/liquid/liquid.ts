@@ -1,6 +1,6 @@
 import _getClossAxisStyle from '../_getClossAxisStyle';
 import _getGridContainerStyle from '../_getGridContainerStyle';
-import { HAlign, Layout, VAlign } from '../types';
+import { Layout } from '../types';
 import { LiquidLayoutProps } from './types';
 
 /**
@@ -26,14 +26,29 @@ const layout: Layout<LiquidLayoutProps> = {
       childMinHeight,
       childMinWidth,
     } = props;
+    let options;
+    if (orientation === 'vertical') {
+      options = {
+        hAlign,
+        style: {
+          alignContent: 'stretch',
+        },
+      };
+    } else {
+      options = {
+        vAlign,
+        style: {
+          justifyContent: 'stretch',
+        },
+      };
+    }
+
     return _getGridContainerStyle(orientation, {
-      hAlign: (orientation === 'vertical' || hAlign) as HAlign | false,
-      vAlign: (orientation === 'horizontal' || vAlign) as VAlign | false,
+      ...options,
       hSpacing,
       vSpacing,
       childHeight: childMinHeight,
       childWidth: childMinWidth,
-      style: { justifyContent: 'stretch' },
     });
   },
   getChildStyle: (props) => {
