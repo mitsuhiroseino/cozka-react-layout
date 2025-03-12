@@ -19,42 +19,42 @@ const layout: Layout<StackLayoutProps> = {
   getContainerStyle: (props) => {
     const {
       orientation,
-      hAlign,
       vAlign,
-      wrapChildren,
+      hAlign,
       spacing,
-      hSpacing = spacing,
       vSpacing = spacing,
+      hSpacing = spacing,
+      wrapChildren,
     } = props;
     return _getFlexContainerStyle(orientation, {
-      hAlign,
       vAlign,
-      wrapChildren,
-      hSpacing,
+      hAlign,
       vSpacing,
+      hSpacing,
+      wrapChildren,
     });
   },
   getChildStyle: (props) => {
     const {
       orientation,
+      vAdjust,
+      hAdjust,
       childHeight,
-      childHeightSizing,
       childWidth,
-      childWidthSizing,
       wrapChildren,
     } = props;
 
     return {
       ..._getFlexChildHeightStyle(
         orientation,
+        vAdjust,
         childHeight,
-        childHeightSizing,
         wrapChildren,
       ),
       ..._getFlexChildWidthStyle(
         orientation,
+        hAdjust,
         childWidth,
-        childWidthSizing,
         wrapChildren,
       ),
     };

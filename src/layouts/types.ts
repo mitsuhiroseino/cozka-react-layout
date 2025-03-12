@@ -46,14 +46,14 @@ export type LayoutPropsBase<L extends LayoutType> = {
   scroll?: boolean;
 
   /**
-   * 子要素
-   */
-  children?: ReactNode;
-
-  /**
    * 子要素のスタイル
    */
   childStyle?: CSSProperties;
+
+  /**
+   * 子要素
+   */
+  children?: ReactNode;
 };
 
 /**
@@ -71,14 +71,31 @@ export type OrientationProps = {
  */
 export type AlignProps = {
   /**
-   * 子要素の横位置
-   */
-  hAlign?: HAlign;
-
-  /**
    * 子要素の縦位置
    */
   vAlign?: VAlign;
+
+  /**
+   * 子要素の横位置
+   */
+  hAlign?: HAlign;
+};
+
+/**
+ * 子要素のサイズ調整
+ */
+export type AdjustProps = {
+  /**
+   * 子要素全体の高さの調整
+   * デフォルトは`none`
+   */
+  vAdjust?: SizeAdjust;
+
+  /**
+   * 子要素全体の幅の調整
+   * デフォルトは`none`
+   */
+  hAdjust?: SizeAdjust;
 };
 
 /**
@@ -94,24 +111,12 @@ export type ChildSizeProps = {
    * 子要素の高さ
    */
   childWidth?: ChildSize;
-
-  /**
-   * 子要素の高さの調整
-   * デフォルトは`none`
-   */
-  childHeightSizing?: ChildSizing;
-
-  /**
-   * 子要素の幅の調整
-   * デフォルトは`none`
-   */
-  childWidthSizing?: ChildSizing;
 };
 
 /**
  * 子要素グループ
  */
-export type ChildrenProps = {
+export type WrapProps = {
   /**
    * 子要素が親要素の領域を超えたら折り返す
    */
@@ -128,14 +133,14 @@ export type SpacingProps = {
   spacing?: Spacing;
 
   /**
-   * 横方向の余白
-   */
-  hSpacing?: Spacing;
-
-  /**
    * 縦方向の余白
    */
   vSpacing?: Spacing;
+
+  /**
+   * 横方向の余白
+   */
+  hSpacing?: Spacing;
 };
 
 /**
@@ -210,4 +215,4 @@ export type Spacing = CSSProperties['gap'];
  *   - 足りないとき: そのまま
  *   - 超えるとき: 縮める
  */
-export type ChildSizing = 'none' | 'fit' | 'expand' | 'narrow';
+export type SizeAdjust = 'none' | 'fit' | 'expand' | 'narrow';

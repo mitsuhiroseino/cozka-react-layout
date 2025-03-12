@@ -1,5 +1,6 @@
 import { CSSProperties } from 'react';
 import {
+  AdjustProps,
   ChildSizeProps,
   LayoutPropsBase,
   OrientationProps,
@@ -7,6 +8,7 @@ import {
 } from '../types';
 
 export type MatrixLayoutProps = LayoutPropsBase<'matrix'> &
+  AdjustProps &
   ChildSizeProps &
   OrientationProps &
   SpacingProps & {

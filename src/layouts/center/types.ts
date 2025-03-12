@@ -1,4 +1,5 @@
 import {
+  AdjustProps,
   ChildSizeProps,
   LayoutPropsBase,
   OrientationProps,
@@ -6,6 +7,7 @@ import {
 } from '../types';
 
 export type CenterLayoutProps = LayoutPropsBase<'center'> &
+  AdjustProps &
   ChildSizeProps &
   OrientationProps &
   SpacingProps;

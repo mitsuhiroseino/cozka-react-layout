@@ -18,11 +18,11 @@ export const LAYOUT_PROPS_KEYS: {
   >]: number;
 } = {
   childHeight: 1,
-  childHeightSizing: 1,
+  vAdjust: 1,
   children: 1,
   childStyle: 1,
   childWidth: 1,
-  childWidthSizing: 1,
+  hAdjust: 1,
   hAlign: 1,
   hCount: 1,
   hSpacing: 1,

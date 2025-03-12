@@ -44,29 +44,31 @@ export default function _getFlexContainerStyle(
   options: Options = {},
 ) {
   const {
-    hAlign,
-    hSpacing,
     vAlign,
+    hAlign,
     vSpacing,
+    hSpacing,
     wrapChildren = false,
     style: override,
   } = options;
   let style: CSSProperties = { display: 'flex', ...ORIENTATION[orientation] };
-  if (hAlign) {
-    style = { ...style, ...HALIGN[orientation][`${wrapChildren}`][hAlign] };
-  }
-  if (hSpacing != null) {
-    style.columnGap = hSpacing;
-  }
+
   if (vAlign) {
     style = { ...style, ...VALIGN[orientation][`${wrapChildren}`][vAlign] };
+  }
+  if (hAlign) {
+    style = { ...style, ...HALIGN[orientation][`${wrapChildren}`][hAlign] };
   }
   if (vSpacing != null) {
     style.rowGap = vSpacing;
   }
+  if (hSpacing != null) {
+    style.columnGap = hSpacing;
+  }
   if (override) {
     style = { ...style, ...override };
   }
+
   return style;
 }
 

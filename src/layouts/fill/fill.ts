@@ -15,23 +15,23 @@ const layout: Layout<FillLayoutProps> = {
     const {
       orientation,
       spacing,
-      hSpacing = spacing,
       vSpacing = spacing,
+      hSpacing = spacing,
     } = props;
     return {
       display: 'grid',
-      columnGap: hSpacing,
       rowGap: vSpacing,
+      columnGap: hSpacing,
       ...(orientation === 'vertical'
         ? {
             gridAutoFlow: 'row',
-            gridTemplateColumns: '1fr',
             gridTemplateRows: 'auto',
+            gridTemplateColumns: '1fr',
           }
         : {
             gridAutoFlow: 'column',
-            gridTemplateColumns: 'auto',
             gridTemplateRows: '1fr',
+            gridTemplateColumns: 'auto',
           }),
     };
   },

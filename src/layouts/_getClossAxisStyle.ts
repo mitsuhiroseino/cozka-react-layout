@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import _unit from './_unit';
-import { ChildSize, ChildSizing } from './types';
+import { ChildSize, SizeAdjust } from './types';
 
 const MIN_SIZE = {
   height: 'minHeight',
@@ -15,35 +15,36 @@ const MAX_SIZE = {
 /**
  * 交差軸方向のスタイル
  * @param type 高さ or 幅
+ * @param adjust サイズの調整方法
  * @param size サイズ
- * @param sizing サイズの調整方法
  * @returns スタイル
  */
 export default function _getClossAxisStyle(
   type: 'height' | 'width',
+  adjust: SizeAdjust = 'none',
   size: ChildSize,
-  sizing: ChildSizing = 'none',
 ): CSSProperties {
   const minSize = MIN_SIZE[type];
   const maxSize = MAX_SIZE[type];
-  if (sizing === 'fit') {
+  if (adjust === 'fit') {
     // 伸縮する
     return {
       [type]: '100%',
       [minSize]: 0,
       [maxSize]: '100%',
     };
-  } else if (sizing === 'expand') {
+  } else if (adjust === 'expand') {
     // 伸ばす
     return {
       [type]: size,
       [minSize]: '100%',
     };
-  } else if (sizing === 'narrow') {
+  } else if (adjust === 'narrow') {
     // 縮める
     if (size == null) {
       return {
-        [minSize]: '100%',
+        [minSize]: 0,
+        [maxSize]: '100%',
       };
     } else {
       return {

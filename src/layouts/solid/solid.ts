@@ -18,40 +18,34 @@ const layout: Layout<SolidLayoutProps> = {
   getContainerStyle: (props) => {
     const {
       orientation,
-      hAlign,
       vAlign,
+      hAlign,
       spacing,
-      hSpacing = spacing,
       vSpacing = spacing,
+      hSpacing = spacing,
       childHeight,
       childWidth,
     } = props;
 
     return _getGridContainerStyle(orientation, {
-      hAlign,
       vAlign,
-      hSpacing,
+      hAlign,
       vSpacing,
-      childHeight: childHeight,
-      childWidth: childWidth,
+      hSpacing,
+      childHeight,
+      childWidth,
       fixed: true,
     });
   },
   getChildStyle: (props) => {
-    const {
-      orientation,
-      childHeight,
-      childHeightSizing,
-      childWidth,
-      childWidthSizing,
-    } = props;
+    const { orientation, vAdjust, hAdjust, childHeight, childWidth } = props;
 
     return _getGridChildSizeStyle(
       orientation,
+      vAdjust,
+      hAdjust,
       childHeight,
-      childHeightSizing,
       childWidth,
-      childWidthSizing,
     );
   },
 };

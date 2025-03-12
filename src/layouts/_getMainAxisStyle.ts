@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { ChildSize, ChildSizing } from './types';
+import { ChildSize, SizeAdjust } from './types';
 
 const MIN_SIZE = {
   height: 'minHeight',
@@ -9,33 +9,33 @@ const MIN_SIZE = {
 /**
  * 主軸方向のスタイル
  * @param type 高さ or 幅
+ * @param adjust サイズの調整方法
  * @param size サイズ
- * @param sizing サイズの調整方法
  * @param wrapChildren 折り返しの有無
  * @returns スタイル
  */
 export default function _getMainAxisStyle(
   type: 'height' | 'width',
+  adjust: SizeAdjust = 'none',
   size: ChildSize,
-  sizing: ChildSizing = 'none',
   wrapChildren?: boolean,
 ): CSSProperties {
   const minSize = MIN_SIZE[type];
-  if (sizing === 'fit') {
+  if (adjust === 'fit') {
     return {
       flexGrow: 1,
       flexShrink: wrapChildren ? 0 : 1, // 1だと1列に収まるようにshrinkさせてしまうので、折り返しがあるときは0にする
       flexBasis: size ?? 0,
       [minSize]: 0,
     };
-  } else if (sizing === 'expand') {
+  } else if (adjust === 'expand') {
     return {
       flexGrow: 1,
       flexShrink: 0,
       flexBasis: size ?? 0,
       [minSize]: 0,
     };
-  } else if (sizing === 'narrow') {
+  } else if (adjust === 'narrow') {
     return {
       flexGrow: 0,
       flexShrink: 1,

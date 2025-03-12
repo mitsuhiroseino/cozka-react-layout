@@ -5,7 +5,10 @@ import { MatrixLayoutProps } from './types';
 /**
  * matrixレイアウト
  *
- * - 子要素を格子状に配置する
+ * - 下記のいくつかを指定して子要素を格子状に配置する
+ *   - 縦の子要素数
+ *   - 横の子要素数
+ *   - 子要素のサイズ
  */
 const layout: Layout<MatrixLayoutProps> = {
   name: 'matrix',
@@ -37,7 +40,8 @@ const layout: Layout<MatrixLayoutProps> = {
       rowGap: vSpacing,
     };
   },
-  getChildStyle: () => {
+  getChildStyle: (props) => {
+    const { vAdjust, hAdjust } = props;
     return {
       height: '100%',
       width: '100%',

@@ -1,17 +1,17 @@
 import { CSSProperties } from 'react';
 import _getClossAxisStyle from './_getClossAxisStyle';
-import { ChildSize, ChildSizing, Orientation } from './types';
+import { ChildSize, Orientation, SizeAdjust } from './types';
 
 export default function _getGridChildSizeStyle(
   orientation: Orientation,
+  vAdjust: SizeAdjust,
+  hAdjust: SizeAdjust,
   childHeight: ChildSize,
-  childHeightSizing: ChildSizing,
   childWidth: ChildSize,
-  childWidthSizing: ChildSizing,
 ): CSSProperties {
   if (orientation === 'vertical') {
-    return _getClossAxisStyle('width', childWidth, childWidthSizing);
+    return _getClossAxisStyle('width', hAdjust, childWidth);
   } else {
-    return _getClossAxisStyle('height', childHeight, childHeightSizing);
+    return _getClossAxisStyle('height', vAdjust, childHeight);
   }
 }

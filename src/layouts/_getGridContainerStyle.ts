@@ -60,10 +60,10 @@ export default function _getGridContainerStyle(
   options: Options = {},
 ) {
   const {
-    hAlign,
-    hSpacing,
     vAlign,
+    hAlign,
     vSpacing,
+    hSpacing,
     childHeight,
     childWidth,
     style: override,
@@ -74,21 +74,23 @@ export default function _getGridContainerStyle(
     display: 'grid',
     ...ORIENTATION[orientation](childHeight, childWidth, fill, fixed),
   };
-  if (hAlign) {
-    style = { ...style, ...HALIGN[hAlign] };
-  }
-  if (hSpacing != null) {
-    style.columnGap = hSpacing;
-  }
+
   if (vAlign) {
     style = { ...style, ...VALIGN[vAlign] };
+  }
+  if (hAlign) {
+    style = { ...style, ...HALIGN[hAlign] };
   }
   if (vSpacing != null) {
     style.rowGap = vSpacing;
   }
+  if (hSpacing != null) {
+    style.columnGap = hSpacing;
+  }
   if (override) {
     style = { ...style, ...override };
   }
+
   return style;
 }
 

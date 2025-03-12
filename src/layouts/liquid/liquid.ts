@@ -18,14 +18,15 @@ const layout: Layout<LiquidLayoutProps> = {
   getContainerStyle: (props) => {
     const {
       orientation,
-      hAlign,
       vAlign,
+      hAlign,
       spacing,
-      hSpacing = spacing,
       vSpacing = spacing,
+      hSpacing = spacing,
       childHeight,
       childWidth,
     } = props;
+
     let options;
     if (orientation === 'vertical') {
       options = {
@@ -45,27 +46,21 @@ const layout: Layout<LiquidLayoutProps> = {
 
     return _getGridContainerStyle(orientation, {
       ...options,
-      hSpacing,
       vSpacing,
+      hSpacing,
       childHeight,
       childWidth,
     });
   },
   getChildStyle: (props) => {
-    const {
-      orientation,
-      childHeight,
-      childHeightSizing,
-      childWidth,
-      childWidthSizing,
-    } = props;
+    const { orientation, vAdjust, hAdjust, childHeight, childWidth } = props;
 
     return _getGridChildSizeStyle(
       orientation,
+      vAdjust,
+      hAdjust,
       childHeight,
-      childHeightSizing,
       childWidth,
-      childWidthSizing,
     );
   },
 };

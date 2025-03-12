@@ -18,27 +18,21 @@ const layout: Layout<CenterLayoutProps> = {
     const {
       orientation,
       spacing,
-      hSpacing = spacing,
       vSpacing = spacing,
+      hSpacing = spacing,
     } = props;
     return _getFlexContainerStyle(orientation, {
       vAlign: 'middle',
       hAlign: 'center',
-      hSpacing,
       vSpacing,
+      hSpacing,
     });
   },
   getChildStyle: (props) => {
-    const {
-      orientation,
-      childHeight,
-      childHeightSizing,
-      childWidth,
-      childWidthSizing,
-    } = props;
+    const { orientation, vAdjust, hAdjust, childHeight, childWidth } = props;
     return {
-      ..._getFlexChildHeightStyle(orientation, childHeight, childHeightSizing),
-      ..._getFlexChildWidthStyle(orientation, childWidth, childWidthSizing),
+      ..._getFlexChildHeightStyle(orientation, vAdjust, childHeight),
+      ..._getFlexChildWidthStyle(orientation, hAdjust, childWidth),
     };
   },
 };
