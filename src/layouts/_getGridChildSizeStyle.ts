@@ -1,5 +1,6 @@
 import { CSSProperties } from 'react';
 import _getGridClossAxisStyle from './_getGridClossAxisStyle';
+import _getMainAxisStyle from './_getMainAxisStyle';
 import { AlignProps, ChildSizeProps, Orientation } from './types';
 
 type Options = ChildSizeProps & AlignProps;
@@ -9,9 +10,8 @@ export default function _getGridChildSizeStyle(
   options: Options = {},
 ): CSSProperties {
   const { childHeight, childWidth, vAlign, hAlign } = options;
-  if (orientation === 'vertical') {
-    return _getGridClossAxisStyle('width', childWidth, hAlign);
-  } else {
-    return _getGridClossAxisStyle('height', childHeight, vAlign);
-  }
+  return {
+    ..._getGridClossAxisStyle('height', vAlign, childHeight),
+    ..._getGridClossAxisStyle('width', hAlign, childWidth),
+  };
 }

@@ -2,7 +2,6 @@ import { CSSProperties } from 'react';
 import _unit from './_unit';
 import {
   AlignProps,
-  ChildSize,
   ChildSizeProps,
   HAlign,
   Orientation,
@@ -17,16 +16,6 @@ type Options = AlignProps &
      * 上書きするスタイル
      */
     style?: CSSProperties;
-
-    /**
-     * グリッドトラックを親要素の幅が許す限り作成する
-     */
-    fill?: boolean;
-
-    /**
-     * 子要素のサイズを固定する
-     */
-    fixed?: boolean;
   };
 
 /**
@@ -45,15 +34,11 @@ export default function _getGridContainerStyle(
     spacing,
     vSpacing = spacing,
     hSpacing = spacing,
-    childHeight,
-    childWidth,
     style: override,
-    fill,
-    fixed,
   } = options;
   let style: CSSProperties = {
     display: 'grid',
-    ...ORIENTATION[orientation](childHeight, childWidth, fill, fixed),
+    ...ORIENTATION[orientation](options),
   };
 
   if (vAlign) {
@@ -79,37 +64,28 @@ export default function _getGridContainerStyle(
  * 向きに関するスタイル
  */
 const ORIENTATION: {
-  [orientation in Orientation]: (
-    height: ChildSize,
-    width: ChildSize,
-    fill: boolean,
-    fixed: boolean,
-  ) => CSSProperties;
+  [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: (childHeight, childWidth, fill, fixed) => {
+  horizontal: ({ childWidth, hAlign }) => {
     return {
       gridAutoFlow: 'row',
-      gridTemplateColumns: _getGridTemplate(childWidth, fill, fixed),
+      gridTemplateColumns: _getGridTemplate(childWidth, hAlign),
     };
   },
-  vertical: (childHeight, childWidth, fill, fixed) => {
+  vertical: ({ childHeight, vAlign }) => {
     return {
       gridAutoFlow: 'column',
-      gridTemplateRows: _getGridTemplate(childHeight, fill, fixed),
+      gridTemplateRows: _getGridTemplate(childHeight, vAlign),
     };
   },
 };
 
-function _getGridTemplate(
-  childSize: string | number,
-  fill: boolean,
-  fixed: boolean,
-) {
-  const mode = fill ? 'auto-fill' : 'auto-fit';
-  const size = fixed
-    ? _unit(childSize ?? 'minmax(max-content, 100%)')
-    : `minmax(${_unit(childSize ?? '0')}, 1fr)`;
-  return `repeat(${mode}, ${size})`;
+function _getGridTemplate(childSize: string | number, align: HAlign | VAlign) {
+  const size =
+    align === 'fit'
+      ? `minmax(${_unit(childSize ?? '0')}, 1fr)`
+      : _unit(childSize ?? 'minmax(max-content, 100%)');
+  return `repeat(auto-fit, ${size})`;
 }
 
 /**

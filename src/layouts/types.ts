@@ -1,10 +1,9 @@
 import { CSSProperties, ReactNode } from 'react';
 import { AbsoluteLayoutProps } from './absolute';
+import { BrickLayoutProps } from './brick';
 import { CenterLayoutProps } from './center';
 import { FillLayoutProps } from './fill';
-import { LiquidLayoutProps } from './liquid';
 import { MatrixLayoutProps } from './matrix';
-import { SolidLayoutProps } from './solid';
 import { StackLayoutProps } from './stack';
 
 /**
@@ -12,11 +11,10 @@ import { StackLayoutProps } from './stack';
  */
 export type LayoutType =
   | 'absolute'
+  | 'brick'
   | 'center'
   | 'fill'
-  | 'liquid'
   | 'matrix'
-  | 'solid'
   | 'stack';
 
 /**
@@ -24,11 +22,10 @@ export type LayoutType =
  */
 export type LayoutProps =
   | AbsoluteLayoutProps
+  | BrickLayoutProps
   | CenterLayoutProps
   | FillLayoutProps
-  | LiquidLayoutProps
   | MatrixLayoutProps
-  | SolidLayoutProps
   | StackLayoutProps;
 
 /**

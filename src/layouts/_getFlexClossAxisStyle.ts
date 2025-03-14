@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import _unit from './_unit';
-import { ChildSize, SizeAdjust } from './types';
+import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
 
 const MIN_SIZE = {
   height: 'minHeight',
@@ -19,14 +19,20 @@ const MAX_SIZE = {
  * @param size サイズ
  * @returns スタイル
  */
-export default function _getClossAxisStyle(
+export default function _getFlexClossAxisStyle(
   type: 'height' | 'width',
-  adjust: SizeAdjust = 'none',
+  align: VAlign | HAlign,
   size: ChildSize,
+  adjust: SizeAdjust = 'none',
 ): CSSProperties {
   const minSize = MIN_SIZE[type];
   const maxSize = MAX_SIZE[type];
-  if (adjust === 'expand') {
+  if (align === 'fit') {
+    return {
+      [type]: 'auto',
+      [minSize]: '100%',
+    };
+  } else if (adjust === 'expand') {
     // 伸ばす
     return {
       [type]: size,

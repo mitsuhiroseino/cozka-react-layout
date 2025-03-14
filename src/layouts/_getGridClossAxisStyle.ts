@@ -16,8 +16,8 @@ const MIN_SIZE = {
  */
 export default function _getGridClossAxisStyle(
   type: 'height' | 'width',
-  size: ChildSize,
   align: HAlign | VAlign,
+  size: ChildSize,
 ): CSSProperties {
   const minSize = MIN_SIZE[type];
   if (align === 'fit') {

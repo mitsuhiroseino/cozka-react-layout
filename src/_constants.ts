@@ -1,19 +1,17 @@
 import { AbsoluteLayoutProps } from './layouts/absolute';
+import { BrickLayoutProps } from './layouts/brick';
 import { CenterLayoutProps } from './layouts/center';
 import { FillLayoutProps } from './layouts/fill';
-import { LiquidLayoutProps } from './layouts/liquid';
 import { MatrixLayoutProps } from './layouts/matrix';
-import { SolidLayoutProps } from './layouts/solid';
 import { StackLayoutProps } from './layouts/stack';
 
 export const LAYOUT_PROPS_KEYS: {
   [K in keyof Required<
     AbsoluteLayoutProps &
+      BrickLayoutProps &
       CenterLayoutProps &
       FillLayoutProps &
-      LiquidLayoutProps &
       MatrixLayoutProps &
-      SolidLayoutProps &
       StackLayoutProps
   >]: number;
 } = {

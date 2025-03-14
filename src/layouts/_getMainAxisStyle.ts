@@ -17,8 +17,8 @@ const MIN_SIZE = {
 export default function _getMainAxisStyle(
   type: 'height' | 'width',
   align: VAlign | HAlign,
-  adjust: SizeAdjust = 'none',
   size: ChildSize,
+  adjust: SizeAdjust = 'none',
 ): CSSProperties {
   const minSize = MIN_SIZE[type];
   let style;
