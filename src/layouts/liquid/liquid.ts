@@ -6,6 +6,7 @@ import { LiquidLayoutProps } from './types';
 /**
  * liquidレイアウト
  *
+ * - 子要素を格子状に並べる
  * - 子要素が親要素の横幅を満たすように伸縮する
  */
 const layout: Layout<LiquidLayoutProps> = {
@@ -53,15 +54,19 @@ const layout: Layout<LiquidLayoutProps> = {
     });
   },
   getChildStyle: (props) => {
-    const { orientation, vAdjust, hAdjust, childHeight, childWidth } = props;
+    let { orientation, vAlign, hAlign, childHeight, childWidth } = props;
+    if (orientation === 'vertical') {
+      hAlign = 'fit';
+    } else {
+      vAlign = 'fit';
+    }
 
-    return _getGridChildSizeStyle(
-      orientation,
-      vAdjust,
-      hAdjust,
+    return _getGridChildSizeStyle(orientation, {
+      vAlign,
+      hAlign,
       childHeight,
       childWidth,
-    );
+    });
   },
 };
 export default layout;

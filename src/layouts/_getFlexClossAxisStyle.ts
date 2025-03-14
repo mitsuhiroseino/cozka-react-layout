@@ -26,14 +26,7 @@ export default function _getClossAxisStyle(
 ): CSSProperties {
   const minSize = MIN_SIZE[type];
   const maxSize = MAX_SIZE[type];
-  if (adjust === 'fit') {
-    // 伸縮する
-    return {
-      [type]: '100%',
-      [minSize]: 0,
-      [maxSize]: '100%',
-    };
-  } else if (adjust === 'expand') {
+  if (adjust === 'expand') {
     // 伸ばす
     return {
       [type]: size,

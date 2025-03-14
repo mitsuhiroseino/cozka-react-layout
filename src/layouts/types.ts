@@ -114,16 +114,6 @@ export type ChildSizeProps = {
 };
 
 /**
- * 子要素グループ
- */
-export type WrapProps = {
-  /**
-   * 子要素が親要素の領域を超えたら折り返す
-   */
-  wrapChildren?: boolean;
-};
-
-/**
  * 要素間の余白
  */
 export type SpacingProps = {
@@ -175,17 +165,21 @@ export type Layout<P = {}> = {
 /**
  * 横位置
  */
-export type HAlign = 'left' | 'center' | 'right' | SpaceAlign;
+export type HAlign = 'left' | 'center' | 'right' | CommonAlign;
 
 /**
  * 縦位置
  */
-export type VAlign = 'top' | 'middle' | 'bottom' | SpaceAlign;
+export type VAlign = 'top' | 'middle' | 'bottom' | CommonAlign;
 
 /**
- * 均等割りにした際の余白の割り振り
+ * 縦横共通の位置
  */
-export type SpaceAlign = 'space-between' | 'space-around' | 'space-evenly';
+export type CommonAlign =
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'fit';
 
 /**
  * 並べる方向
@@ -205,9 +199,6 @@ export type Spacing = CSSProperties['gap'];
  * - `none`
  *   - 足りないとき: そのまま
  *   - 超えるとき: そのまま
- * - `fit`
- *   - 足りないとき: 伸ばす
- *   - 超えるとき: 縮める
  * - `expand`
  *   - 足りないとき: 伸ばす
  *   - 超えるとき: そのまま
@@ -215,4 +206,4 @@ export type Spacing = CSSProperties['gap'];
  *   - 足りないとき: そのまま
  *   - 超えるとき: 縮める
  */
-export type SizeAdjust = 'none' | 'fit' | 'expand' | 'narrow';
+export type SizeAdjust = 'none' | 'expand' | 'narrow';

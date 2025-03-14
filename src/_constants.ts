@@ -35,5 +35,4 @@ export const LAYOUT_PROPS_KEYS: {
   vCount: 1,
   vSpacing: 1,
   vTemplate: 1,
-  wrapChildren: 1,
 };

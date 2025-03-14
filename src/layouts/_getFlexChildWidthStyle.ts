@@ -1,19 +1,19 @@
 import { CSSProperties } from 'react';
-import _getClossAxisStyle from './_getClossAxisStyle';
+import _getClossAxisStyle from './_getFlexClossAxisStyle';
 import _getMainAxisStyle from './_getMainAxisStyle';
-import { ChildSize, Orientation, SizeAdjust } from './types';
+import { ChildSize, HAlign, Orientation, SizeAdjust } from './types';
 
 export default function _getFlexChildWidthStyle(
   orientation: Orientation,
-  hAlign: SizeAdjust,
+  hAlign: HAlign,
+  hAdjust: SizeAdjust,
   childWidth: ChildSize,
-  wrapChildren?: boolean,
 ): CSSProperties {
   if (orientation === 'vertical') {
     // 縦並びの時の幅
-    return _getClossAxisStyle('width', hAlign, childWidth);
+    return _getClossAxisStyle('width', hAdjust, childWidth);
   } else {
     // 横並びの時の幅
-    return _getMainAxisStyle('width', hAlign, childWidth, wrapChildren);
+    return _getMainAxisStyle('width', hAlign, hAdjust, childWidth);
   }
 }

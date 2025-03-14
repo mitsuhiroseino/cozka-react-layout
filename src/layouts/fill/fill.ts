@@ -25,18 +25,20 @@ const layout: Layout<FillLayoutProps> = {
       ...(orientation === 'vertical'
         ? {
             gridAutoFlow: 'row',
-            gridTemplateRows: 'auto',
-            gridTemplateColumns: '1fr',
+            gridTemplateRows: 'repeat(auto-fit, minmax(0, 1fr))',
+            gridTemplateColumns: 'auto',
           }
         : {
             gridAutoFlow: 'column',
-            gridTemplateRows: '1fr',
-            gridTemplateColumns: 'auto',
+            gridTemplateRows: 'auto',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))',
           }),
     };
   },
   getChildStyle: () => {
     return {
+      height: 'auto',
+      width: 'auto',
       minHeight: 0,
       minWidth: 0,
     };

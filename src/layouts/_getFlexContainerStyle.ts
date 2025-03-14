@@ -13,11 +13,6 @@ type Options = {
   vAlign?: VAlign | false;
 
   /**
-   * 子要素の折り返し
-   */
-  wrapChildren?: boolean;
-
-  /**
    * 横余白
    */
   hSpacing?: Spacing;
@@ -43,21 +38,14 @@ export default function _getFlexContainerStyle(
   orientation: Orientation,
   options: Options = {},
 ) {
-  const {
-    vAlign,
-    hAlign,
-    vSpacing,
-    hSpacing,
-    wrapChildren = false,
-    style: override,
-  } = options;
+  const { vAlign, hAlign, vSpacing, hSpacing, style: override } = options;
   let style: CSSProperties = { display: 'flex', ...ORIENTATION[orientation] };
 
   if (vAlign) {
-    style = { ...style, ...VALIGN[orientation][`${wrapChildren}`][vAlign] };
+    style = { ...style, ...VALIGN[orientation][vAlign] };
   }
   if (hAlign) {
-    style = { ...style, ...HALIGN[orientation][`${wrapChildren}`][hAlign] };
+    style = { ...style, ...HALIGN[orientation][hAlign] };
   }
   if (vSpacing != null) {
     style.rowGap = vSpacing;
@@ -110,69 +98,37 @@ const HORIZONTAL_HALIGN: {
   'space-evenly': {
     justifyContent: 'space-evenly',
   },
+  fit: {
+    justifyContent: 'flex-start',
+  },
 };
 
 /**
- * 「縦向き＆横位置＆折り返し無し」のためのスタイル
+ * 「縦向き＆横位置」のためのスタイル
  */
-const VERTICAL_HALIGN_NOWRAP: {
+const VERTICAL_HALIGN: {
   [hAlign in HAlign]?: CSSProperties;
 } = {
   left: {
     alignItems: 'flex-start',
-    flexWrap: 'nowrap',
   },
   center: {
     alignItems: 'center',
-    flexWrap: 'nowrap',
   },
   right: {
     alignItems: 'flex-end',
-    flexWrap: 'nowrap',
   },
   'space-between': {
     alignItems: 'space-between',
-    flexWrap: 'nowrap',
   },
   'space-around': {
     alignItems: 'space-around',
-    flexWrap: 'nowrap',
   },
   'space-evenly': {
     alignItems: 'space-evenly',
-    flexWrap: 'nowrap',
   },
-};
-
-/**
- * 「縦向き＆横位置＆折り返しあり」のためのスタイル
- */
-const VERTICAL_HALIGN_WRAP: {
-  [hAlign in HAlign]?: CSSProperties;
-} = {
-  left: {
-    alignContent: 'flex-start',
-    flexWrap: 'wrap',
-  },
-  center: {
-    alignContent: 'center',
-    flexWrap: 'wrap',
-  },
-  right: {
-    alignContent: 'flex-end',
-    flexWrap: 'wrap',
-  },
-  'space-between': {
-    alignContent: 'space-between',
-    flexWrap: 'wrap',
-  },
-  'space-around': {
-    alignContent: 'space-around',
-    flexWrap: 'wrap',
-  },
-  'space-evenly': {
-    alignContent: 'space-evenly',
-    flexWrap: 'wrap',
+  fit: {
+    alignItems: 'stretch',
   },
 };
 
@@ -181,82 +137,39 @@ const VERTICAL_HALIGN_WRAP: {
  */
 const HALIGN: {
   [orientation in Orientation]: {
-    [wrapChildren in 'true' | 'false']: {
-      [hAlign in HAlign]?: CSSProperties;
-    };
+    [hAlign in HAlign]?: CSSProperties;
   };
 } = {
-  horizontal: {
-    true: HORIZONTAL_HALIGN,
-    false: HORIZONTAL_HALIGN,
-  },
-  vertical: {
-    true: VERTICAL_HALIGN_WRAP,
-    false: VERTICAL_HALIGN_NOWRAP,
-  },
+  horizontal: HORIZONTAL_HALIGN,
+  vertical: VERTICAL_HALIGN,
 };
 
 /**
  * 「横向き＆縦位置＆折り返し無し」のためのスタイル
  */
-const HORIZONTAL_VALIGN_NOWRAP: {
+const HORIZONTAL_VALIGN: {
   [vAlign in VAlign]?: CSSProperties;
 } = {
   top: {
     alignItems: 'flex-start',
-    flexWrap: 'nowrap',
   },
   middle: {
     alignItems: 'center',
-    flexWrap: 'nowrap',
   },
   bottom: {
     alignItems: 'flex-end',
-    flexWrap: 'nowrap',
   },
   'space-between': {
     alignItems: 'space-between',
-    flexWrap: 'nowrap',
   },
   'space-around': {
     alignItems: 'space-around',
-    flexWrap: 'nowrap',
   },
   'space-evenly': {
     alignItems: 'space-evenly',
-    flexWrap: 'nowrap',
   },
-};
-
-/**
- * 「横向き＆縦位置＆折り返し有り」のためのスタイル
- */
-const HORIZONTAL_VALIGN_WRAP: {
-  [vAlign in VAlign]?: CSSProperties;
-} = {
-  top: {
-    alignContent: 'flex-start',
-    flexWrap: 'wrap',
-  },
-  middle: {
-    alignContent: 'center',
-    flexWrap: 'wrap',
-  },
-  bottom: {
-    alignContent: 'flex-end',
-    flexWrap: 'wrap',
-  },
-  'space-between': {
-    alignContent: 'space-between',
-    flexWrap: 'wrap',
-  },
-  'space-around': {
-    alignContent: 'space-around',
-    flexWrap: 'wrap',
-  },
-  'space-evenly': {
-    alignContent: 'space-evenly',
-    flexWrap: 'wrap',
+  fit: {
+    alignItems: 'stretch',
   },
 };
 
@@ -284,6 +197,9 @@ const VERTICAL_VALIGN: {
   'space-evenly': {
     justifyContent: 'space-evenly',
   },
+  fit: {
+    justifyContent: 'flex-start',
+  },
 };
 
 /**
@@ -291,17 +207,9 @@ const VERTICAL_VALIGN: {
  */
 const VALIGN: {
   [orientation in Orientation]: {
-    [wrapChildren in 'true' | 'false']: {
-      [vAlign in VAlign]?: CSSProperties;
-    };
+    [vAlign in VAlign]?: CSSProperties;
   };
 } = {
-  horizontal: {
-    true: HORIZONTAL_VALIGN_WRAP,
-    false: HORIZONTAL_VALIGN_NOWRAP,
-  },
-  vertical: {
-    true: VERTICAL_VALIGN,
-    false: VERTICAL_VALIGN,
-  },
+  horizontal: HORIZONTAL_VALIGN,
+  vertical: VERTICAL_VALIGN,
 };

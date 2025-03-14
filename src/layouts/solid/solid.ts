@@ -6,6 +6,7 @@ import { SolidLayoutProps } from './types';
 /**
  * solidレイアウト
  *
+ * - 子要素を格子状に並べる
  * - 子要素が親要素の横幅に収まる様に要素数を調整し表示する
  */
 const layout: Layout<SolidLayoutProps> = {
@@ -38,15 +39,14 @@ const layout: Layout<SolidLayoutProps> = {
     });
   },
   getChildStyle: (props) => {
-    const { orientation, vAdjust, hAdjust, childHeight, childWidth } = props;
+    const { orientation, vAlign, hAlign, childHeight, childWidth } = props;
 
-    return _getGridChildSizeStyle(
-      orientation,
-      vAdjust,
-      hAdjust,
+    return _getGridChildSizeStyle(orientation, {
+      vAlign,
+      hAlign,
       childHeight,
       childWidth,
-    );
+    });
   },
 };
 export default layout;

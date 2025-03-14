@@ -1,53 +1,33 @@
 import { CSSProperties } from 'react';
 import _unit from './_unit';
-import { ChildSize, HAlign, Orientation, Spacing, VAlign } from './types';
+import {
+  AlignProps,
+  ChildSize,
+  ChildSizeProps,
+  HAlign,
+  Orientation,
+  SpacingProps,
+  VAlign,
+} from './types';
 
-type Options = {
-  /**
-   * 横位置
-   */
-  hAlign?: HAlign | false;
+type Options = AlignProps &
+  ChildSizeProps &
+  SpacingProps & {
+    /**
+     * 上書きするスタイル
+     */
+    style?: CSSProperties;
 
-  /**
-   * 縦位置
-   */
-  vAlign?: VAlign | false;
+    /**
+     * グリッドトラックを親要素の幅が許す限り作成する
+     */
+    fill?: boolean;
 
-  /**
-   * 子要素の高さ
-   */
-  childHeight?: ChildSize;
-
-  /**
-   * 子要素の幅
-   */
-  childWidth?: ChildSize;
-
-  /**
-   * 横余白
-   */
-  hSpacing?: Spacing;
-
-  /**
-   * 縦余白
-   */
-  vSpacing?: Spacing;
-
-  /**
-   * 上書きするスタイル
-   */
-  style?: CSSProperties;
-
-  /**
-   * グリッドトラックを親要素の幅が許す限り作成する
-   */
-  fill?: boolean;
-
-  /**
-   * 子要素のサイズを固定する
-   */
-  fixed?: boolean;
-};
+    /**
+     * 子要素のサイズを固定する
+     */
+    fixed?: boolean;
+  };
 
 /**
  * display=gridのコンテナーのスタイル
@@ -62,8 +42,9 @@ export default function _getGridContainerStyle(
   const {
     vAlign,
     hAlign,
-    vSpacing,
-    hSpacing,
+    spacing,
+    vSpacing = spacing,
+    hSpacing = spacing,
     childHeight,
     childWidth,
     style: override,
@@ -126,7 +107,7 @@ function _getGridTemplate(
 ) {
   const mode = fill ? 'auto-fill' : 'auto-fit';
   const size = fixed
-    ? _unit(childSize ?? 'minmax(max-content, max-content)')
+    ? _unit(childSize ?? 'minmax(max-content, 100%)')
     : `minmax(${_unit(childSize ?? '0')}, 1fr)`;
   return `repeat(${mode}, ${size})`;
 }
@@ -155,6 +136,9 @@ const HALIGN: {
   'space-evenly': {
     justifyContent: 'space-evenly',
   },
+  fit: {
+    justifyContent: 'stretch',
+  },
 };
 
 /**
@@ -180,5 +164,8 @@ const VALIGN: {
   },
   'space-evenly': {
     alignContent: 'space-evenly',
+  },
+  fit: {
+    alignContent: 'stretch',
   },
 };

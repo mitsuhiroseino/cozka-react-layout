@@ -1,5 +1,4 @@
 import {
-  AdjustProps,
   AlignProps,
   ChildSizeProps,
   LayoutPropsBase,
@@ -11,12 +10,11 @@ import {
  * solidのプロパティ
  *
  * - orientation=`horizontal` or 未指定の場合、下記のプロパティは無効
- *   - `hAdjust`
+ *   - `hAlign='stretch'`
  * - orientation=`vertical`の場合、下記のプロパティは無効
- *   - `vAdjust`
+ *   - `vAlign='stretch'`
  */
 export type SolidLayoutProps = LayoutPropsBase<'solid'> &
-  AdjustProps &
   AlignProps &
   ChildSizeProps &
   OrientationProps &

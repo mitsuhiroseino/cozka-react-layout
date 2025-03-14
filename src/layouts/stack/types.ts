@@ -5,7 +5,6 @@ import {
   LayoutPropsBase,
   OrientationProps,
   SpacingProps,
-  WrapProps,
 } from '../types';
 
 /**
@@ -16,5 +15,4 @@ export type StackLayoutProps = LayoutPropsBase<'stack'> &
   AlignProps &
   ChildSizeProps &
   OrientationProps &
-  SpacingProps &
-  WrapProps;
+  SpacingProps;
