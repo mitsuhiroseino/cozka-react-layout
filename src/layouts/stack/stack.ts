@@ -33,19 +33,12 @@ const layout: Layout<StackLayoutProps> = {
     });
   },
   getChildStyle: (props) => {
-    const {
-      orientation,
-      vAlign,
-      hAlign,
-      vAdjust,
-      hAdjust,
-      childHeight,
-      childWidth,
-    } = props;
+    const { orientation, vAlign, hAlign, vAdjust, hAdjust, vSize, hSize } =
+      props;
 
     return {
-      ..._getFlexChildHeightStyle(orientation, vAlign, vAdjust, childHeight),
-      ..._getFlexChildWidthStyle(orientation, hAlign, hAdjust, childWidth),
+      ..._getFlexChildHeightStyle(orientation, vAlign, vAdjust, vSize),
+      ..._getFlexChildWidthStyle(orientation, hAlign, hAdjust, hSize),
     };
   },
 };

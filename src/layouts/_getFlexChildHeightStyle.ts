@@ -7,13 +7,13 @@ export default function _getFlexChildHeightStyle(
   orientation: Orientation,
   vAlign: VAlign,
   vAdjust: SizeAdjust,
-  childHeight: ChildSize,
+  vSize: ChildSize,
 ): CSSProperties {
   if (orientation === 'vertical') {
     // 縦並びの時の高さ
-    return _getMainAxisStyle('height', vAlign, childHeight, vAdjust);
+    return _getMainAxisStyle('height', vAlign, vSize, vAdjust);
   } else {
     // 横並びの時の高さ
-    return _getFlexClossAxisStyle('height', vAlign, childHeight, vAdjust);
+    return _getFlexClossAxisStyle('height', vAlign, vSize, vAdjust);
   }
 }

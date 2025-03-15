@@ -29,10 +29,10 @@ const layout: Layout<CenterLayoutProps> = {
     });
   },
   getChildStyle: (props) => {
-    const { orientation, vAdjust, hAdjust, childHeight, childWidth } = props;
+    const { orientation, vAdjust, hAdjust, vSize, hSize } = props;
     return {
-      ..._getFlexChildHeightStyle(orientation, 'middle', vAdjust, childHeight),
-      ..._getFlexChildWidthStyle(orientation, 'center', hAdjust, childWidth),
+      ..._getFlexChildHeightStyle(orientation, 'middle', vAdjust, vSize),
+      ..._getFlexChildWidthStyle(orientation, 'center', hAdjust, hSize),
     };
   },
 };

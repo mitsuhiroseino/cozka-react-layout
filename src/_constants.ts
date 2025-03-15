@@ -15,11 +15,11 @@ export const LAYOUT_PROPS_KEYS: {
       StackLayoutProps
   >]: number;
 } = {
-  childHeight: 1,
+  vSize: 1,
   vAdjust: 1,
   children: 1,
   childStyle: 1,
-  childWidth: 1,
+  hSize: 1,
   hAdjust: 1,
   hAlign: 1,
   hCount: 1,

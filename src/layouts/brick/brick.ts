@@ -23,13 +23,13 @@ const layout: Layout<BrickLayoutProps> = {
     return _getGridContainerStyle(orientation, rest);
   },
   getChildStyle: (props) => {
-    const { orientation, vAlign, hAlign, childHeight, childWidth } = props;
+    const { orientation, vAlign, hAlign, vSize, hSize } = props;
 
     return _getGridChildSizeStyle(orientation, {
       vAlign,
       hAlign,
-      childHeight,
-      childWidth,
+      vSize,
+      hSize,
     });
   },
 };

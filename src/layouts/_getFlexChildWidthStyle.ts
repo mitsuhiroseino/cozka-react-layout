@@ -7,13 +7,13 @@ export default function _getFlexChildWidthStyle(
   orientation: Orientation,
   hAlign: HAlign,
   hAdjust: SizeAdjust,
-  childWidth: ChildSize,
+  hSize: ChildSize,
 ): CSSProperties {
   if (orientation === 'vertical') {
     // 縦並びの時の幅
-    return _getFlexClossAxisStyle('width', hAlign, childWidth, hAdjust);
+    return _getFlexClossAxisStyle('width', hAlign, hSize, hAdjust);
   } else {
     // 横並びの時の幅
-    return _getMainAxisStyle('width', hAlign, childWidth, hAdjust);
+    return _getMainAxisStyle('width', hAlign, hSize, hAdjust);
   }
 }

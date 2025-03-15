@@ -10,7 +10,7 @@ const MIN_SIZE = {
 /**
  * 交差軸方向のスタイル
  * @param type 高さ or 幅
- * @param adjust サイズの調整方法
+ * @param align 位置
  * @param size サイズ
  * @returns スタイル
  */

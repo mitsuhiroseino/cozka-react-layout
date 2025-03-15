@@ -70,16 +70,16 @@ export default function _getGridContainerStyle(
 const ORIENTATION: {
   [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: ({ childWidth, hAlign, hCount }) => {
+  horizontal: ({ hSize, hAlign, hCount }) => {
     return {
       gridAutoFlow: 'row',
-      gridTemplateColumns: _getGridTemplate(childWidth, hAlign, hCount),
+      gridTemplateColumns: _getGridTemplate(hSize, hAlign, hCount),
     };
   },
-  vertical: ({ childHeight, vAlign, vCount }) => {
+  vertical: ({ vSize, vAlign, vCount }) => {
     return {
       gridAutoFlow: 'column',
-      gridTemplateRows: _getGridTemplate(childHeight, vAlign, vCount),
+      gridTemplateRows: _getGridTemplate(vSize, vAlign, vCount),
     };
   },
 };

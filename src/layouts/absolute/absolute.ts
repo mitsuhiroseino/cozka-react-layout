@@ -15,11 +15,11 @@ const layout: Layout<AbsoluteLayoutProps> = {
     };
   },
   getChildStyle: (props) => {
-    const { childHeight, childWidth } = props;
+    const { vSize, hSize } = props;
     return {
       position: 'absolute',
-      height: childHeight,
-      width: childWidth,
+      height: vSize,
+      width: hSize,
     };
   },
 };

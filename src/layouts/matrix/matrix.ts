@@ -25,11 +25,11 @@ const layout: Layout<MatrixLayoutProps> = {
       spacing,
       hSpacing = spacing,
       vSpacing = spacing,
-      childHeight,
-      childWidth,
+      vSize,
+      hSize,
     } = props;
-    const gridTemplateColumns = _toGridTemplate(hTemplate, childWidth, hCount);
-    const gridTemplateRows = _toGridTemplate(vTemplate, childHeight, vCount);
+    const gridTemplateColumns = _toGridTemplate(hTemplate, hSize, hCount);
+    const gridTemplateRows = _toGridTemplate(vTemplate, vSize, vCount);
 
     return {
       display: 'grid',

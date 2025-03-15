@@ -56,82 +56,114 @@ Properties that can be passed to the returned component. Applicable properties v
 
 ### Common Properties
 
-| Property     | Type                                                                                   | Description                                                          |
-| ------------ | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `layout`     | `'absolute'` \|`'center'` \|`'fill'` \|`'liquid'` \|`'matrix'` \|`'solid'` \|`'stack'` | Type of layout. Available properties change depending on this value. |
-| `scroll?`    | `boolean`                                                                              | Enables scrolling (default: `false`).                                |
-| `childStyle` | `CSSProperties`                                                                        | Styles applied to child elements.                                    |
-| `children`   | `ReactNode`                                                                            | Child elements.                                                      |
+| Property     | Type                                                                           | Description                                                                             |
+| ------------ | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| `layout`     | `'absolute'` \| `'brick'` \| `'center'` \| `'fill'` \| `'matrix'` \| `'stack'` | The type of layout. The available properties will vary depending on the selected value. |
+| `scroll?`    | `boolean`                                                                      | Whether scrolling is enabled (default: `false`).                                        |
+| `childStyle` | `CSSProperties`                                                                | Styles applied to child elements.                                                       |
+| `children`   | `ReactNode`                                                                    | Child elements.                                                                         |
 
 ### Properties for Each Layout
 
-#### `absolute` (Position child elements absolutely)
+#### `absolute` (Positioning child elements absolutely)
 
-| Property       | Type         | Description               |
-| -------------- | ------------ | ------------------------- |
-| `layout`       | `'absolute'` |                           |
-| `childHeight?` | `number`     | Height of child elements. |
-| `childWidth?`  | `number`     | Width of child elements.  |
+| Property | Type         | Description               |
+| -------- | ------------ | ------------------------- |
+| `layout` | `'absolute'` |                           |
+| `vSize?` | `number`     | Height of child elements. |
+| `hSize?` | `number`     | Width of child elements.  |
 
-#### `center` (Center child elements)
+#### `brick` (Arranging child elements in a grid within the parent element)
 
-| Property       | Type                                            | Description                                                  |
-| -------------- | ----------------------------------------------- | ------------------------------------------------------------ |
-| `layout`       | `'center'`                                      |                                                              |
-| `orientation`  | See [Alignment Direction](#alignment-direction) | Direction to arrange child elements (default: `horizontal`). |
-| `vAdjust?`     | See [Size Adjustment](#size-adjustment)         | Vertical size adjustment.                                    |
-| `hAdjust?`     | See [Size Adjustment](#size-adjustment)         | Horizontal size adjustment.                                  |
-| `childHeight?` | `number`                                        | Height of child elements.                                    |
-| `childWidth?`  | `number`                                        | Width of child elements.                                     |
-| `spacing?`     | `number`                                        | Spacing between elements.                                    |
-| `vSpacing?`    | `number`                                        | Vertical spacing.                                            |
-| `hSpacing?`    | `number`                                        | Horizontal spacing.                                          |
+| Property      | Type                                              | Description                                                                 |
+| ------------- | ------------------------------------------------- | --------------------------------------------------------------------------- |
+| `layout`      | `'brick'`                                         |                                                                             |
+| `orientation` | See [Alignment Direction](#alignment-direction)   | The direction in which child elements are arranged (default: `horizontal`). |
+| `vAlign?`     | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment of child elements (default: `top`).                      |
+| `hAlign?`     | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `left`).                                     |
+| `vAdjust?`    | See [Size Adjustment](#size-adjustment)           | Vertical size adjustment.                                                   |
+| `hAdjust?`    | See [Size Adjustment](#size-adjustment)           | Horizontal size adjustment.                                                 |
+| `vSize?`      | `number`                                          | Height of child elements.                                                   |
+| `hSize?`      | `number`                                          | Minimum width of child elements.                                            |
+| `spacing?`    | `number`                                          | Margin between child elements.                                              |
+| `vSpacing?`   | `number`                                          | Vertical margin between child elements.                                     |
+| `hSpacing?`   | `number`                                          | Horizontal margin between child elements.                                   |
 
-#### `fill` (Fill child elements to match parent height and width)
+#### `center` (Centering child elements)
 
-| Property      | Type                                            | Description                                                  |
-| ------------- | ----------------------------------------------- | ------------------------------------------------------------ |
-| `layout`      | `'fill'`                                        |                                                              |
-| `orientation` | See [Alignment Direction](#alignment-direction) | Direction to arrange child elements (default: `horizontal`). |
-| `spacing?`    | `number`                                        | Spacing between elements.                                    |
-| `vSpacing?`   | `number`                                        | Vertical spacing.                                            |
-| `hSpacing?`   | `number`                                        | Horizontal spacing.                                          |
+| Property      | Type                                            | Description                                                                 |
+| ------------- | ----------------------------------------------- | --------------------------------------------------------------------------- |
+| `layout`      | `'center'`                                      |                                                                             |
+| `orientation` | See [Alignment Direction](#alignment-direction) | The direction in which child elements are arranged (default: `horizontal`). |
+| `vAdjust?`    | See [Size Adjustment](#size-adjustment)         | Vertical size adjustment.                                                   |
+| `hAdjust?`    | See [Size Adjustment](#size-adjustment)         | Horizontal size adjustment.                                                 |
+| `vSize?`      | `number`                                        | Height of child elements.                                                   |
+| `hSize?`      | `number`                                        | Width of child elements.                                                    |
+| `spacing?`    | `number`                                        | Margin between elements.                                                    |
+| `vSpacing?`   | `number`                                        | Vertical margin.                                                            |
+| `hSpacing?`   | `number`                                        | Horizontal margin.                                                          |
 
-#### `liquid` (Adjust child element width to fill parent width)
+#### `fill` (Fitting child elements to the parent's height and width)
 
-| Property         | Type                                              | Description                                                  |
-| ---------------- | ------------------------------------------------- | ------------------------------------------------------------ |
-| `layout`         | `'liquid'`                                        |                                                              |
-| `orientation`    | See [Alignment Direction](#alignment-direction)   | Direction to arrange child elements (default: `horizontal`). |
-| `vAlign?`        | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment of child elements (default: `top`).       |
-| `hAlign?`        | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `left`).                      |
-| `vAdjust?`       | See [Size Adjustment](#size-adjustment)           | Vertical size adjustment.                                    |
-| `hAdjust?`       | See [Size Adjustment](#size-adjustment)           | Horizontal size adjustment.                                  |
-| `childHeight?`   | `number`                                          | Height of child elements.                                    |
-| `childMinWidth?` | `number`                                          | Minimum width of child elements.                             |
-| `spacing?`       | `number`                                          | Spacing between child elements.                              |
-| `vSpacing?`      | `number`                                          | Vertical spacing.                                            |
-| `hSpacing?`      | `number`                                          | Horizontal spacing.                                          |
+| Property      | Type                                            | Description                                                                 |
+| ------------- | ----------------------------------------------- | --------------------------------------------------------------------------- |
+| `layout`      | `'fill'`                                        |                                                                             |
+| `orientation` | See [Alignment Direction](#alignment-direction) | The direction in which child elements are arranged (default: `horizontal`). |
+| `spacing?`    | `number`                                        | Margin between elements.                                                    |
+| `vSpacing?`   | `number`                                        | Vertical margin.                                                            |
+| `hSpacing?`   | `number`                                        | Horizontal margin.                                                          |
 
-## Property Values
+#### `matrix` (Arranging child elements in a grid)
 
-### Alignment Direction
+| Property     | Type                               | Description                                                              |
+| ------------ | ---------------------------------- | ------------------------------------------------------------------------ |
+| `layout`     | `'matrix'`                         |                                                                          |
+| `vSize?`     | `number`                           | Height of child elements.                                                |
+| `hSize?`     | `number`                           | Width of child elements.                                                 |
+| `spacing?`   | `number`                           | Margin between child elements.                                           |
+| `vSpacing?`  | `number`                           | Vertical margin between child elements.                                  |
+| `hSpacing?`  | `number`                           | Horizontal margin between child elements.                                |
+| `vCount?`    | `number`                           | Number of child elements vertically.                                     |
+| `hCount?`    | `number`                           | Number of child elements horizontally.                                   |
+| `vTemplate?` | `string` \| `(string \| number)[]` | CSS `grid-template-rows` format or an array specifying row heights.      |
+| `hTemplate?` | `string` \| `(string \| number)[]` | CSS `grid-template-columns` format or an array specifying column widths. |
+
+#### `stack` (Arranging child elements in a single line)
+
+| Property      | Type                                              | Description                                                                 |
+| ------------- | ------------------------------------------------- | --------------------------------------------------------------------------- |
+| `layout`      | `'stack'`                                         |                                                                             |
+| `orientation` | See [Alignment Direction](#alignment-direction)   | The direction in which child elements are arranged (default: `horizontal`). |
+| `vAlign?`     | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment of child elements (default: `top`).                      |
+| `hAlign?`     | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `left`).                                     |
+| `vAdjust?`    | See [Size Adjustment](#size-adjustment)           | Vertical size adjustment.                                                   |
+| `hAdjust?`    | See [Size Adjustment](#size-adjustment)           | Horizontal size adjustment.                                                 |
+| `vSize?`      | `number`                                          | Height of child elements.                                                   |
+| `hSize?`      | `number`                                          | Width of child elements.                                                    |
+| `spacing?`    | `number`                                          | Margin between elements.                                                    |
+| `vSpacing?`   | `number`                                          | Vertical margin.                                                            |
+| `hSpacing?`   | `number`                                          | Horizontal margin.                                                          |
+
+### Property Values
+
+#### Alignment Direction
 
 | Value          | Description                          |
 | -------------- | ------------------------------------ |
 | `'horizontal'` | Arrange child elements horizontally. |
 | `'vertical'`   | Arrange child elements vertically.   |
 
-### Vertical Alignment
+#### Vertical Alignment
 
-| Value             | Description                               |
-| ----------------- | ----------------------------------------- |
-| `'top'`           | Align to the top.                         |
-| `'middle'`        | Align to the center.                      |
-| `'bottom'`        | Align to the bottom.                      |
-| `'space-between'` | Distribute space evenly between elements. |
-| `'space-around'`  | Add space before and after elements.      |
-| `'space-evenly'`  | Distribute space evenly including edges.  |
+| Value             | Description                                 |
+| ----------------- | ------------------------------------------- |
+| `'top'`           | Align to top.                               |
+| `'middle'`        | Align to center.                            |
+| `'bottom'`        | Align to bottom.                            |
+| `'space-between'` | Evenly distribute spacing between elements. |
+| `'space-around'`  | Add space at both ends.                     |
+| `'space-evenly'`  | Distribute all spaces evenly.               |
+| `'fit'`           | Stretch to fit the parent.                  |
 
 ### Horizontal Alignment
 
@@ -143,13 +175,13 @@ Properties that can be passed to the returned component. Applicable properties v
 | `'space-between'` | Distribute space evenly between elements. |
 | `'space-around'`  | Add space before and after elements.      |
 | `'space-evenly'`  | Distribute space evenly including edges.  |
+| `'fit'`           | Stretch to fit the parent.                |
 
 ### Size Adjustment
 
 | Value      | Description                              |
 | ---------- | ---------------------------------------- |
 | `'none'`   | No adjustment                            |
-| `'fit'`    | Scales to fit the parent element         |
 | `'expand'` | Expands to fit within the parent element |
 | `'narrow'` | Narrows to fit within the parent element |
 

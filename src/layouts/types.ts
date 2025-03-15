@@ -102,12 +102,12 @@ export type ChildSizeProps = {
   /**
    * 子要素の高さ
    */
-  childHeight?: ChildSize;
+  vSize?: ChildSize;
 
   /**
    * 子要素の高さ
    */
-  childWidth?: ChildSize;
+  hSize?: ChildSize;
 };
 
 /**
@@ -131,13 +131,13 @@ export type ChildCountProps = {
 export type GridTemplateProps = {
   /**
    * 横方向の設定
-   * このプロパティが設定されている場合、hCount,childWidthは無効
+   * このプロパティが設定されている場合、hCount,hSizeは無効
    */
   hTemplate?: GridTemplate | (string | number)[];
 
   /**
    * 縦方向の設定
-   * このプロパティが設定されている場合、vCount,childHeightは無効
+   * このプロパティが設定されている場合、vCount,vSizeは無効
    */
   vTemplate?: GridTemplate | (string | number)[];
 };

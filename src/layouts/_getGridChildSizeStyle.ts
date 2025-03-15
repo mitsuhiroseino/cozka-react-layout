@@ -9,9 +9,9 @@ export default function _getGridChildSizeStyle(
   orientation: Orientation,
   options: Options = {},
 ): CSSProperties {
-  const { childHeight, childWidth, vAlign, hAlign } = options;
+  const { vSize, hSize, vAlign, hAlign } = options;
   return {
-    ..._getGridClossAxisStyle('height', vAlign, childHeight),
-    ..._getGridClossAxisStyle('width', hAlign, childWidth),
+    ..._getGridClossAxisStyle('height', vAlign, vSize),
+    ..._getGridClossAxisStyle('width', hAlign, hSize),
   };
 }
