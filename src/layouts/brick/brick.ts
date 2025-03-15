@@ -18,25 +18,9 @@ const layout: Layout<BrickLayoutProps> = {
     hAlign: 'left',
   },
   getContainerStyle: (props) => {
-    const {
-      orientation,
-      vAlign,
-      hAlign,
-      spacing,
-      vSpacing = spacing,
-      hSpacing = spacing,
-      childHeight,
-      childWidth,
-    } = props;
+    const { orientation, ...rest } = props;
 
-    return _getGridContainerStyle(orientation, {
-      vAlign,
-      hAlign,
-      vSpacing,
-      hSpacing,
-      childHeight,
-      childWidth,
-    });
+    return _getGridContainerStyle(orientation, rest);
   },
   getChildStyle: (props) => {
     const { orientation, vAlign, hAlign, childHeight, childWidth } = props;

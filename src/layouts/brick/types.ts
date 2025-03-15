@@ -1,5 +1,6 @@
 import {
   AlignProps,
+  ChildCountProps,
   ChildSizeProps,
   LayoutPropsBase,
   OrientationProps,
@@ -11,6 +12,7 @@ import {
  */
 export type BrickLayoutProps = LayoutPropsBase<'brick'> &
   AlignProps &
+  ChildCountProps &
   ChildSizeProps &
   OrientationProps &
   SpacingProps;

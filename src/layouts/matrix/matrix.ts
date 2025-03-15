@@ -56,7 +56,7 @@ function _toGridTemplate(
 ) {
   let template;
   if (Array.isArray(gridSetting)) {
-    template = gridSetting.join(' ');
+    template = gridSetting.map(_unit).join(' ');
   } else if (gridSetting) {
     template = gridSetting;
   } else if (size != null) {

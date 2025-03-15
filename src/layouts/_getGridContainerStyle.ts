@@ -2,7 +2,9 @@ import { CSSProperties } from 'react';
 import _unit from './_unit';
 import {
   AlignProps,
+  ChildCountProps,
   ChildSizeProps,
+  GridTemplateProps,
   HAlign,
   Orientation,
   SpacingProps,
@@ -10,7 +12,9 @@ import {
 } from './types';
 
 type Options = AlignProps &
+  ChildCountProps &
   ChildSizeProps &
+  GridTemplateProps &
   SpacingProps & {
     /**
      * 上書きするスタイル
@@ -66,26 +70,46 @@ export default function _getGridContainerStyle(
 const ORIENTATION: {
   [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: ({ childWidth, hAlign }) => {
+  horizontal: ({ childWidth, hAlign, hCount }) => {
     return {
       gridAutoFlow: 'row',
-      gridTemplateColumns: _getGridTemplate(childWidth, hAlign),
+      gridTemplateColumns: _getGridTemplate(childWidth, hAlign, hCount),
     };
   },
-  vertical: ({ childHeight, vAlign }) => {
+  vertical: ({ childHeight, vAlign, vCount }) => {
     return {
       gridAutoFlow: 'column',
-      gridTemplateRows: _getGridTemplate(childHeight, vAlign),
+      gridTemplateRows: _getGridTemplate(childHeight, vAlign, vCount),
     };
   },
 };
 
-function _getGridTemplate(childSize: string | number, align: HAlign | VAlign) {
-  const size =
-    align === 'fit'
-      ? `minmax(${_unit(childSize ?? '0')}, 1fr)`
-      : _unit(childSize ?? 'minmax(max-content, 100%)');
-  return `repeat(auto-fit, ${size})`;
+function _getGridTemplate(
+  childSize: string | number,
+  align: HAlign | VAlign,
+  count: number,
+) {
+  if (align === 'fit') {
+    if (count != null && childSize != null) {
+      return `repeat(${count}, minmax(${_unit(childSize)}, 1fr))`;
+    } else if (count != null) {
+      return `repeat(${count}, 1fr)`;
+    } else if (childSize != null) {
+      return `repeat(auto-fit, minmax(${_unit(childSize)}, 1fr))`;
+    } else {
+      return 'repeat(auto-fit, minmax(0, 1fr))';
+    }
+  } else {
+    if (count != null && childSize != null) {
+      return `repeat(${count}, ${_unit(childSize)})`;
+    } else if (count != null) {
+      return `repeat(${count}, max-content)`;
+    } else if (childSize != null) {
+      return `repeat(auto-fit, ${_unit(childSize)})`;
+    } else {
+      return 'repeat(auto-fit, minmax(max-content, 100%))';
+    }
+  }
 }
 
 /**

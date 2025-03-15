@@ -111,6 +111,38 @@ export type ChildSizeProps = {
 };
 
 /**
+ * 子要素の数
+ */
+export type ChildCountProps = {
+  /**
+   * 横方向の要素数
+   */
+  hCount?: number;
+
+  /**
+   * 縦方向の要素数
+   */
+  vCount?: number;
+};
+
+/**
+ * gridのテンプレート
+ */
+export type GridTemplateProps = {
+  /**
+   * 横方向の設定
+   * このプロパティが設定されている場合、hCount,childWidthは無効
+   */
+  hTemplate?: GridTemplate | (string | number)[];
+
+  /**
+   * 縦方向の設定
+   * このプロパティが設定されている場合、vCount,childHeightは無効
+   */
+  vTemplate?: GridTemplate | (string | number)[];
+};
+
+/**
  * 要素間の余白
  */
 export type SpacingProps = {
@@ -184,13 +216,6 @@ export type CommonAlign =
 export type Orientation = 'horizontal' | 'vertical';
 
 /**
- * 子要素の高さ or 幅
- */
-export type ChildSize = CSSProperties['flexBasis'];
-
-export type Spacing = CSSProperties['gap'];
-
-/**
  * 親要素のサイズに子要素のサイズを合わせる方法
  *
  * - `none`
@@ -204,3 +229,19 @@ export type Spacing = CSSProperties['gap'];
  *   - 超えるとき: 縮める
  */
 export type SizeAdjust = 'none' | 'expand' | 'narrow';
+
+/**
+ * 子要素の高さ or 幅
+ */
+export type ChildSize = CSSProperties['flexBasis'];
+
+/**
+ * 余白
+ */
+export type Spacing = CSSProperties['gap'];
+
+/**
+ * gridのテンプレート
+ */
+export type GridTemplate = CSSProperties['gridTemplateColumns'] &
+  CSSProperties['gridTemplateRows'];
