@@ -56,16 +56,16 @@ Properties that can be passed to the returned component. Applicable properties v
 
 ### Common Properties
 
-| Property     | Type                                                                           | Description                                                                             |
-| ------------ | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
-| `layout`     | `'absolute'` \| `'brick'` \| `'center'` \| `'fill'` \| `'matrix'` \| `'stack'` | The type of layout. The available properties will vary depending on the selected value. |
-| `scroll?`    | `boolean`                                                                      | Whether scrolling is enabled (default: `false`).                                        |
-| `childStyle` | `CSSProperties`                                                                | Styles applied to child elements.                                                       |
-| `children`   | `ReactNode`                                                                    | Child elements.                                                                         |
+| Property      | Type                                                                           | Description                                                                             |
+| ------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| `layout`      | `'absolute'` \| `'brick'` \| `'center'` \| `'fill'` \| `'matrix'` \| `'stack'` | The type of layout. The available properties will vary depending on the selected value. |
+| `scroll?`     | `boolean`                                                                      | Whether scrolling is enabled (default: `false`).                                        |
+| `childStyle?` | `CSSProperties`                                                                | Styles applied to child elements.                                                       |
+| `children`    | `ReactNode`                                                                    | Child elements.                                                                         |
 
 ### Properties for Each Layout
 
-#### `absolute` (Positioning child elements absolutely)
+#### `absolute` (Position child elements absolutely)
 
 | Property | Type         | Description               |
 | -------- | ------------ | ------------------------- |
@@ -73,7 +73,7 @@ Properties that can be passed to the returned component. Applicable properties v
 | `vSize?` | `number`     | Height of child elements. |
 | `hSize?` | `number`     | Width of child elements.  |
 
-#### `brick` (Arranging child elements in a grid within the parent element)
+#### `brick` (Arrange child elements in a grid to fit the parent element's size)
 
 | Property      | Type                                              | Description                                                                 |
 | ------------- | ------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -84,12 +84,12 @@ Properties that can be passed to the returned component. Applicable properties v
 | `vAdjust?`    | See [Size Adjustment](#size-adjustment)           | Vertical size adjustment.                                                   |
 | `hAdjust?`    | See [Size Adjustment](#size-adjustment)           | Horizontal size adjustment.                                                 |
 | `vSize?`      | `number`                                          | Height of child elements.                                                   |
-| `hSize?`      | `number`                                          | Minimum width of child elements.                                            |
+| `hSize?`      | `number`                                          | Width of child elements.                                                    |
 | `spacing?`    | `number`                                          | Margin between child elements.                                              |
 | `vSpacing?`   | `number`                                          | Vertical margin between child elements.                                     |
 | `hSpacing?`   | `number`                                          | Horizontal margin between child elements.                                   |
 
-#### `center` (Centering child elements)
+#### `center` (Center child elements)
 
 | Property      | Type                                            | Description                                                                 |
 | ------------- | ----------------------------------------------- | --------------------------------------------------------------------------- |
@@ -103,7 +103,7 @@ Properties that can be passed to the returned component. Applicable properties v
 | `vSpacing?`   | `number`                                        | Vertical margin.                                                            |
 | `hSpacing?`   | `number`                                        | Horizontal margin.                                                          |
 
-#### `fill` (Fitting child elements to the parent's height and width)
+#### `fill` (Fit child elements to the parent element's height and width)
 
 | Property      | Type                                            | Description                                                                 |
 | ------------- | ----------------------------------------------- | --------------------------------------------------------------------------- |
@@ -113,7 +113,7 @@ Properties that can be passed to the returned component. Applicable properties v
 | `vSpacing?`   | `number`                                        | Vertical margin.                                                            |
 | `hSpacing?`   | `number`                                        | Horizontal margin.                                                          |
 
-#### `matrix` (Arranging child elements in a grid)
+#### `matrix` (Arrange child elements in a grid)
 
 | Property     | Type                               | Description                                                              |
 | ------------ | ---------------------------------- | ------------------------------------------------------------------------ |
@@ -128,7 +128,7 @@ Properties that can be passed to the returned component. Applicable properties v
 | `vTemplate?` | `string` \| `(string \| number)[]` | CSS `grid-template-rows` format or an array specifying row heights.      |
 | `hTemplate?` | `string` \| `(string \| number)[]` | CSS `grid-template-columns` format or an array specifying column widths. |
 
-#### `stack` (Arranging child elements in a single line)
+#### `stack` (Arrange child elements in a single row)
 
 | Property      | Type                                              | Description                                                                 |
 | ------------- | ------------------------------------------------- | --------------------------------------------------------------------------- |

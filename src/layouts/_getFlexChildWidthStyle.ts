@@ -6,8 +6,8 @@ import { ChildSize, HAlign, Orientation, SizeAdjust } from './types';
 export default function _getFlexChildWidthStyle(
   orientation: Orientation,
   hAlign: HAlign,
-  hAdjust: SizeAdjust,
   hSize: ChildSize,
+  hAdjust: SizeAdjust,
 ): CSSProperties {
   if (orientation === 'vertical') {
     // 縦並びの時の幅

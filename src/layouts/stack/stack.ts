@@ -37,8 +37,8 @@ const layout: Layout<StackLayoutProps> = {
       props;
 
     return {
-      ..._getFlexChildHeightStyle(orientation, vAlign, vAdjust, vSize),
-      ..._getFlexChildWidthStyle(orientation, hAlign, hAdjust, hSize),
+      ..._getFlexChildHeightStyle(orientation, vAlign, vSize, vAdjust),
+      ..._getFlexChildWidthStyle(orientation, hAlign, hSize, hAdjust),
     };
   },
 };

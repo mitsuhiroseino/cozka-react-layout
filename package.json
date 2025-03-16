@@ -1,6 +1,6 @@
 {
   "name": "@cozka/react-layout",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "keywords": [
     "react",
     "layout",
@@ -22,7 +22,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@cozka/react-style-proxy": "^0.2.1",
+    "@cozka/react-style-proxy": "^0.2.2",
     "@cozka/react-utils": "^0.3.3"
   },
   "devDependencies": {

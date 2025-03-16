@@ -31,8 +31,8 @@ const layout: Layout<CenterLayoutProps> = {
   getChildStyle: (props) => {
     const { orientation, vAdjust, hAdjust, vSize, hSize } = props;
     return {
-      ..._getFlexChildHeightStyle(orientation, 'middle', vAdjust, vSize),
-      ..._getFlexChildWidthStyle(orientation, 'center', hAdjust, hSize),
+      ..._getFlexChildHeightStyle(orientation, 'middle', vSize, vAdjust),
+      ..._getFlexChildWidthStyle(orientation, 'center', hSize, hAdjust),
     };
   },
 };

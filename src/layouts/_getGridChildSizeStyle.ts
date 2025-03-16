@@ -1,6 +1,5 @@
 import { CSSProperties } from 'react';
 import _getGridClossAxisStyle from './_getGridClossAxisStyle';
-import _getMainAxisStyle from './_getMainAxisStyle';
 import { AlignProps, ChildSizeProps, Orientation } from './types';
 
 type Options = ChildSizeProps & AlignProps;

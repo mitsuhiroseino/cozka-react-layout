@@ -1,6 +1,5 @@
 import _getGridChildSizeStyle from '../_getGridChildSizeStyle';
 import _getGridContainerStyle from '../_getGridContainerStyle';
-import _getMainAxisStyle from '../_getMainAxisStyle';
 import { Layout } from '../types';
 import { BrickLayoutProps } from './types';
 

@@ -6,8 +6,8 @@ import { ChildSize, Orientation, SizeAdjust, VAlign } from './types';
 export default function _getFlexChildHeightStyle(
   orientation: Orientation,
   vAlign: VAlign,
-  vAdjust: SizeAdjust,
   vSize: ChildSize,
+  vAdjust: SizeAdjust,
 ): CSSProperties {
   if (orientation === 'vertical') {
     // 縦並びの時の高さ
