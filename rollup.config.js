@@ -37,12 +37,12 @@ const options = [
             '.': {
               import: './index.js',
               require: `./${OUTPUT_CJS_DIR}/index.cjs`,
-              types: './index.d.ts',
+              types: './index.d.js',
             },
             './*': {
-              import: './*.js',
-              require: `./${OUTPUT_CJS_DIR}/*.cjs`,
-              types: './*.d.js',
+              import: './*/index.js',
+              require: `./${OUTPUT_CJS_DIR}/*/index.cjs`,
+              types: './*/index.d.js',
             },
           },
         },
