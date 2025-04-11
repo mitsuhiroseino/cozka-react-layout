@@ -1447,8 +1447,8 @@ __metadata:
     "@babel/plugin-transform-runtime": "npm:^7.26.10"
     "@babel/preset-env": "npm:^7.26.9"
     "@babel/preset-typescript": "npm:^7.27.0"
-    "@cozka/react-style-proxy": "npm:^0.2.2"
-    "@cozka/react-utils": "npm:^0.3.3"
+    "@cozka/react-style-proxy": "npm:^0.2.5"
+    "@cozka/react-utils": "npm:^0.3.8"
     "@cozka/rollup-create-dist-packagejson": "npm:^0.8.1"
     "@eslint/js": "npm:^9.3.0"
     "@rollup/plugin-babel": "npm:^6.0.4"
@@ -1472,7 +1472,7 @@ __metadata:
     prettier: "npm:^3.5.3"
     prettier-plugin-organize-imports: "npm:^4.1.0"
     prettier-plugin-packagejson: "npm:^2.5.10"
-    react: "npm:^18.0.0"
+    react: "npm:^17.0.0"
     rimraf: "npm:^3.0.2"
     rollup: "npm:^4.39.0"
     rollup-plugin-copy: "npm:^3.5.0"
@@ -1484,23 +1484,23 @@ __metadata:
     typescript: "npm:^5.8.3"
     typescript-eslint: "npm:^8.29.0"
   peerDependencies:
-    react: ^18.0.0 || ^19.0.0
+    react: ^17.0.0 || ^18.0.0 || ^19.0.0
   languageName: unknown
   linkType: soft
 
-"@cozka/react-style-proxy@npm:^0.2.2":
-  version: 0.2.3
-  resolution: "@cozka/react-style-proxy@npm:0.2.3"
-  checksum: 10c0/6b037b401a9eb787e2d96b2ce118c228f9daeb6024afb7fe3ebf4bb6e27c5f04eb1d6c1ef6877ea2d426b61c395de26ddbb2356bbc7971a821fd0d27b8ce0251
+"@cozka/react-style-proxy@npm:^0.2.5":
+  version: 0.2.5
+  resolution: "@cozka/react-style-proxy@npm:0.2.5"
+  checksum: 10c0/fff88b29f7b10527c9eda209511d7f4a3248df25577894478bac319133dac07edd97ef3c18d5184a674e3d98da24a3fd33c33433372a3682f12306d639c4290a
   languageName: node
   linkType: hard
 
-"@cozka/react-utils@npm:^0.3.3":
-  version: 0.3.3
-  resolution: "@cozka/react-utils@npm:0.3.3"
+"@cozka/react-utils@npm:^0.3.8":
+  version: 0.3.8
+  resolution: "@cozka/react-utils@npm:0.3.8"
   peerDependencies:
-    react: ^18.0.0 || ^19.0.0
-  checksum: 10c0/e3f098b9c1323ef4ff2255c0fd10600fd00a4069dc6d617d1e5fb3fe2fe60bded058981bdd5e1ed9db3f414c6ba4cbd2609d37d326dbdf34527b98b307f6b82a
+    react: ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 10c0/6b4b35813c4639357c1a4bae724d6c07b48739ef9331c9cff1d6af36246dcadb9d6f0f44a17b3d79918e38d2e6d039af883aeb12daea457f5fdf5b08286ce5e6
   languageName: node
   linkType: hard
 
@@ -5574,6 +5574,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"object-assign@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "object-assign@npm:4.1.1"
+  checksum: 10c0/1f4df9945120325d041ccf7b86f31e8bcc14e73d29171e37a7903050e96b81323784ec59f93f102ec635bcf6fa8034ba3ea0a8c7e69fa202b87ae3b6cec5a414
+  languageName: node
+  linkType: hard
+
 "once@npm:^1.3.0":
   version: 1.4.0
   resolution: "once@npm:1.4.0"
@@ -5877,12 +5884,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.0.0":
-  version: 18.3.1
-  resolution: "react@npm:18.3.1"
+"react@npm:^17.0.0":
+  version: 17.0.2
+  resolution: "react@npm:17.0.2"
   dependencies:
     loose-envify: "npm:^1.1.0"
-  checksum: 10c0/283e8c5efcf37802c9d1ce767f302dd569dd97a70d9bb8c7be79a789b9902451e0d16334b05d73299b20f048cbc3c7d288bbbde10b701fa194e2089c237dbea3
+    object-assign: "npm:^4.1.1"
+  checksum: 10c0/07ae8959acf1596f0550685102fd6097d461a54a4fd46a50f88a0cd7daaa97fdd6415de1dcb4bfe0da6aa43221a6746ce380410fa848acc60f8ac41f6649c148
   languageName: node
   linkType: hard
 
