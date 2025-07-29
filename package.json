@@ -1,6 +1,6 @@
 {
   "name": "@cozka/react-layout",
-  "version": "0.12.4",
+  "version": "0.13.0",
   "keywords": [
     "react",
     "layout",
@@ -26,15 +26,15 @@
     "test": "jest"
   },
   "dependencies": {
-    "@cozka/react-style-proxy": "^0.2.5",
-    "@cozka/react-utils": "^0.3.8"
+    "@cozka/react-style-proxy": "workspace:^",
+    "@cozka/react-utils": "workspace:^"
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",
     "@babel/plugin-transform-runtime": "^7.26.10",
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-typescript": "^7.27.0",
-    "@cozka/rollup-create-dist-packagejson": "^0.8.1",
+    "@cozka/rollup-create-dist-packagejson": "^0.9.1",
     "@eslint/js": "^9.3.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.3",

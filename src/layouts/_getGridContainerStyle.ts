@@ -20,6 +20,12 @@ type Options = AlignProps &
      * 上書きするスタイル
      */
     style?: CSSProperties;
+
+    /**
+     * 上下中央位置に配置する場合は`center`を指定する
+     * 内部向けオプション
+     */
+    placeItems?: CSSProperties['placeItems'];
   };
 
 /**
@@ -70,17 +76,31 @@ export default function _getGridContainerStyle(
 const ORIENTATION: {
   [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: ({ hSize, hAlign, hCount }) => {
-    return {
-      gridAutoFlow: 'row',
-      gridTemplateColumns: _getGridTemplate(hSize, hAlign, hCount),
-    };
+  horizontal: ({ hSize, hAlign, hCount, placeItems }) => {
+    if (placeItems) {
+      return {
+        gridAutoFlow: 'column',
+        placeItems,
+      };
+    } else {
+      return {
+        gridAutoFlow: 'row',
+        gridTemplateColumns: _getGridTemplate(hSize, hAlign, hCount),
+      };
+    }
   },
-  vertical: ({ vSize, vAlign, vCount }) => {
-    return {
-      gridAutoFlow: 'column',
-      gridTemplateRows: _getGridTemplate(vSize, vAlign, vCount),
-    };
+  vertical: ({ vSize, vAlign, vCount, placeItems }) => {
+    if (placeItems) {
+      return {
+        gridAutoFlow: 'row',
+        placeItems,
+      };
+    } else {
+      return {
+        gridAutoFlow: 'column',
+        gridTemplateRows: _getGridTemplate(vSize, vAlign, vCount),
+      };
+    }
   },
 };
 
