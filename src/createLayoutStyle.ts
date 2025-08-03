@@ -32,5 +32,6 @@ export default function createLayoutStyle<P extends LayoutProps = {}>(
   if (cStyle) {
     childStyle = { ...childStyle, ...cStyle };
   }
+
   return { containerStyle, childStyle };
 }

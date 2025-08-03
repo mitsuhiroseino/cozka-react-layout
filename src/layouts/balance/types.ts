@@ -1,4 +1,5 @@
 import {
+  AdjustProps,
   AlignProps,
   ChildSizeProps,
   LayoutPropsBase,
@@ -7,6 +8,7 @@ import {
 } from '../types';
 
 export type BalanceLayoutProps = LayoutPropsBase<'balance'> &
+  AdjustProps &
   AlignProps &
   ChildSizeProps &
   OrientationProps &

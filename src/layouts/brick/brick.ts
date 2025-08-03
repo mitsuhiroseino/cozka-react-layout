@@ -22,14 +22,9 @@ const layout: Layout<BrickLayoutProps> = {
     return _getGridContainerForContentStyle(orientation, rest);
   },
   getChildStyle: (props) => {
-    const { orientation, vAlign, hAlign, vSize, hSize } = props;
+    const { orientation, ...rest } = props;
 
-    return _getGridChildSizeStyle(orientation, {
-      vAlign,
-      hAlign,
-      vSize,
-      hSize,
-    });
+    return _getGridChildSizeStyle(orientation, rest);
   },
 };
 export default layout;

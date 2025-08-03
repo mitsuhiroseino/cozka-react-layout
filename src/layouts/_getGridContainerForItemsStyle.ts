@@ -22,16 +22,6 @@ type Options = AlignProps &
      * 上書きするスタイル
      */
     style?: CSSProperties;
-
-    /**
-     * 何を主としてグリッドのレイアウトを行うか
-     *
-     * - `content`: justify-content、align-contentを基準にする(要素全体をレイアウトする方式)
-     * - `items`: justify-items、align-itemsを基準にする(個々の要素をレイアウトする方式)
-     *
-     * @default 'content'
-     */
-    layoutFrom?: LayoutFrom;
   };
 
 /**
@@ -95,12 +85,12 @@ export default function _getGridContainerForItemsStyle(
 const ORIENTATION: {
   [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: ({ hSize, hAlign, hCount, layoutFrom }) => {
+  horizontal: () => {
     return {
       gridAutoFlow: 'column',
     };
   },
-  vertical: ({ vSize, vAlign, vCount, layoutFrom }) => {
+  vertical: () => {
     return {
       gridAutoFlow: 'row',
     };

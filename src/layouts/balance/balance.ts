@@ -16,21 +16,13 @@ const layout: Layout<BalanceLayoutProps> = {
   getContainerStyle: (props) => {
     const { orientation, ...rest } = props;
 
-    return _getGridContainerForItemsStyle(orientation, {
-      ...rest,
-      layoutFrom: 'items',
-    });
+    return _getGridContainerForItemsStyle(orientation, rest);
   },
 
   getChildStyle: (props) => {
-    const { orientation, vAlign, hAlign, vSize, hSize } = props;
+    const { orientation, ...rest } = props;
 
-    return _getGridChildSizeStyle(orientation, {
-      vAlign,
-      hAlign,
-      vSize,
-      hSize,
-    });
+    return _getGridChildSizeStyle(orientation, rest);
   },
 };
 export default layout;
