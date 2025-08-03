@@ -1,5 +1,4 @@
 import {
-  AdjustProps,
   AlignProps,
   ChildCountProps,
   ChildSizeProps,
@@ -12,7 +11,6 @@ import {
  * brickのプロパティ
  */
 export type BrickLayoutProps = LayoutPropsBase<'brick'> &
-  AdjustProps &
   AlignProps &
   ChildCountProps &
   ChildSizeProps &

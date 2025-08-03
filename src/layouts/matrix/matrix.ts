@@ -41,9 +41,10 @@ const layout: Layout<MatrixLayoutProps> = {
     };
   },
   getChildStyle: (props) => {
+    const { hSize, vSize } = props;
     return {
-      height: '100%',
-      width: '100%',
+      height: vSize,
+      width: hSize,
     };
   },
 };
