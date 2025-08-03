@@ -2,7 +2,6 @@ import { CSSProperties, ReactNode } from 'react';
 import { AbsoluteLayoutProps } from './absolute';
 import { BalanceLayoutProps } from './balance';
 import { BrickLayoutProps } from './brick';
-import { CenterLayoutProps } from './center';
 import { FillLayoutProps } from './fill';
 import { MatrixLayoutProps } from './matrix';
 import { StackLayoutProps } from './stack';
@@ -14,7 +13,6 @@ export type LayoutType =
   | 'absolute'
   | 'balance'
   | 'brick'
-  | 'center'
   | 'fill'
   | 'matrix'
   | 'stack';
@@ -25,7 +23,6 @@ export type LayoutType =
 export type LayoutProps =
   | AbsoluteLayoutProps
   | BrickLayoutProps
-  | CenterLayoutProps
   | FillLayoutProps
   | BalanceLayoutProps
   | MatrixLayoutProps
