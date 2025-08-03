@@ -29,7 +29,7 @@ type Options = {
 };
 
 /**
- * display=flexのコンテナーのスタイル
+ * display=flexのコンテナーのスタイルを取得
  * @param orientation
  * @param options
  * @returns
@@ -38,26 +38,29 @@ export default function _getFlexContainerStyle(
   orientation: Orientation,
   options: Options = {},
 ) {
-  const { vAlign, hAlign, vSpacing, hSpacing, style: override } = options;
-  let style: CSSProperties = { display: 'flex', ...ORIENTATION[orientation] };
+  const { vAlign, hAlign, vSpacing, hSpacing, style } = options;
+  let containerStyle: CSSProperties = {
+    display: 'flex',
+    ...ORIENTATION[orientation],
+  };
 
   if (vAlign) {
-    style = { ...style, ...VALIGN[orientation][vAlign] };
+    containerStyle = { ...containerStyle, ...VALIGN[orientation][vAlign] };
   }
   if (hAlign) {
-    style = { ...style, ...HALIGN[orientation][hAlign] };
+    containerStyle = { ...containerStyle, ...HALIGN[orientation][hAlign] };
   }
   if (vSpacing != null) {
-    style.rowGap = vSpacing;
+    containerStyle.rowGap = vSpacing;
   }
   if (hSpacing != null) {
-    style.columnGap = hSpacing;
+    containerStyle.columnGap = hSpacing;
   }
-  if (override) {
-    style = { ...style, ...override };
+  if (style) {
+    containerStyle = { ...containerStyle, ...style };
   }
 
-  return style;
+  return containerStyle;
 }
 
 /**

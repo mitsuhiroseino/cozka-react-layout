@@ -1,5 +1,5 @@
-import _getGridChildSizeStyle from '../_getGridChildSizeStyle';
-import _getGridContainerStyle from '../_getGridContainerStyle';
+import _getGridChildSizeForContentStyle from '../_getGridChildSizeForContentStyle';
+import _getGridContainerForContentStyle from '../_getGridContainerForContentStyle';
 import { Layout } from '../types';
 import { BrickLayoutProps } from './types';
 
@@ -19,12 +19,12 @@ const layout: Layout<BrickLayoutProps> = {
   getContainerStyle: (props) => {
     const { orientation, ...rest } = props;
 
-    return _getGridContainerStyle(orientation, rest);
+    return _getGridContainerForContentStyle(orientation, rest);
   },
   getChildStyle: (props) => {
     const { orientation, vAlign, hAlign, vSize, hSize } = props;
 
-    return _getGridChildSizeStyle(orientation, {
+    return _getGridChildSizeForContentStyle(orientation, {
       vAlign,
       hAlign,
       vSize,

@@ -20,21 +20,15 @@ type Options = AlignProps &
      * 上書きするスタイル
      */
     style?: CSSProperties;
-
-    /**
-     * 上下中央位置に配置する場合は`center`を指定する
-     * 内部向けオプション
-     */
-    placeItems?: CSSProperties['placeItems'];
   };
 
 /**
- * display=gridのコンテナーのスタイル
+ * display=gridでcontentを軸にしてレイアウトする為のコンテナーのスタイルを取得
  * @param orientation
  * @param options
  * @returns
  */
-export default function _getGridContainerStyle(
+export default function _getGridContainerForContentStyle(
   orientation: Orientation,
   options: Options = {},
 ) {
@@ -44,30 +38,30 @@ export default function _getGridContainerStyle(
     spacing,
     vSpacing = spacing,
     hSpacing = spacing,
-    style: override,
+    style,
   } = options;
-  let style: CSSProperties = {
+  let containerStyle: CSSProperties = {
     display: 'grid',
     ...ORIENTATION[orientation](options),
   };
 
   if (vAlign) {
-    style = { ...style, ...VALIGN[vAlign] };
+    containerStyle = { ...containerStyle, ...VALIGN[vAlign] };
   }
   if (hAlign) {
-    style = { ...style, ...HALIGN[hAlign] };
+    containerStyle = { ...containerStyle, ...HALIGN[hAlign] };
   }
   if (vSpacing != null) {
-    style.rowGap = vSpacing;
+    containerStyle.rowGap = vSpacing;
   }
   if (hSpacing != null) {
-    style.columnGap = hSpacing;
+    containerStyle.columnGap = hSpacing;
   }
-  if (override) {
-    style = { ...style, ...override };
+  if (style) {
+    containerStyle = { ...containerStyle, ...style };
   }
 
-  return style;
+  return containerStyle;
 }
 
 /**
@@ -76,40 +70,34 @@ export default function _getGridContainerStyle(
 const ORIENTATION: {
   [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: ({ hSize, hAlign, hCount, placeItems }) => {
-    if (placeItems) {
-      return {
-        gridAutoFlow: 'column',
-        placeItems,
-      };
-    } else {
-      return {
-        gridAutoFlow: 'row',
-        gridTemplateColumns: _getGridTemplate(hSize, hAlign, hCount),
-      };
-    }
+  horizontal: ({ hSize, hAlign, hCount }) => {
+    return {
+      gridAutoFlow: 'row',
+      gridTemplateColumns: _getGridTemplate(hSize, hAlign, hCount),
+    };
   },
-  vertical: ({ vSize, vAlign, vCount, placeItems }) => {
-    if (placeItems) {
-      return {
-        gridAutoFlow: 'row',
-        placeItems,
-      };
-    } else {
-      return {
-        gridAutoFlow: 'column',
-        gridTemplateRows: _getGridTemplate(vSize, vAlign, vCount),
-      };
-    }
+  vertical: ({ vSize, vAlign, vCount }) => {
+    return {
+      gridAutoFlow: 'column',
+      gridTemplateRows: _getGridTemplate(vSize, vAlign, vCount),
+    };
   },
 };
 
+/**
+ * orientation方向の子要素のサイズを指定するためのテンプレート
+ * @param childSize 子要素のサイズ
+ * @param align 子要素の配置
+ * @param count 子要素の数
+ * @returns
+ */
 function _getGridTemplate(
   childSize: string | number,
   align: HAlign | VAlign,
   count: number,
 ) {
   if (align === 'fit') {
+    // fitの場合
     if (count != null && childSize != null) {
       return `repeat(${count}, minmax(${_unit(childSize)}, 1fr))`;
     } else if (count != null) {
@@ -120,6 +108,7 @@ function _getGridTemplate(
       return 'repeat(auto-fit, minmax(0, 1fr))';
     }
   } else {
+    // fit以外の場合
     if (count != null && childSize != null) {
       return `repeat(${count}, ${_unit(childSize)})`;
     } else if (count != null) {

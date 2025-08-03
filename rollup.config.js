@@ -29,9 +29,9 @@ const options = [
       packagejson({
         content: {
           type: 'module',
-          main: `cjs/index${EXTENTION_CJS}`,
-          module: `index${EXTENTION_ESM}`,
-          types: 'index.d.ts',
+          main: './cjs/index.cjs',
+          module: './index.js',
+          types: './index.d.ts',
           exports: {
             '.': {
               types: './index.d.ts',

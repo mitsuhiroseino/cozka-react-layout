@@ -1,5 +1,5 @@
-import _getGridChildSizeStyle from '../_getGridChildSizeStyle';
-import _getGridContainerStyle from '../_getGridContainerStyle';
+import _getGridChildSizeForItemsStyle from '../_getGridChildSizeForItemsStyle';
+import _getGridContainerForItemsStyle from '../_getGridContainerForItemsStyle';
 import { Layout } from '../types';
 import { BalanceLayoutProps } from './types';
 
@@ -16,16 +16,18 @@ const layout: Layout<BalanceLayoutProps> = {
   getContainerStyle: (props) => {
     const { orientation, ...rest } = props;
 
-    return _getGridContainerStyle(orientation, {
+    return _getGridContainerForItemsStyle(orientation, {
       ...rest,
-      placeItems: 'center',
+      layoutFrom: 'items',
     });
   },
 
   getChildStyle: (props) => {
-    const { orientation, vSize, hSize } = props;
+    const { orientation, vAlign, hAlign, vSize, hSize } = props;
 
-    return _getGridChildSizeStyle(orientation, {
+    return _getGridChildSizeForItemsStyle(orientation, {
+      vAlign,
+      hAlign,
       vSize,
       hSize,
     });
