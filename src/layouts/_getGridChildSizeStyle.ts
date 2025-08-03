@@ -4,7 +4,7 @@ import { AlignProps, ChildSizeProps, Orientation } from './types';
 
 type Options = ChildSizeProps & AlignProps;
 
-export default function _getGridChildSizeForContentStyle(
+export default function _getGridChildSizeStyle(
   orientation: Orientation,
   options: Options = {},
 ): CSSProperties {

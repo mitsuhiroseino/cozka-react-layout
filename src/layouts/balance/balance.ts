@@ -1,4 +1,4 @@
-import _getGridChildSizeForItemsStyle from '../_getGridChildSizeForItemsStyle';
+import _getGridChildSizeStyle from '../_getGridChildSizeStyle';
 import _getGridContainerForItemsStyle from '../_getGridContainerForItemsStyle';
 import { Layout } from '../types';
 import { BalanceLayoutProps } from './types';
@@ -25,7 +25,7 @@ const layout: Layout<BalanceLayoutProps> = {
   getChildStyle: (props) => {
     const { orientation, vAlign, hAlign, vSize, hSize } = props;
 
-    return _getGridChildSizeForItemsStyle(orientation, {
+    return _getGridChildSizeStyle(orientation, {
       vAlign,
       hAlign,
       vSize,
