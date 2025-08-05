@@ -1,7 +1,6 @@
 import { AbsoluteLayoutProps } from './layouts/absolute';
 import { BalanceLayoutProps } from './layouts/balance';
 import { BrickLayoutProps } from './layouts/brick';
-import { CenterLayoutProps } from './layouts/center';
 import { FillLayoutProps } from './layouts/fill';
 import { MatrixLayoutProps } from './layouts/matrix';
 import { StackLayoutProps } from './layouts/stack';
@@ -10,7 +9,6 @@ export const LAYOUT_PROPS_KEYS: {
   [K in keyof Required<
     AbsoluteLayoutProps &
       BrickLayoutProps &
-      CenterLayoutProps &
       FillLayoutProps &
       BalanceLayoutProps &
       MatrixLayoutProps &

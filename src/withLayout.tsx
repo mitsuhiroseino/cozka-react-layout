@@ -5,7 +5,7 @@ import transformContent from '@cozka/react-utils/transformContent';
 import { cloneElement, ElementType, forwardRef } from 'react';
 import { LAYOUT_PROPS_KEYS } from './_constants';
 import createLayoutStyle from './createLayoutStyle';
-import { LayoutProps } from './layouts';
+import LayoutProps from './layouts/LayoutProps';
 import { WidthLayoutOptions } from './types';
 
 /**

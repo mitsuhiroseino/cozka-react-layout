@@ -1,5 +1,6 @@
 import * as LAYOUTS from './layouts';
-import { Layout, LayoutProps } from './layouts';
+import { Layout } from './layouts';
+import LayoutProps from './layouts/LayoutProps';
 
 /**
  * レイアウト用のスタイルを作成する

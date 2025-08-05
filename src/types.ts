@@ -1,7 +1,7 @@
 import { StyleProxyOptions } from '@cozka/react-style-proxy';
 import { ElementType, Key, ReactElement } from 'react';
 
-export { LayoutProps } from './layouts/types';
+export type { default as LayoutProps } from './layouts/LayoutProps';
 
 export type WidthLayoutOptions = StyleProxyOptions & {
   /**

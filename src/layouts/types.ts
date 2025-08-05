@@ -1,10 +1,4 @@
 import { CSSProperties, ReactNode } from 'react';
-import { AbsoluteLayoutProps } from './absolute';
-import { BalanceLayoutProps } from './balance';
-import { BrickLayoutProps } from './brick';
-import { FillLayoutProps } from './fill';
-import { MatrixLayoutProps } from './matrix';
-import { StackLayoutProps } from './stack';
 
 /**
  * レイアウト種別
@@ -16,17 +10,6 @@ export type LayoutType =
   | 'fill'
   | 'matrix'
   | 'stack';
-
-/**
- * 各レイアウトのプロパティ
- */
-export type LayoutProps =
-  | AbsoluteLayoutProps
-  | BrickLayoutProps
-  | FillLayoutProps
-  | BalanceLayoutProps
-  | MatrixLayoutProps
-  | StackLayoutProps;
 
 /**
  * レイアウトの共通プロパティ
