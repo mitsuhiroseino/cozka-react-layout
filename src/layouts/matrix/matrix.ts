@@ -18,24 +18,22 @@ const layout: Layout<MatrixLayoutProps> = {
   getContainerStyle: (props) => {
     const {
       orientation,
-      hCount,
       vCount,
-      hTemplate,
+      hCount,
       vTemplate,
+      hTemplate,
       spacing,
-      hSpacing = spacing,
       vSpacing = spacing,
+      hSpacing = spacing,
       vSize,
       hSize,
     } = props;
-    const gridTemplateColumns = _toGridTemplate(hTemplate, hSize, hCount);
-    const gridTemplateRows = _toGridTemplate(vTemplate, vSize, vCount);
 
     return {
       display: 'grid',
       gridAutoFlow: orientation === 'vertical' ? 'column' : 'row',
-      gridTemplateColumns,
-      gridTemplateRows,
+      gridTemplateRows: _getGridTemplate(vTemplate, vSize, vCount),
+      gridTemplateColumns: _getGridTemplate(hTemplate, hSize, hCount),
       columnGap: hSpacing,
       rowGap: vSpacing,
     };
@@ -50,17 +48,27 @@ const layout: Layout<MatrixLayoutProps> = {
 };
 export default layout;
 
-function _toGridTemplate(
+/**
+ * gridTemplateColumns / gridTemplateRowsを生成する
+ * @param gridSetting 任意のグリッドテンプレート設定
+ * @param size 子要素のサイズ
+ * @param count 子要素数
+ * @returns
+ */
+function _getGridTemplate(
   gridSetting: string | {} | (string | number)[],
   size: string | number,
   count: number,
 ) {
   let template;
   if (Array.isArray(gridSetting)) {
+    // 配列の場合、各要素に単位を付与して結合
     template = gridSetting.map(_unit).join(' ');
   } else if (gridSetting) {
+    // 文字列またはオブジェクトの場合、そのまま使用
     template = gridSetting;
   } else if (size != null) {
+    // サイズが指定されている場合
     if (count != null) {
       // 子要素数とサイズが指定されている場合、指定されたサイズの子要素を指定された数だけ配置
       template = `repeat(${count}, ${_unit(size)})`;

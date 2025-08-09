@@ -10,9 +10,9 @@ import { StackLayoutProps } from './stack';
  */
 type LayoutProps =
   | AbsoluteLayoutProps
+  | BalanceLayoutProps
   | BrickLayoutProps
   | FillLayoutProps
-  | BalanceLayoutProps
   | MatrixLayoutProps
   | StackLayoutProps;
 

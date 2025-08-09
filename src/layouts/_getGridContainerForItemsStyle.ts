@@ -11,8 +11,6 @@ import {
   VAlign,
 } from './types';
 
-type LayoutFrom = 'content' | 'items';
-
 type Options = AlignProps &
   ChildCountProps &
   ChildSizeProps &
@@ -42,41 +40,37 @@ export default function _getGridContainerForItemsStyle(
     hSpacing = spacing,
     style,
   } = options;
-  let gridContainerStyle: CSSProperties = {
+  let containerStyle: CSSProperties = {
     display: 'grid',
-    ...ORIENTATION[orientation]({
-      vAlign,
-      hAlign,
-      spacing,
-      vSpacing,
-      hSpacing,
-      style,
-    }),
+    ...ORIENTATION[orientation](options),
   };
 
   if (vAlign) {
-    gridContainerStyle = {
-      ...gridContainerStyle,
+    containerStyle = {
+      ...containerStyle,
       ...VALIGN[vAlign],
     };
   }
   if (hAlign) {
-    gridContainerStyle = {
-      ...gridContainerStyle,
+    containerStyle = {
+      ...containerStyle,
       ...HALIGN[hAlign],
     };
   }
   if (vSpacing != null) {
-    gridContainerStyle.rowGap = vSpacing;
+    containerStyle.rowGap = vSpacing;
   }
   if (hSpacing != null) {
-    gridContainerStyle.columnGap = hSpacing;
+    containerStyle.columnGap = hSpacing;
   }
   if (style) {
-    gridContainerStyle = { ...gridContainerStyle, ...style };
+    containerStyle = {
+      ...containerStyle,
+      ...style,
+    };
   }
 
-  return gridContainerStyle;
+  return containerStyle;
 }
 
 /**

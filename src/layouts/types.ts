@@ -66,13 +66,13 @@ export type AlignProps = {
  */
 export type AdjustProps = {
   /**
-   * 子要素全体の高さの調整
+   * 子要素の高さの調整
    * デフォルトは`none`
    */
   vAdjust?: SizeAdjust;
 
   /**
-   * 子要素全体の幅の調整
+   * 子要素の幅の調整
    * デフォルトは`none`
    */
   hAdjust?: SizeAdjust;

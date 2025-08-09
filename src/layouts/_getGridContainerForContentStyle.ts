@@ -1,26 +1,24 @@
 import { CSSProperties } from 'react';
 import _unit from './_unit';
 import {
+  AdjustProps,
   AlignProps,
   ChildCountProps,
   ChildSizeProps,
   GridTemplateProps,
   HAlign,
   Orientation,
+  SizeAdjust,
   SpacingProps,
   VAlign,
 } from './types';
 
-type Options = AlignProps &
+type Options = AdjustProps &
+  AlignProps &
   ChildCountProps &
   ChildSizeProps &
   GridTemplateProps &
-  SpacingProps & {
-    /**
-     * 上書きするスタイル
-     */
-    style?: CSSProperties;
-  };
+  SpacingProps;
 
 /**
  * display=gridでcontentを軸にしてレイアウトする為のコンテナーのスタイルを取得
@@ -38,7 +36,6 @@ export default function _getGridContainerForContentStyle(
     spacing,
     vSpacing = spacing,
     hSpacing = spacing,
-    style,
   } = options;
   let containerStyle: CSSProperties = {
     display: 'grid',
@@ -46,19 +43,22 @@ export default function _getGridContainerForContentStyle(
   };
 
   if (vAlign) {
-    containerStyle = { ...containerStyle, ...VALIGN[vAlign] };
+    containerStyle = {
+      ...containerStyle,
+      ...VALIGN[vAlign],
+    };
   }
   if (hAlign) {
-    containerStyle = { ...containerStyle, ...HALIGN[hAlign] };
+    containerStyle = {
+      ...containerStyle,
+      ...HALIGN[hAlign],
+    };
   }
   if (vSpacing != null) {
     containerStyle.rowGap = vSpacing;
   }
   if (hSpacing != null) {
     containerStyle.columnGap = hSpacing;
-  }
-  if (style) {
-    containerStyle = { ...containerStyle, ...style };
   }
 
   return containerStyle;
@@ -70,16 +70,18 @@ export default function _getGridContainerForContentStyle(
 const ORIENTATION: {
   [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: ({ hSize, hAlign, hCount }) => {
+  horizontal: ({ hSize, hAlign, hCount, vSize, vAdjust }) => {
     return {
       gridAutoFlow: 'row',
-      gridTemplateColumns: _getGridTemplate(hSize, hAlign, hCount),
+      gridTemplateColumns: _getGridMainAxisTemplate(hSize, hAlign, hCount),
+      gridTemplateRows: _getGridClossAxisTemplate(vSize, vAdjust),
     };
   },
-  vertical: ({ vSize, vAlign, vCount }) => {
+  vertical: ({ vSize, vAlign, vCount, hSize, hAdjust }) => {
     return {
       gridAutoFlow: 'column',
-      gridTemplateRows: _getGridTemplate(vSize, vAlign, vCount),
+      gridTemplateColumns: _getGridClossAxisTemplate(hSize, hAdjust),
+      gridTemplateRows: _getGridMainAxisTemplate(vSize, vAlign, vCount),
     };
   },
 };
@@ -91,7 +93,7 @@ const ORIENTATION: {
  * @param count 子要素の数
  * @returns
  */
-function _getGridTemplate(
+function _getGridMainAxisTemplate(
   childSize: string | number,
   align: HAlign | VAlign,
   count: number,
@@ -103,9 +105,9 @@ function _getGridTemplate(
     } else if (count != null) {
       return `repeat(${count}, 1fr)`;
     } else if (childSize != null) {
-      return `repeat(auto-fit, minmax(${_unit(childSize)}, 1fr))`;
+      return `repeat(auto-fill, minmax(${_unit(childSize)}, 1fr))`;
     } else {
-      return 'repeat(auto-fit, minmax(0, 1fr))';
+      return 'repeat(auto-fill, minmax(0, 1fr))';
     }
   } else {
     // fit以外の場合
@@ -114,9 +116,35 @@ function _getGridTemplate(
     } else if (count != null) {
       return `repeat(${count}, max-content)`;
     } else if (childSize != null) {
-      return `repeat(auto-fit, ${_unit(childSize)})`;
+      return `repeat(auto-fill, ${_unit(childSize)})`;
     } else {
-      return 'repeat(auto-fit, minmax(max-content, 100%))';
+      return 'repeat(auto-fill, minmax(max-content, 100%))';
+    }
+  }
+}
+
+/**
+ * 交差軸方向
+ * @param childSize
+ * @param align
+ * @param count
+ * @returns
+ */
+function _getGridClossAxisTemplate(
+  childSize: string | number,
+  adjust: SizeAdjust,
+) {
+  if (adjust === 'expand') {
+    if (childSize != null) {
+      return `repeat(auto-fit, minmax(${_unit(childSize)}, 1fr))`;
+    } else {
+      return `repeat(auto-fit, minmax(auto, 1fr))`;
+    }
+  } else if (adjust === 'narrow') {
+    if (childSize != null) {
+      return `repeat(auto-fit, minmax(0px, ${_unit(childSize)}))`;
+    } else {
+      return `repeat(auto-fit, minmax(0px, auto))`;
     }
   }
 }

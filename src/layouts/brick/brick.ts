@@ -1,4 +1,4 @@
-import _getGridChildSizeStyle from '../_getGridChildSizeStyle';
+import _getGridChildAxisStyle from '../_getGridChildAxisStyle';
 import _getGridContainerForContentStyle from '../_getGridContainerForContentStyle';
 import { Layout } from '../types';
 import { BrickLayoutProps } from './types';
@@ -22,9 +22,12 @@ const layout: Layout<BrickLayoutProps> = {
     return _getGridContainerForContentStyle(orientation, rest);
   },
   getChildStyle: (props) => {
-    const { orientation, ...rest } = props;
+    const { vAlign, vSize, vAdjust, hAlign, hSize, hAdjust } = props;
 
-    return _getGridChildSizeStyle(orientation, rest);
+    return {
+      ..._getGridChildAxisStyle('content', 'height', vAlign, vSize, vAdjust),
+      ..._getGridChildAxisStyle('content', 'width', hAlign, hSize, hAdjust),
+    };
   },
 };
 export default layout;

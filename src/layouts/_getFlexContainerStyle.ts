@@ -1,44 +1,22 @@
 import { CSSProperties } from 'react';
 import { HAlign, Orientation, Spacing, VAlign } from './types';
 
-type Options = {
-  /**
-   * 横位置
-   */
-  hAlign?: HAlign | false;
-
-  /**
-   * 縦位置
-   */
-  vAlign?: VAlign | false;
-
-  /**
-   * 横余白
-   */
-  hSpacing?: Spacing;
-
-  /**
-   * 縦余白
-   */
-  vSpacing?: Spacing;
-
-  /**
-   * 上書きするスタイル
-   */
-  style?: CSSProperties;
-};
-
 /**
  * display=flexのコンテナーのスタイルを取得
  * @param orientation
- * @param options
+ * @param vAlign
+ * @param hAlign
+ * @param vSpacing
+ * @param hSpacing
  * @returns
  */
 export default function _getFlexContainerStyle(
   orientation: Orientation,
-  options: Options = {},
+  vAlign: VAlign,
+  hAlign: HAlign,
+  vSpacing: Spacing,
+  hSpacing: Spacing,
 ) {
-  const { vAlign, hAlign, vSpacing, hSpacing, style } = options;
   let containerStyle: CSSProperties = {
     display: 'flex',
     ...ORIENTATION[orientation],
@@ -55,9 +33,6 @@ export default function _getFlexContainerStyle(
   }
   if (hSpacing != null) {
     containerStyle.columnGap = hSpacing;
-  }
-  if (style) {
-    containerStyle = { ...containerStyle, ...style };
   }
 
   return containerStyle;

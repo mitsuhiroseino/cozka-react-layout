@@ -1,48 +1,44 @@
 import { CSSProperties } from 'react';
+import _getMinMaxPropNames from './_getMinMaxPropNames';
 import _unit from './_unit';
 import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
 
-const MIN_SIZE = {
-  height: 'minHeight',
-  width: 'minWidth',
-};
-
 /**
  * 主軸方向のスタイル
- * @param type 高さ or 幅
+ * @param axis 高さ or 幅
  * @param align 位置
  * @param size サイズ
  * @param adjust サイズの調整
  * @returns スタイル
  */
-export default function _getMainAxisStyle(
-  type: 'height' | 'width',
+export default function _getFlexMainAxisStyle(
+  axis: 'height' | 'width',
   align: VAlign | HAlign,
   size: ChildSize,
-  adjust: SizeAdjust = 'none',
+  adjust: SizeAdjust,
 ): CSSProperties {
-  const minSize = MIN_SIZE[type];
+  const { min } = _getMinMaxPropNames(axis);
   let style;
   if (align === 'fit') {
     style = {
       flexGrow: 1,
       flexShrink: 1,
       flexBasis: 'auto',
-      [minSize]: 0,
+      [min]: 0,
     };
   } else if (adjust === 'expand') {
     style = {
       flexGrow: 1,
       flexShrink: 0,
       flexBasis: 'auto',
-      [minSize]: 0,
+      [min]: 0,
     };
   } else if (adjust === 'narrow') {
     style = {
       flexGrow: 0,
       flexShrink: 1,
       flexBasis: 'auto',
-      [minSize]: 0,
+      [min]: 0,
     };
   } else {
     // 指定なし
@@ -50,7 +46,7 @@ export default function _getMainAxisStyle(
       flexGrow: 0,
       flexShrink: 0,
       flexBasis: 'auto',
-      [minSize]: 0,
+      [min]: 0,
     };
   }
 
