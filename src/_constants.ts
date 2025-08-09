@@ -1,15 +1,15 @@
-import { AbsoluteLayoutProps } from './layouts/absolute';
 import { BalanceLayoutProps } from './layouts/balance';
 import { BrickLayoutProps } from './layouts/brick';
-import { FillLayoutProps } from './layouts/fill';
+import { ConformLayoutProps } from './layouts/conform';
 import { MatrixLayoutProps } from './layouts/matrix';
+import { PlotLayoutProps } from './layouts/plot';
 import { StackLayoutProps } from './layouts/stack';
 
 export const LAYOUT_PROPS_KEYS: {
   [K in keyof Required<
-    AbsoluteLayoutProps &
+    PlotLayoutProps &
       BrickLayoutProps &
-      FillLayoutProps &
+      ConformLayoutProps &
       BalanceLayoutProps &
       MatrixLayoutProps &
       StackLayoutProps

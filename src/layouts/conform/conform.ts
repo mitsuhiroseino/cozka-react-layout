@@ -1,13 +1,13 @@
 import { Layout } from '../types';
-import { FillLayoutProps } from './types';
+import { ConformLayoutProps } from './types';
 
 /**
- * fillレイアウト
+ * conformレイアウト
  *
  * - 子要素で親要素を満たす
  */
-const layout: Layout<FillLayoutProps> = {
-  name: 'fill',
+const layout: Layout<ConformLayoutProps> = {
+  name: 'conform',
   defaultProps: {
     orientation: 'horizontal',
   },

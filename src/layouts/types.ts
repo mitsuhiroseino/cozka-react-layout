@@ -4,11 +4,11 @@ import { CSSProperties, ReactNode } from 'react';
  * レイアウト種別
  */
 export type LayoutType =
-  | 'absolute'
   | 'balance'
   | 'brick'
-  | 'fill'
+  | 'conform'
   | 'matrix'
+  | 'plot'
   | 'stack';
 
 /**
@@ -67,12 +67,14 @@ export type AlignProps = {
 export type AdjustProps = {
   /**
    * 子要素の高さの調整
+   * vSizeを指定した場合に有効
    * デフォルトは`none`
    */
   vAdjust?: SizeAdjust;
 
   /**
    * 子要素の幅の調整
+   * hSizeを指定した場合に有効
    * デフォルトは`none`
    */
   hAdjust?: SizeAdjust;
@@ -199,17 +201,17 @@ export type CommonAlign =
 export type Orientation = 'horizontal' | 'vertical';
 
 /**
- * 親要素のサイズに子要素のサイズを合わせる方法
+ * 親要素のサイズを基準にした子要素のサイズ調整
  *
  * - `none`
- *   - 足りないとき: そのまま
- *   - 超えるとき: そのまま
+ *   - 親のサイズに足りないとき: そのまま
+ *   - 親のサイズを超えるとき: そのまま
  * - `expand`
- *   - 足りないとき: 伸ばす
- *   - 超えるとき: そのまま
+ *   - 親のサイズに足りないとき: 伸ばす
+ *   - 親のサイズを超えるとき: そのまま
  * - `narrow`
- *   - 足りないとき: そのまま
- *   - 超えるとき: 縮める
+ *   - 親のサイズに足りないとき: そのまま
+ *   - 親のサイズを超えるとき: 縮める
  */
 export type SizeAdjust = 'none' | 'expand' | 'narrow';
 

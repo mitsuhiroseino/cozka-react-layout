@@ -1,5 +1,5 @@
 import { LayoutPropsBase, OrientationProps, SpacingProps } from '../types';
 
-export type FillLayoutProps = LayoutPropsBase<'fill'> &
+export type ConformLayoutProps = LayoutPropsBase<'conform'> &
   OrientationProps &
   SpacingProps;

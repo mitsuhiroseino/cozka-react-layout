@@ -36,15 +36,15 @@ export default function _getGridChildAxisStyle(
   }
 
   if (type === 'content') {
-    // if (adjust === 'narrow') {
-    //   style[min] = '100%';
-    //   style[max] = style[axis];
-    //   style[axis] = '100%';
-    // } else if (adjust === 'expand') {
-    //   style[min] = style[axis];
-    //   style[max] = '100%';
-    //   style[axis] = '100%';
-    // }
+    if (adjust === 'narrow') {
+      style[min] = '100%';
+      style[max] = style[axis];
+      style[axis] = '100%';
+    } else if (adjust === 'expand') {
+      style[min] = style[axis];
+      style[max] = '100%';
+      style[axis] = '100%';
+    }
   } else {
     if (adjust === 'narrow') {
       // 子要素のサイズよりも親要素のサイズが小さくなったら親のサイズに合わせる

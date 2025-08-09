@@ -59,22 +59,22 @@ export default function App() {
 
 | プロパティ    | 型                                                                                      | 説明                                                           |
 | ------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| `layout`      | `'absolute'` \|`'balance'` \|`'brick'` \|`'center'` \|`'fill'` \|`'matrix'` \|`'stack'` | レイアウトの種類。値によって設定可能なプロパティが変化します。 |
+| `layout`      | `'balance'` \|`'brick'` \|`'center'` \|`'conform'` \|`'matrix'` \| `'plot'` \|`'stack'` | レイアウトの種類。値によって設定可能なプロパティが変化します。 |
 | `scroll?`     | `boolean`                                                                               | スクロールの有無（デフォルト: `false`）                        |
 | `childStyle?` | `CSSProperties`                                                                         | 子要素に適用するスタイル                                       |
 | `children`    | `ReactNode`                                                                             | 子要素。                                                       |
 
 ### 各レイアウトのプロパティ
 
-#### `absolute`
+#### `plot`
 
 各子要素に設定されたスタイル(`top`,`bottom`,`left`,`right`)に従い、子要素を絶対位置で配置します。
 
-| プロパティ | 型           | 説明         |
-| ---------- | ------------ | ------------ |
-| `layout`   | `'absolute'` |              |
-| `vSize?`   | `number`     | 子要素の高さ |
-| `hSize?`   | `number`     | 子要素の幅   |
+| プロパティ | 型       | 説明         |
+| ---------- | -------- | ------------ |
+| `layout`   | `'plot'` |              |
+| `vSize?`   | `number` | 子要素の高さ |
+| `hSize?`   | `number` | 子要素の幅   |
 
 #### `balance`
 
@@ -111,13 +111,13 @@ export default function App() {
 | `vSpacing?`   | `number`                  | 子要素の上下の余白                             |
 | `hSpacing?`   | `number`                  | 子要素の左右の余白                             |
 
-#### `fill`
+#### `conform`
 
 子要素を親要素の高さと幅に合わせます。
 
 | プロパティ    | 型                        | 説明                                           |
 | ------------- | ------------------------- | ---------------------------------------------- |
-| `layout`      | `'fill'`                  |                                                |
+| `layout`      | `'conform'`               |                                                |
 | `orientation` | [整列方向](#整列方向)参照 | 子要素を並べる方向（デフォルト: `horizontal`） |
 | `spacing?`    | `number`                  | 要素間の余白                                   |
 | `vSpacing?`   | `number`                  | 垂直方向の余白                                 |

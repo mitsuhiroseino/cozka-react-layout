@@ -1,18 +1,18 @@
-import { AbsoluteLayoutProps } from './absolute';
 import { BalanceLayoutProps } from './balance';
 import { BrickLayoutProps } from './brick';
-import { FillLayoutProps } from './fill';
+import { ConformLayoutProps } from './conform';
 import { MatrixLayoutProps } from './matrix';
+import { PlotLayoutProps } from './plot';
 import { StackLayoutProps } from './stack';
 
 /**
  * 全レイアウトのプロパティ
  */
 type LayoutProps =
-  | AbsoluteLayoutProps
+  | PlotLayoutProps
   | BalanceLayoutProps
   | BrickLayoutProps
-  | FillLayoutProps
+  | ConformLayoutProps
   | MatrixLayoutProps
   | StackLayoutProps;
 
