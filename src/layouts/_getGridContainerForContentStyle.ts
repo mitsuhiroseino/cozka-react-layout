@@ -33,8 +33,6 @@ export default function _getGridContainerForContentStyle(
   const {
     vAlign,
     hAlign,
-    vAdjust,
-    hAdjust,
     spacing,
     vSpacing = spacing,
     hSpacing = spacing,
@@ -54,16 +52,6 @@ export default function _getGridContainerForContentStyle(
     containerStyle = {
       ...containerStyle,
       ...HALIGN[hAlign],
-    };
-  }
-  if (vAdjust) {
-    containerStyle = {
-      ...containerStyle,
-    };
-  }
-  if (hAdjust) {
-    containerStyle = {
-      ...containerStyle,
     };
   }
   if (vSpacing != null) {
