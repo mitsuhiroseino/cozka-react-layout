@@ -22,11 +22,12 @@ const layout: Layout<BrickLayoutProps> = {
     return _getGridContainerForContentStyle(orientation, rest);
   },
   getChildStyle: (props) => {
-    const { vAlign, vSize, vAdjust, hAlign, hSize, hAdjust } = props;
+    const { orientation, vAlign, vSize, vAdjust, hAlign, hSize, hAdjust } =
+      props;
 
     return {
-      ..._getGridChildAxisStyle('content', 'height', vAlign, vSize, vAdjust),
-      ..._getGridChildAxisStyle('content', 'width', hAlign, hSize, hAdjust),
+      ..._getGridChildAxisStyle(orientation, 'height', vAlign, vSize, vAdjust),
+      ..._getGridChildAxisStyle(orientation, 'width', hAlign, hSize, hAdjust),
     };
   },
 };
