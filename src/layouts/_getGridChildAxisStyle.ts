@@ -13,7 +13,7 @@ import { ChildSize, HAlign, Orientation, SizeAdjust, VAlign } from './types';
  * @returns スタイル
  */
 export default function _getGridChildAxisStyle(
-  orientation: Orientation,
+  type: 'content' | 'items',
   axis: 'height' | 'width',
   align: HAlign | VAlign,
   size: ChildSize,
@@ -35,11 +35,7 @@ export default function _getGridChildAxisStyle(
     style[min] = 0;
   }
 
-  if (
-    (orientation === 'horizontal' && axis === 'height') ||
-    (orientation === 'vertical' && axis === 'width')
-  ) {
-    // 交差軸方向
+  if (type === 'content') {
     if (adjust === 'narrow') {
       // 子要素のサイズよりも親要素のサイズが小さくなったら親のサイズに合わせる
       style[min] = '100%';
@@ -52,16 +48,13 @@ export default function _getGridChildAxisStyle(
       style[axis] = '100%';
     }
   } else {
-    // 主軸方向
     if (adjust === 'narrow') {
       // 子要素のサイズよりも親要素のサイズが小さくなったら親のサイズに合わせる
-      style[min] = '100%';
       style[max] = style[axis];
       style[axis] = '100%';
     } else if (adjust === 'expand') {
       // 子要素のサイズよりも親要素のサイズが大きくなったら親のサイズに合わせる
       style[min] = style[axis];
-      style[max] = '100%';
       style[axis] = '100%';
     }
   }

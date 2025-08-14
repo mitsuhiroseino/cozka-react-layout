@@ -70,28 +70,18 @@ export default function _getGridContainerForContentStyle(
 const ORIENTATION: {
   [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: ({ hSize, hAlign, hAdjust, hCount, vSize, vAdjust }) => {
+  horizontal: ({ hSize, hAlign, hCount, vSize, vAdjust }) => {
     return {
       gridAutoFlow: 'row',
-      gridTemplateColumns: _getGridMainAxisTemplate(
-        hSize,
-        hAlign,
-        hAdjust,
-        hCount,
-      ),
+      gridTemplateColumns: _getGridMainAxisTemplate(hSize, hAlign, hCount),
       gridAutoRows: _getGridClossAxisAuto(vSize, vAdjust),
     };
   },
-  vertical: ({ vSize, vAlign, vAdjust, vCount, hSize, hAdjust }) => {
+  vertical: ({ vSize, vAlign, vCount, hSize, hAdjust }) => {
     return {
       gridAutoFlow: 'column',
       gridAutoColumns: _getGridClossAxisAuto(hSize, hAdjust),
-      gridTemplateRows: _getGridMainAxisTemplate(
-        vSize,
-        vAlign,
-        vAdjust,
-        vCount,
-      ),
+      gridTemplateRows: _getGridMainAxisTemplate(vSize, vAlign, vCount),
     };
   },
 };
@@ -106,10 +96,9 @@ const ORIENTATION: {
 function _getGridMainAxisTemplate(
   childSize: string | number,
   align: HAlign | VAlign,
-  adjust: SizeAdjust,
   count: number,
 ) {
-  if (align === 'fit' || adjust === 'expand') {
+  if (align === 'fit') {
     // fitの場合
     if (count != null && childSize != null) {
       return `repeat(${count}, minmax(${_unit(childSize)}, 1fr))`;
