@@ -2,8 +2,8 @@ import proxyStyle from '@cozka/react-style-proxy';
 import ensureComponent from '@cozka/react-utils/ensureComponent';
 import transformContent from '@cozka/react-utils/transformContent';
 import { cloneElement, createElement, ElementType, forwardRef } from 'react';
-import { LAYOUT_PROPS_KEYS } from './_constants';
 import createLayoutStyle from './createLayoutStyle';
+import { LAYOUT_PROPS_KEYS } from './layouts/_constants';
 import LayoutProps from './layouts/LayoutProps';
 import { WidthLayoutOptions } from './types';
 

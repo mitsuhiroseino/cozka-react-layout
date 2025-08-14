@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import _getMinMaxPropNames from './_getMinMaxPropNames';
+import { MIN_MAX_PROPS } from './_constants';
 import _unit from './_unit';
 import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
 
@@ -17,7 +17,7 @@ export default function _getFlexMainAxisStyle(
   size: ChildSize,
   adjust: SizeAdjust,
 ): CSSProperties {
-  const { min } = _getMinMaxPropNames(axis);
+  const { min } = MIN_MAX_PROPS[axis];
   let style;
   if (align === 'fit') {
     style = {

@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import _getMinMaxPropNames from './_getMinMaxPropNames';
+import { MIN_MAX_PROPS } from './_constants';
 import _unit from './_unit';
 import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
 
@@ -19,7 +19,7 @@ export default function _getGridChildAxisStyle(
   size: ChildSize,
   adjust: SizeAdjust,
 ): CSSProperties {
-  const { min, max } = _getMinMaxPropNames(axis);
+  const { min, max } = MIN_MAX_PROPS[axis];
 
   const style: CSSProperties = {};
   if (align === 'fit') {
@@ -37,10 +37,12 @@ export default function _getGridChildAxisStyle(
 
   if (type === 'content') {
     if (adjust === 'narrow') {
+      // 子要素のサイズよりも親要素のサイズが小さくなったら親のサイズに合わせる
       style[min] = '100%';
       style[max] = style[axis];
       style[axis] = '100%';
     } else if (adjust === 'expand') {
+      // 子要素のサイズよりも親要素のサイズが大きくなったら親のサイズに合わせる
       style[min] = style[axis];
       style[max] = '100%';
       style[axis] = '100%';
@@ -52,7 +54,8 @@ export default function _getGridChildAxisStyle(
       style[axis] = '100%';
     } else if (adjust === 'expand') {
       // 子要素のサイズよりも親要素のサイズが大きくなったら親のサイズに合わせる
-      style[min] = '100%';
+      style[min] = style[axis];
+      style[axis] = '100%';
     }
   }
 

@@ -33,6 +33,8 @@ export default function _getGridContainerForContentStyle(
   const {
     vAlign,
     hAlign,
+    vAdjust,
+    hAdjust,
     spacing,
     vSpacing = spacing,
     hSpacing = spacing,
@@ -52,6 +54,16 @@ export default function _getGridContainerForContentStyle(
     containerStyle = {
       ...containerStyle,
       ...HALIGN[hAlign],
+    };
+  }
+  if (vAdjust) {
+    containerStyle = {
+      ...containerStyle,
+    };
+  }
+  if (hAdjust) {
+    containerStyle = {
+      ...containerStyle,
     };
   }
   if (vSpacing != null) {
@@ -74,13 +86,13 @@ const ORIENTATION: {
     return {
       gridAutoFlow: 'row',
       gridTemplateColumns: _getGridMainAxisTemplate(hSize, hAlign, hCount),
-      gridTemplateRows: _getGridClossAxisTemplate(vSize, vAdjust),
+      gridAutoRows: _getGridClossAxisAuto(vSize, vAdjust),
     };
   },
   vertical: ({ vSize, vAlign, vCount, hSize, hAdjust }) => {
     return {
       gridAutoFlow: 'column',
-      gridTemplateColumns: _getGridClossAxisTemplate(hSize, hAdjust),
+      gridAutoColumns: _getGridClossAxisAuto(hSize, hAdjust),
       gridTemplateRows: _getGridMainAxisTemplate(vSize, vAlign, vCount),
     };
   },
@@ -130,21 +142,18 @@ function _getGridMainAxisTemplate(
  * @param count
  * @returns
  */
-function _getGridClossAxisTemplate(
-  childSize: string | number,
-  adjust: SizeAdjust,
-) {
+function _getGridClossAxisAuto(childSize: string | number, adjust: SizeAdjust) {
   if (adjust === 'expand') {
     if (childSize != null) {
-      return `repeat(auto-fit, minmax(${_unit(childSize)}, 1fr))`;
+      return `minmax(${_unit(childSize)}, 100%)`;
     } else {
-      return `repeat(auto-fit, minmax(auto, 1fr))`;
+      return `minmax(auto, 100%)`;
     }
   } else if (adjust === 'narrow') {
     if (childSize != null) {
-      return `repeat(auto-fit, minmax(0px, ${_unit(childSize)}))`;
+      return `minmax(0, ${_unit(childSize)})`;
     } else {
-      return `repeat(auto-fit, minmax(0px, auto))`;
+      return `minmax(0, auto)`;
     }
   }
 }

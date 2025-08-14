@@ -1,9 +1,9 @@
-import { BalanceLayoutProps } from './layouts/balance';
-import { BrickLayoutProps } from './layouts/brick';
-import { ConformLayoutProps } from './layouts/conform';
-import { MatrixLayoutProps } from './layouts/matrix';
-import { PlotLayoutProps } from './layouts/plot';
-import { StackLayoutProps } from './layouts/stack';
+import { BalanceLayoutProps } from './balance';
+import { BrickLayoutProps } from './brick';
+import { ConformLayoutProps } from './conform';
+import { MatrixLayoutProps } from './matrix';
+import { PlotLayoutProps } from './plot';
+import { StackLayoutProps } from './stack';
 
 export const LAYOUT_PROPS_KEYS: {
   [K in keyof Required<
@@ -33,4 +33,15 @@ export const LAYOUT_PROPS_KEYS: {
   vCount: 1,
   vSpacing: 1,
   vTemplate: 1,
+};
+
+export const MIN_MAX_PROPS = {
+  height: {
+    min: 'minHeight',
+    max: 'maxHeight',
+  },
+  width: {
+    min: 'minWidth',
+    max: 'maxWidth',
+  },
 };
