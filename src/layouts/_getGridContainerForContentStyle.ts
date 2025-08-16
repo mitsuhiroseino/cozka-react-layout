@@ -2,15 +2,16 @@ import { CSSProperties } from 'react';
 import _unit from './_unit';
 import {
   AdjustProps,
+  AlignHorizontal,
   AlignProps,
+  AlignVertical,
   ChildCountProps,
+  ChildSize,
   ChildSizeProps,
   GridTemplateProps,
-  HAlign,
+  LayoutAdjust,
   Orientation,
-  SizeAdjust,
   SpacingProps,
-  VAlign,
 } from './types';
 
 type Options = AdjustProps &
@@ -31,34 +32,34 @@ export default function _getGridContainerForContentStyle(
   options: Options = {},
 ) {
   const {
-    hAlign,
-    vAlign,
-    spacing,
-    hSpacing = spacing,
-    vSpacing = spacing,
+    alignHorizontal,
+    alignVertical,
+    spacingAll,
+    spacingHorizontal = spacingAll,
+    spacingVertical = spacingAll,
   } = options;
   let containerStyle: CSSProperties = {
     display: 'grid',
     ...ORIENTATION[orientation](options),
   };
 
-  if (hAlign) {
+  if (alignHorizontal) {
     containerStyle = {
       ...containerStyle,
-      ...HALIGN[hAlign],
+      ...HALIGN[alignHorizontal],
     };
   }
-  if (vAlign) {
+  if (alignVertical) {
     containerStyle = {
       ...containerStyle,
-      ...VALIGN[vAlign],
+      ...VALIGN[alignVertical],
     };
   }
-  if (hSpacing != null) {
-    containerStyle.columnGap = hSpacing;
+  if (spacingHorizontal != null) {
+    containerStyle.columnGap = spacingHorizontal;
   }
-  if (vSpacing != null) {
-    containerStyle.rowGap = vSpacing;
+  if (spacingVertical != null) {
+    containerStyle.rowGap = spacingVertical;
   }
 
   return containerStyle;
@@ -70,18 +71,38 @@ export default function _getGridContainerForContentStyle(
 const ORIENTATION: {
   [orientation in Orientation]: (options: Options) => CSSProperties;
 } = {
-  horizontal: ({ hSize, hAlign, hCount, vSize, vAdjust }) => {
+  horizontal: ({
+    sizeHorizontal,
+    alignHorizontal,
+    countHorizontal,
+    sizeVertical,
+    adjustVertical,
+  }) => {
     return {
       gridAutoFlow: 'row',
-      gridTemplateColumns: _getGridMainAxisTemplate(hSize, hAlign, hCount),
-      gridAutoRows: _getGridClossAxisAuto(vSize, vAdjust),
+      gridTemplateColumns: _getGridMainAxisTemplate(
+        sizeHorizontal,
+        alignHorizontal,
+        countHorizontal,
+      ),
+      gridAutoRows: _getGridClossAxisAuto(sizeVertical, adjustVertical),
     };
   },
-  vertical: ({ vSize, vAlign, vCount, hSize, hAdjust }) => {
+  vertical: ({
+    sizeVertical,
+    alignVertical,
+    countVertical,
+    sizeHorizontal,
+    adjustHorizontal,
+  }) => {
     return {
       gridAutoFlow: 'column',
-      gridAutoColumns: _getGridClossAxisAuto(hSize, hAdjust),
-      gridTemplateRows: _getGridMainAxisTemplate(vSize, vAlign, vCount),
+      gridAutoColumns: _getGridClossAxisAuto(sizeHorizontal, adjustHorizontal),
+      gridTemplateRows: _getGridMainAxisTemplate(
+        sizeVertical,
+        alignVertical,
+        countVertical,
+      ),
     };
   },
 };
@@ -94,8 +115,8 @@ const ORIENTATION: {
  * @returns
  */
 function _getGridMainAxisTemplate(
-  childSize: string | number,
-  align: HAlign | VAlign,
+  childSize: ChildSize,
+  align: AlignHorizontal | AlignVertical,
   count: number,
 ) {
   if (align === 'fit') {
@@ -130,7 +151,7 @@ function _getGridMainAxisTemplate(
  * @param count
  * @returns
  */
-function _getGridClossAxisAuto(childSize: string | number, adjust: SizeAdjust) {
+function _getGridClossAxisAuto(childSize: ChildSize, adjust: LayoutAdjust) {
   if (adjust === 'expand') {
     if (childSize != null) {
       return `minmax(${_unit(childSize)}, 100%)`;
@@ -150,7 +171,7 @@ function _getGridClossAxisAuto(childSize: string | number, adjust: SizeAdjust) {
  * 「横位置」のためのスタイル
  */
 const HALIGN: {
-  [hAlign in HAlign]?: CSSProperties;
+  [alignHorizontal in AlignHorizontal]?: CSSProperties;
 } = {
   left: {
     justifyContent: 'flex-start',
@@ -179,7 +200,7 @@ const HALIGN: {
  * 「縦位置」のためのスタイル
  */
 const VALIGN: {
-  [vAlign in VAlign]?: CSSProperties;
+  [alignVertical in AlignVertical]?: CSSProperties;
 } = {
   top: {
     alignContent: 'flex-start',

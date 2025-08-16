@@ -13,8 +13,8 @@ const layout: Layout<BrickLayoutProps> = {
   name: 'brick',
   defaultProps: {
     orientation: 'horizontal',
-    hAlign: 'left',
-    vAlign: 'top',
+    alignHorizontal: 'left',
+    alignVertical: 'top',
   },
   getContainerStyle: (props) => {
     const { orientation, ...rest } = props;
@@ -22,11 +22,30 @@ const layout: Layout<BrickLayoutProps> = {
     return _getGridContainerForContentStyle(orientation, rest);
   },
   getChildStyle: (props) => {
-    const { hAlign, hSize, hAdjust, vAlign, vSize, vAdjust } = props;
+    const {
+      alignHorizontal,
+      sizeHorizontal,
+      adjustHorizontal,
+      alignVertical,
+      sizeVertical,
+      adjustVertical,
+    } = props;
 
     return {
-      ..._getGridChildAxisStyle('content', 'width', hAlign, hSize, hAdjust),
-      ..._getGridChildAxisStyle('content', 'height', vAlign, vSize, vAdjust),
+      ..._getGridChildAxisStyle(
+        'content',
+        'width',
+        alignHorizontal,
+        sizeHorizontal,
+        adjustHorizontal,
+      ),
+      ..._getGridChildAxisStyle(
+        'content',
+        'height',
+        alignVertical,
+        sizeVertical,
+        adjustVertical,
+      ),
     };
   },
 };

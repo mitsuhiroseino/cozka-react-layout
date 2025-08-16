@@ -53,12 +53,12 @@ export type AlignProps = {
   /**
    * 子要素の横位置
    */
-  hAlign?: HAlign;
+  alignHorizontal?: AlignHorizontal;
 
   /**
    * 子要素の縦位置
    */
-  vAlign?: VAlign;
+  alignVertical?: AlignVertical;
 };
 
 /**
@@ -67,17 +67,17 @@ export type AlignProps = {
 export type AdjustProps = {
   /**
    * 子要素の幅の調整
-   * hSizeを指定した場合に有効
+   * sizeHorizontalを指定した場合に有効
    * デフォルトは`none`
    */
-  hAdjust?: SizeAdjust;
+  adjustHorizontal?: LayoutAdjust;
 
   /**
    * 子要素の高さの調整
-   * vSizeを指定した場合に有効
+   * sizeVerticalを指定した場合に有効
    * デフォルトは`none`
    */
-  vAdjust?: SizeAdjust;
+  adjustVertical?: LayoutAdjust;
 };
 
 /**
@@ -87,12 +87,12 @@ export type ChildSizeProps = {
   /**
    * 子要素の高さ
    */
-  hSize?: ChildSize;
+  sizeHorizontal?: ChildSize;
 
   /**
    * 子要素の高さ
    */
-  vSize?: ChildSize;
+  sizeVertical?: ChildSize;
 };
 
 /**
@@ -102,12 +102,12 @@ export type ChildCountProps = {
   /**
    * 横方向の要素数
    */
-  hCount?: number;
+  countHorizontal?: number;
 
   /**
    * 縦方向の要素数
    */
-  vCount?: number;
+  countVertical?: number;
 };
 
 /**
@@ -116,15 +116,15 @@ export type ChildCountProps = {
 export type GridTemplateProps = {
   /**
    * 横方向の設定
-   * このプロパティが設定されている場合、hCount,hSizeは無効
+   * このプロパティが設定されている場合、countHorizontal,sizeHorizontalは無効
    */
-  hTemplate?: GridTemplate | (string | number)[];
+  templateHorizontal?: GridTemplate | (string | number)[];
 
   /**
    * 縦方向の設定
-   * このプロパティが設定されている場合、vCount,vSizeは無効
+   * このプロパティが設定されている場合、countVertical,sizeVerticalは無効
    */
-  vTemplate?: GridTemplate | (string | number)[];
+  templateVertical?: GridTemplate | (string | number)[];
 };
 
 /**
@@ -134,17 +134,17 @@ export type SpacingProps = {
   /**
    * 余白
    */
-  spacing?: Spacing;
+  spacingAll?: ChildSpacing;
 
   /**
    * 横方向の余白
    */
-  hSpacing?: Spacing;
+  spacingHorizontal?: ChildSpacing;
 
   /**
    * 縦方向の余白
    */
-  vSpacing?: Spacing;
+  spacingVertical?: ChildSpacing;
 };
 
 /**
@@ -177,14 +177,19 @@ export type Layout<P = {}> = {
 };
 
 /**
+ * 並べる方向
+ */
+export type Orientation = 'horizontal' | 'vertical';
+
+/**
  * 横位置
  */
-export type HAlign = 'left' | 'center' | 'right' | CommonAlign;
+export type AlignHorizontal = 'left' | 'center' | 'right' | CommonAlign;
 
 /**
  * 縦位置
  */
-export type VAlign = 'top' | 'middle' | 'bottom' | CommonAlign;
+export type AlignVertical = 'top' | 'middle' | 'bottom' | CommonAlign;
 
 /**
  * 縦横共通の位置
@@ -196,9 +201,9 @@ export type CommonAlign =
   | 'fit';
 
 /**
- * 並べる方向
+ * 子要素の高さ or 幅
  */
-export type Orientation = 'horizontal' | 'vertical';
+export type ChildSize = CSSProperties['flexBasis'];
 
 /**
  * 親要素のサイズを基準にした子要素のサイズ調整
@@ -213,17 +218,12 @@ export type Orientation = 'horizontal' | 'vertical';
  *   - 親のサイズに足りないとき: そのまま
  *   - 親のサイズを超えるとき: 縮める
  */
-export type SizeAdjust = 'none' | 'expand' | 'narrow';
-
-/**
- * 子要素の高さ or 幅
- */
-export type ChildSize = CSSProperties['flexBasis'];
+export type LayoutAdjust = 'none' | 'expand' | 'narrow';
 
 /**
  * 余白
  */
-export type Spacing = CSSProperties['gap'];
+export type ChildSpacing = CSSProperties['gap'];
 
 /**
  * gridのテンプレート

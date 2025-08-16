@@ -1,38 +1,49 @@
 import { CSSProperties } from 'react';
-import { HAlign, Orientation, Spacing, VAlign } from './types';
+import {
+  AlignHorizontal,
+  AlignVertical,
+  ChildSpacing,
+  Orientation,
+} from './types';
 
 /**
  * display=flexのコンテナーのスタイルを取得
  * @param orientation
- * @param hAlign
- * @param vAlign
- * @param hSpacing
- * @param vSpacing
+ * @param alignHorizontal
+ * @param alignVertical
+ * @param spacingHorizontal
+ * @param spacingVertical
  * @returns
  */
 export default function _getFlexContainerStyle(
   orientation: Orientation,
-  hAlign: HAlign,
-  vAlign: VAlign,
-  hSpacing: Spacing,
-  vSpacing: Spacing,
+  alignHorizontal: AlignHorizontal,
+  alignVertical: AlignVertical,
+  spacingHorizontal: ChildSpacing,
+  spacingVertical: ChildSpacing,
 ) {
   let containerStyle: CSSProperties = {
     display: 'flex',
     ...ORIENTATION[orientation],
   };
 
-  if (hAlign) {
-    containerStyle = { ...containerStyle, ...HALIGN[orientation][hAlign] };
+  if (alignHorizontal) {
+    containerStyle = {
+      ...containerStyle,
+      ...HALIGN[orientation][alignHorizontal],
+    };
   }
-  if (vAlign) {
-    containerStyle = { ...containerStyle, ...VALIGN[orientation][vAlign] };
+  if (alignVertical) {
+    containerStyle = {
+      ...containerStyle,
+      ...VALIGN[orientation][alignVertical],
+    };
   }
-  if (hSpacing != null) {
-    containerStyle.columnGap = hSpacing;
+  if (spacingHorizontal != null) {
+    containerStyle.columnGap = spacingHorizontal;
   }
-  if (vSpacing != null) {
-    containerStyle.rowGap = vSpacing;
+  if (spacingVertical != null) {
+    containerStyle.rowGap = spacingVertical;
   }
 
   return containerStyle;
@@ -57,7 +68,7 @@ const ORIENTATION: {
  */
 const HALIGN: {
   [orientation in Orientation]: {
-    [hAlign in HAlign]?: CSSProperties;
+    [alignHorizontal in AlignHorizontal]?: CSSProperties;
   };
 } = {
   // 「横向き＆横位置」のためのスタイル
@@ -115,7 +126,7 @@ const HALIGN: {
  */
 const VALIGN: {
   [orientation in Orientation]: {
-    [vAlign in VAlign]?: CSSProperties;
+    [alignVertical in AlignVertical]?: CSSProperties;
   };
 } = {
   // 「横向き＆縦位置」のためのスタイル

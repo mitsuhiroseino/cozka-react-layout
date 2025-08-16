@@ -18,31 +18,39 @@ const layout: Layout<MatrixLayoutProps> = {
   getContainerStyle: (props) => {
     const {
       orientation,
-      hCount,
-      vCount,
-      hTemplate,
-      vTemplate,
-      spacing,
-      hSpacing = spacing,
-      vSpacing = spacing,
-      hSize,
-      vSize,
+      countHorizontal,
+      countVertical,
+      templateHorizontal,
+      templateVertical,
+      spacingAll,
+      spacingHorizontal = spacingAll,
+      spacingVertical = spacingAll,
+      sizeHorizontal,
+      sizeVertical,
     } = props;
 
     return {
       display: 'grid',
       gridAutoFlow: orientation === 'horizontal' ? 'row' : 'column',
-      gridTemplateColumns: _getGridTemplate(hTemplate, hSize, hCount),
-      gridTemplateRows: _getGridTemplate(vTemplate, vSize, vCount),
-      columnGap: hSpacing,
-      rowGap: vSpacing,
+      gridTemplateColumns: _getGridTemplate(
+        templateHorizontal,
+        sizeHorizontal,
+        countHorizontal,
+      ),
+      gridTemplateRows: _getGridTemplate(
+        templateVertical,
+        sizeVertical,
+        countVertical,
+      ),
+      columnGap: spacingHorizontal,
+      rowGap: spacingVertical,
     };
   },
   getChildStyle: (props) => {
-    const { hSize, vSize } = props;
+    const { sizeHorizontal, sizeVertical } = props;
     return {
-      width: hSize,
-      height: vSize,
+      width: sizeHorizontal,
+      height: sizeVertical,
     };
   },
 };

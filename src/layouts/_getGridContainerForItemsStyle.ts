@@ -1,14 +1,14 @@
 import { CSSProperties } from 'react';
 import _unit from './_unit';
 import {
+  AlignHorizontal,
   AlignProps,
+  AlignVertical,
   ChildCountProps,
   ChildSizeProps,
   GridTemplateProps,
-  HAlign,
   Orientation,
   SpacingProps,
-  VAlign,
 } from './types';
 
 type Options = AlignProps &
@@ -28,34 +28,34 @@ export default function _getGridContainerForItemsStyle(
   options: Options = {},
 ) {
   const {
-    hAlign,
-    vAlign,
-    spacing,
-    hSpacing = spacing,
-    vSpacing = spacing,
+    alignHorizontal,
+    alignVertical,
+    spacingAll,
+    spacingHorizontal = spacingAll,
+    spacingVertical = spacingAll,
   } = options;
   let containerStyle: CSSProperties = {
     display: 'grid',
     ...ORIENTATION[orientation](options),
   };
 
-  if (hAlign) {
+  if (alignHorizontal) {
     containerStyle = {
       ...containerStyle,
-      ...HALIGN[hAlign],
+      ...HALIGN[alignHorizontal],
     };
   }
-  if (vAlign) {
+  if (alignVertical) {
     containerStyle = {
       ...containerStyle,
-      ...VALIGN[vAlign],
+      ...VALIGN[alignVertical],
     };
   }
-  if (hSpacing != null) {
-    containerStyle.columnGap = hSpacing;
+  if (spacingHorizontal != null) {
+    containerStyle.columnGap = spacingHorizontal;
   }
-  if (vSpacing != null) {
-    containerStyle.rowGap = vSpacing;
+  if (spacingVertical != null) {
+    containerStyle.rowGap = spacingVertical;
   }
 
   return containerStyle;
@@ -83,7 +83,7 @@ const ORIENTATION: {
  * 「横位置」のためのスタイル
  */
 const HALIGN: {
-  [hAlign in HAlign]?: CSSProperties;
+  [alignHorizontal in AlignHorizontal]?: CSSProperties;
 } = {
   left: {
     justifyItems: 'flex-start',
@@ -112,7 +112,7 @@ const HALIGN: {
  * 「縦位置」のためのスタイル
  */
 const VALIGN: {
-  [vAlign in VAlign]: CSSProperties;
+  [alignVertical in AlignVertical]: CSSProperties;
 } = {
   top: {
     alignItems: 'flex-start',

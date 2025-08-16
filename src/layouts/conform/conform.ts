@@ -14,14 +14,14 @@ const layout: Layout<ConformLayoutProps> = {
   getContainerStyle: (props) => {
     const {
       orientation,
-      spacing,
-      hSpacing = spacing,
-      vSpacing = spacing,
+      spacingAll,
+      spacingHorizontal = spacingAll,
+      spacingVertical = spacingAll,
     } = props;
     return {
       display: 'grid',
-      rowGap: vSpacing,
-      columnGap: hSpacing,
+      rowGap: spacingVertical,
+      columnGap: spacingHorizontal,
       ...(orientation === 'horizontal'
         ? {
             gridAutoFlow: 'column',

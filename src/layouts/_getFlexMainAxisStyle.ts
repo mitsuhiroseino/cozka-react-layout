@@ -1,7 +1,12 @@
 import { CSSProperties } from 'react';
 import { MIN_MAX_PROPS } from './_constants';
 import _unit from './_unit';
-import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
+import {
+  AlignHorizontal,
+  AlignVertical,
+  ChildSize,
+  LayoutAdjust,
+} from './types';
 
 /**
  * 主軸方向のスタイル
@@ -13,9 +18,9 @@ import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
  */
 export default function _getFlexMainAxisStyle(
   axis: 'height' | 'width',
-  align: VAlign | HAlign,
+  align: AlignVertical | AlignHorizontal,
   size: ChildSize,
-  adjust: SizeAdjust,
+  adjust: LayoutAdjust,
 ): CSSProperties {
   const { min } = MIN_MAX_PROPS[axis];
   let style;

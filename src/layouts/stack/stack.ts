@@ -13,41 +13,68 @@ const layout: Layout<StackLayoutProps> = {
   name: 'stack',
   defaultProps: {
     orientation: 'horizontal',
-    hAlign: 'left',
-    vAlign: 'top',
+    alignHorizontal: 'left',
+    alignVertical: 'top',
   },
   getContainerStyle: (props) => {
     const {
       orientation,
-      hAlign,
-      vAlign,
-      spacing,
-      hSpacing = spacing,
-      vSpacing = spacing,
+      alignHorizontal,
+      alignVertical,
+      spacingAll,
+      spacingHorizontal = spacingAll,
+      spacingVertical = spacingAll,
     } = props;
     return _getFlexContainerStyle(
       orientation,
-      hAlign,
-      vAlign,
-      hSpacing,
-      vSpacing,
+      alignHorizontal,
+      alignVertical,
+      spacingHorizontal,
+      spacingVertical,
     );
   },
   getChildStyle: (props) => {
-    const { orientation, hAlign, hSize, hAdjust, vAlign, vSize, vAdjust } =
-      props;
+    const {
+      orientation,
+      alignHorizontal,
+      sizeHorizontal,
+      adjustHorizontal,
+      alignVertical,
+      sizeVertical,
+      adjustVertical,
+    } = props;
 
     if (orientation === 'horizontal') {
       // 横並びの時
       return {
-        ..._getFlexMainAxisStyle('width', hAlign, hSize, hAdjust),
-        ..._getFlexClossAxisStyle('height', vAlign, vSize, vAdjust),
+        ..._getFlexMainAxisStyle(
+          'width',
+          alignHorizontal,
+          sizeHorizontal,
+          adjustHorizontal,
+        ),
+        ..._getFlexClossAxisStyle(
+          'height',
+          alignVertical,
+          sizeVertical,
+          adjustVertical,
+        ),
       };
     } else {
       // 縦並びの時
       return {
-        ..._getFlexClossAxisStyle('width', hAlign, hSize, hAdjust),
-        ..._getFlexMainAxisStyle('height', vAlign, vSize, vAdjust),
+        ..._getFlexClossAxisStyle(
+          'width',
+          alignHorizontal,
+          sizeHorizontal,
+          adjustHorizontal,
+        ),
+        ..._getFlexMainAxisStyle(
+          'height',
+          alignVertical,
+          sizeVertical,
+          adjustVertical,
+        ),
       };
     }
   },

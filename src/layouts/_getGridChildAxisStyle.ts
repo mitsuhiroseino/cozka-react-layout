@@ -1,7 +1,12 @@
 import { CSSProperties } from 'react';
 import { MIN_MAX_PROPS } from './_constants';
 import _unit from './_unit';
-import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
+import {
+  AlignHorizontal,
+  AlignVertical,
+  ChildSize,
+  LayoutAdjust,
+} from './types';
 
 /**
  * display='grid'の時の子要素軸のスタイル
@@ -15,9 +20,9 @@ import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
 export default function _getGridChildAxisStyle(
   type: 'content' | 'items',
   axis: 'height' | 'width',
-  align: HAlign | VAlign,
+  align: AlignHorizontal | AlignVertical,
   size: ChildSize,
-  adjust: SizeAdjust,
+  adjust: LayoutAdjust,
 ): CSSProperties {
   const { min, max } = MIN_MAX_PROPS[axis];
 
