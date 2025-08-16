@@ -12,8 +12,8 @@ const layout: Layout<BalanceLayoutProps> = {
   name: 'balance',
   defaultProps: {
     orientation: 'horizontal',
-    vAlign: 'top',
     hAlign: 'left',
+    vAlign: 'top',
   },
   getContainerStyle: (props) => {
     const { orientation, ...rest } = props;
@@ -22,11 +22,11 @@ const layout: Layout<BalanceLayoutProps> = {
   },
 
   getChildStyle: (props) => {
-    const { vAlign, vSize, vAdjust, hAlign, hSize, hAdjust } = props;
+    const { hAlign, hSize, hAdjust, vAlign, vSize, vAdjust } = props;
 
     return {
-      ..._getGridChildAxisStyle('items', 'height', vAlign, vSize, vAdjust),
       ..._getGridChildAxisStyle('items', 'width', hAlign, hSize, hAdjust),
+      ..._getGridChildAxisStyle('items', 'height', vAlign, vSize, vAdjust),
     };
   },
 };

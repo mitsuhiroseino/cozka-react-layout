@@ -13,41 +13,41 @@ const layout: Layout<StackLayoutProps> = {
   name: 'stack',
   defaultProps: {
     orientation: 'horizontal',
-    vAlign: 'top',
     hAlign: 'left',
+    vAlign: 'top',
   },
   getContainerStyle: (props) => {
     const {
       orientation,
-      vAlign,
       hAlign,
+      vAlign,
       spacing,
-      vSpacing = spacing,
       hSpacing = spacing,
+      vSpacing = spacing,
     } = props;
     return _getFlexContainerStyle(
       orientation,
-      vAlign,
       hAlign,
-      vSpacing,
+      vAlign,
       hSpacing,
+      vSpacing,
     );
   },
   getChildStyle: (props) => {
-    const { orientation, vAlign, vSize, vAdjust, hAlign, hSize, hAdjust } =
+    const { orientation, hAlign, hSize, hAdjust, vAlign, vSize, vAdjust } =
       props;
 
-    if (orientation === 'vertical') {
-      // 縦並びの時
-      return {
-        ..._getFlexMainAxisStyle('height', vAlign, vSize, vAdjust),
-        ..._getFlexClossAxisStyle('width', hAlign, hSize, hAdjust),
-      };
-    } else {
+    if (orientation === 'horizontal') {
       // 横並びの時
       return {
-        ..._getFlexClossAxisStyle('height', vAlign, vSize, vAdjust),
         ..._getFlexMainAxisStyle('width', hAlign, hSize, hAdjust),
+        ..._getFlexClossAxisStyle('height', vAlign, vSize, vAdjust),
+      };
+    } else {
+      // 縦並びの時
+      return {
+        ..._getFlexClossAxisStyle('width', hAlign, hSize, hAdjust),
+        ..._getFlexMainAxisStyle('height', vAlign, vSize, vAdjust),
       };
     }
   },

@@ -15,12 +15,7 @@ type Options = AlignProps &
   ChildCountProps &
   ChildSizeProps &
   GridTemplateProps &
-  SpacingProps & {
-    /**
-     * 上書きするスタイル
-     */
-    style?: CSSProperties;
-  };
+  SpacingProps;
 
 /**
  * display=gridでitemsを軸にしてレイアウトする為のコンテナーのスタイルを取得
@@ -33,41 +28,34 @@ export default function _getGridContainerForItemsStyle(
   options: Options = {},
 ) {
   const {
-    vAlign,
     hAlign,
+    vAlign,
     spacing,
-    vSpacing = spacing,
     hSpacing = spacing,
-    style,
+    vSpacing = spacing,
   } = options;
   let containerStyle: CSSProperties = {
     display: 'grid',
     ...ORIENTATION[orientation](options),
   };
 
-  if (vAlign) {
-    containerStyle = {
-      ...containerStyle,
-      ...VALIGN[vAlign],
-    };
-  }
   if (hAlign) {
     containerStyle = {
       ...containerStyle,
       ...HALIGN[hAlign],
     };
   }
-  if (vSpacing != null) {
-    containerStyle.rowGap = vSpacing;
+  if (vAlign) {
+    containerStyle = {
+      ...containerStyle,
+      ...VALIGN[vAlign],
+    };
   }
   if (hSpacing != null) {
     containerStyle.columnGap = hSpacing;
   }
-  if (style) {
-    containerStyle = {
-      ...containerStyle,
-      ...style,
-    };
+  if (vSpacing != null) {
+    containerStyle.rowGap = vSpacing;
   }
 
   return containerStyle;

@@ -31,34 +31,34 @@ export default function _getGridContainerForContentStyle(
   options: Options = {},
 ) {
   const {
-    vAlign,
     hAlign,
+    vAlign,
     spacing,
-    vSpacing = spacing,
     hSpacing = spacing,
+    vSpacing = spacing,
   } = options;
   let containerStyle: CSSProperties = {
     display: 'grid',
     ...ORIENTATION[orientation](options),
   };
 
-  if (vAlign) {
-    containerStyle = {
-      ...containerStyle,
-      ...VALIGN[vAlign],
-    };
-  }
   if (hAlign) {
     containerStyle = {
       ...containerStyle,
       ...HALIGN[hAlign],
     };
   }
-  if (vSpacing != null) {
-    containerStyle.rowGap = vSpacing;
+  if (vAlign) {
+    containerStyle = {
+      ...containerStyle,
+      ...VALIGN[vAlign],
+    };
   }
   if (hSpacing != null) {
     containerStyle.columnGap = hSpacing;
+  }
+  if (vSpacing != null) {
+    containerStyle.rowGap = vSpacing;
   }
 
   return containerStyle;

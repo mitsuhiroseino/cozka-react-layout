@@ -7,29 +7,29 @@ import { StackLayoutProps } from './stack';
 
 export const LAYOUT_PROPS_KEYS: {
   [K in keyof Required<
-    PlotLayoutProps &
+    BalanceLayoutProps &
       BrickLayoutProps &
       ConformLayoutProps &
-      BalanceLayoutProps &
       MatrixLayoutProps &
+      PlotLayoutProps &
       StackLayoutProps
   >]: number;
 } = {
-  vSize: 1,
-  vAdjust: 1,
+  layout: 1,
+  orientation: 1,
   children: 1,
   childStyle: 1,
+  scroll: 1,
+  spacing: 1,
+  hAlign: 1,
   hSize: 1,
   hAdjust: 1,
-  hAlign: 1,
   hCount: 1,
   hSpacing: 1,
   hTemplate: 1,
-  layout: 1,
-  orientation: 1,
-  scroll: 1,
-  spacing: 1,
   vAlign: 1,
+  vSize: 1,
+  vAdjust: 1,
   vCount: 1,
   vSpacing: 1,
   vTemplate: 1,

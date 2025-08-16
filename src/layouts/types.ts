@@ -51,14 +51,14 @@ export type OrientationProps = {
  */
 export type AlignProps = {
   /**
-   * 子要素の縦位置
-   */
-  vAlign?: VAlign;
-
-  /**
    * 子要素の横位置
    */
   hAlign?: HAlign;
+
+  /**
+   * 子要素の縦位置
+   */
+  vAlign?: VAlign;
 };
 
 /**
@@ -66,18 +66,18 @@ export type AlignProps = {
  */
 export type AdjustProps = {
   /**
-   * 子要素の高さの調整
-   * vSizeを指定した場合に有効
-   * デフォルトは`none`
-   */
-  vAdjust?: SizeAdjust;
-
-  /**
    * 子要素の幅の調整
    * hSizeを指定した場合に有効
    * デフォルトは`none`
    */
   hAdjust?: SizeAdjust;
+
+  /**
+   * 子要素の高さの調整
+   * vSizeを指定した場合に有効
+   * デフォルトは`none`
+   */
+  vAdjust?: SizeAdjust;
 };
 
 /**
@@ -87,12 +87,12 @@ export type ChildSizeProps = {
   /**
    * 子要素の高さ
    */
-  vSize?: ChildSize;
+  hSize?: ChildSize;
 
   /**
    * 子要素の高さ
    */
-  hSize?: ChildSize;
+  vSize?: ChildSize;
 };
 
 /**
@@ -137,14 +137,14 @@ export type SpacingProps = {
   spacing?: Spacing;
 
   /**
-   * 縦方向の余白
-   */
-  vSpacing?: Spacing;
-
-  /**
    * 横方向の余白
    */
   hSpacing?: Spacing;
+
+  /**
+   * 縦方向の余白
+   */
+  vSpacing?: Spacing;
 };
 
 /**

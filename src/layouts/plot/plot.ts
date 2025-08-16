@@ -15,11 +15,11 @@ const layout: Layout<PlotLayoutProps> = {
     };
   },
   getChildStyle: (props) => {
-    const { vSize, hSize } = props;
+    const { hSize, vSize } = props;
     return {
       position: 'absolute',
-      height: vSize,
       width: hSize,
+      height: vSize,
     };
   },
 };

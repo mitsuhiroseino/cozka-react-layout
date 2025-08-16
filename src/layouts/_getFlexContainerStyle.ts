@@ -4,35 +4,35 @@ import { HAlign, Orientation, Spacing, VAlign } from './types';
 /**
  * display=flexのコンテナーのスタイルを取得
  * @param orientation
- * @param vAlign
  * @param hAlign
- * @param vSpacing
+ * @param vAlign
  * @param hSpacing
+ * @param vSpacing
  * @returns
  */
 export default function _getFlexContainerStyle(
   orientation: Orientation,
-  vAlign: VAlign,
   hAlign: HAlign,
-  vSpacing: Spacing,
+  vAlign: VAlign,
   hSpacing: Spacing,
+  vSpacing: Spacing,
 ) {
   let containerStyle: CSSProperties = {
     display: 'flex',
     ...ORIENTATION[orientation],
   };
 
-  if (vAlign) {
-    containerStyle = { ...containerStyle, ...VALIGN[orientation][vAlign] };
-  }
   if (hAlign) {
     containerStyle = { ...containerStyle, ...HALIGN[orientation][hAlign] };
   }
-  if (vSpacing != null) {
-    containerStyle.rowGap = vSpacing;
+  if (vAlign) {
+    containerStyle = { ...containerStyle, ...VALIGN[orientation][vAlign] };
   }
   if (hSpacing != null) {
     containerStyle.columnGap = hSpacing;
+  }
+  if (vSpacing != null) {
+    containerStyle.rowGap = vSpacing;
   }
 
   return containerStyle;
@@ -53,64 +53,6 @@ const ORIENTATION: {
 };
 
 /**
- * 「横向き＆横位置」のためのスタイル
- */
-const HORIZONTAL_HALIGN: {
-  [hAlign in HAlign]?: CSSProperties;
-} = {
-  left: {
-    justifyContent: 'flex-start',
-  },
-  center: {
-    justifyContent: 'center',
-  },
-  right: {
-    justifyContent: 'flex-end',
-  },
-  'space-between': {
-    justifyContent: 'space-between',
-  },
-  'space-around': {
-    justifyContent: 'space-around',
-  },
-  'space-evenly': {
-    justifyContent: 'space-evenly',
-  },
-  fit: {
-    justifyContent: 'flex-start',
-  },
-};
-
-/**
- * 「縦向き＆横位置」のためのスタイル
- */
-const VERTICAL_HALIGN: {
-  [hAlign in HAlign]?: CSSProperties;
-} = {
-  left: {
-    alignItems: 'flex-start',
-  },
-  center: {
-    alignItems: 'center',
-  },
-  right: {
-    alignItems: 'flex-end',
-  },
-  'space-between': {
-    alignItems: 'space-between',
-  },
-  'space-around': {
-    alignItems: 'space-around',
-  },
-  'space-evenly': {
-    alignItems: 'space-evenly',
-  },
-  fit: {
-    alignItems: 'stretch',
-  },
-};
-
-/**
  * 横位置のスタイル
  */
 const HALIGN: {
@@ -118,65 +60,53 @@ const HALIGN: {
     [hAlign in HAlign]?: CSSProperties;
   };
 } = {
-  horizontal: HORIZONTAL_HALIGN,
-  vertical: VERTICAL_HALIGN,
-};
-
-/**
- * 「横向き＆縦位置＆折り返し無し」のためのスタイル
- */
-const HORIZONTAL_VALIGN: {
-  [vAlign in VAlign]?: CSSProperties;
-} = {
-  top: {
-    alignItems: 'flex-start',
+  // 「横向き＆横位置」のためのスタイル
+  horizontal: {
+    left: {
+      justifyContent: 'flex-start',
+    },
+    center: {
+      justifyContent: 'center',
+    },
+    right: {
+      justifyContent: 'flex-end',
+    },
+    'space-between': {
+      justifyContent: 'space-between',
+    },
+    'space-around': {
+      justifyContent: 'space-around',
+    },
+    'space-evenly': {
+      justifyContent: 'space-evenly',
+    },
+    fit: {
+      justifyContent: 'flex-start',
+    },
   },
-  middle: {
-    alignItems: 'center',
-  },
-  bottom: {
-    alignItems: 'flex-end',
-  },
-  'space-between': {
-    alignItems: 'space-between',
-  },
-  'space-around': {
-    alignItems: 'space-around',
-  },
-  'space-evenly': {
-    alignItems: 'space-evenly',
-  },
-  fit: {
-    alignItems: 'stretch',
-  },
-};
-
-/**
- * 「縦向き＆縦位置」のためのスタイル
- */
-const VERTICAL_VALIGN: {
-  [vAlign in VAlign]?: CSSProperties;
-} = {
-  top: {
-    justifyContent: 'flex-start',
-  },
-  middle: {
-    justifyContent: 'center',
-  },
-  bottom: {
-    justifyContent: 'flex-end',
-  },
-  'space-between': {
-    justifyContent: 'space-between',
-  },
-  'space-around': {
-    justifyContent: 'space-around',
-  },
-  'space-evenly': {
-    justifyContent: 'space-evenly',
-  },
-  fit: {
-    justifyContent: 'flex-start',
+  // 「縦向き＆横位置」のためのスタイル
+  vertical: {
+    left: {
+      alignItems: 'flex-start',
+    },
+    center: {
+      alignItems: 'center',
+    },
+    right: {
+      alignItems: 'flex-end',
+    },
+    'space-between': {
+      alignItems: 'space-between',
+    },
+    'space-around': {
+      alignItems: 'space-around',
+    },
+    'space-evenly': {
+      alignItems: 'space-evenly',
+    },
+    fit: {
+      alignItems: 'stretch',
+    },
   },
 };
 
@@ -188,6 +118,52 @@ const VALIGN: {
     [vAlign in VAlign]?: CSSProperties;
   };
 } = {
-  horizontal: HORIZONTAL_VALIGN,
-  vertical: VERTICAL_VALIGN,
+  // 「横向き＆縦位置」のためのスタイル
+  horizontal: {
+    top: {
+      alignItems: 'flex-start',
+    },
+    middle: {
+      alignItems: 'center',
+    },
+    bottom: {
+      alignItems: 'flex-end',
+    },
+    'space-between': {
+      alignItems: 'space-between',
+    },
+    'space-around': {
+      alignItems: 'space-around',
+    },
+    'space-evenly': {
+      alignItems: 'space-evenly',
+    },
+    fit: {
+      alignItems: 'stretch',
+    },
+  },
+  // 「縦向き＆縦位置」のためのスタイル
+  vertical: {
+    top: {
+      justifyContent: 'flex-start',
+    },
+    middle: {
+      justifyContent: 'center',
+    },
+    bottom: {
+      justifyContent: 'flex-end',
+    },
+    'space-between': {
+      justifyContent: 'space-between',
+    },
+    'space-around': {
+      justifyContent: 'space-around',
+    },
+    'space-evenly': {
+      justifyContent: 'space-evenly',
+    },
+    fit: {
+      justifyContent: 'flex-start',
+    },
+  },
 };

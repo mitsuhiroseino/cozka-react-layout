@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import { MIN_MAX_PROPS } from './_constants';
 import _unit from './_unit';
-import { ChildSize, HAlign, Orientation, SizeAdjust, VAlign } from './types';
+import { ChildSize, HAlign, SizeAdjust, VAlign } from './types';
 
 /**
  * display='grid'の時の子要素軸のスタイル
