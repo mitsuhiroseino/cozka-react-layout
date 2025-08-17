@@ -13,7 +13,11 @@ const EXTENTIONS = ['.ts', '.tsx', '.js', '.jsx'];
 const EXTENTION_ESM = '.js';
 const EXTENTION_CJS = '.cjs';
 // node_modules配下のdependenciesはバンドルしない。下記の正規表現の指定をするためには'@rollup/plugin-node-resolve'が必要
-const EXTERNAL = [/[\\/]node_modules[\\/]/, /[\\/]dist[\\/]/];
+const EXTERNAL = [
+  /[\\/]node_modules[\\/]/,
+  /[\\/]dist[\\/]/,
+  /[\\/]cozka-(?!react-layout).*[\\/]/,
+];
 const OUTPUT = './dist';
 const OUTPUT_ESM = OUTPUT;
 const OUTPUT_CJS = path.join(OUTPUT, 'cjs');
@@ -96,7 +100,9 @@ function _createOptions(input, output, format, extention, options = {}) {
     external: EXTERNAL,
     treeshake: false,
     plugins: [
-      nodeResolve(),
+      nodeResolve({
+        extensions: EXTENTIONS,
+      }),
       typescript({
         tsconfig: tsconfigPath,
         declaration,

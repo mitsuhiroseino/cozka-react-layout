@@ -71,103 +71,103 @@ Props that can be passed to the returned component. Available props vary dependi
 Arranges child elements evenly in a single row or column.
 The main differences from `stack` are:
 
-- When children are smaller than the container, extra spacing is added.
-- When `vAlign` is `middle` or `hAlign` is `center` and children exceed the container size, the top/left edges of the children are still visible.
+- When children are smaller than the container, extra spacingAll is added.
+- When `alignVertical` is `middle` or `alignHorizontal` is `center` and children exceed the container size, the top/left edges of the children are still visible.
 
-| Property      | Type                                              | Description                                              |
-| ------------- | ------------------------------------------------- | -------------------------------------------------------- |
-| `layout`      | `'balance'`                                       |                                                          |
-| `orientation` | See [Orientation](#orientation)                   | Direction to arrange children (default: `'horizontal'`). |
-| `vAlign?`     | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment (default: `'top'`).                   |
-| `hAlign?`     | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `'left'`).                |
-| `vSize?`      | `number`                                          | Child height.                                            |
-| `hSize?`      | `number`                                          | Child width.                                             |
-| `vAdjust?`    | See [Size Adjustment](#size-adjustment)           | Vertical size adjustment.                                |
-| `hAdjust?`    | See [Size Adjustment](#size-adjustment)           | Horizontal size adjustment.                              |
-| `spacing?`    | `number`                                          | Spacing between children.                                |
-| `vSpacing?`   | `number`                                          | Vertical spacing between children.                       |
-| `hSpacing?`   | `number`                                          | Horizontal spacing between children.                     |
+| Property             | Type                                              | Description                                              |
+| -------------------- | ------------------------------------------------- | -------------------------------------------------------- |
+| `layout`             | `'balance'`                                       |                                                          |
+| `orientation`        | See [Orientation](#orientation)                   | Direction to arrange children (default: `'horizontal'`). |
+| `alignHorizontal?`   | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `'left'`).                |
+| `alignVertical?`     | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment (default: `'top'`).                   |
+| `sizeHorizontal?`    | `number`                                          | Child width.                                             |
+| `sizeVertical?`      | `number`                                          | Child height.                                            |
+| `adjustHorizontal?`  | See [Size Adjustment](#size-adjustment)           | Horizontal size adjustment.                              |
+| `adjustVertical?`    | See [Size Adjustment](#size-adjustment)           | Vertical size adjustment.                                |
+| `spacingAll?`        | `number`                                          | Spacing between children.                                |
+| `spacingHorizontal?` | `number`                                          | Horizontal spacingAll between children.                  |
+| `spacingVertical?`   | `number`                                          | Vertical spacingAll between children.                    |
 
 #### `brick` (Grid layout fitted to container size)
 
 Arranges children in a grid that fits the container size.
 When children exceed the container size in the `orientation` direction, they wrap to the next row/column.
 
-| Property      | Type                                              | Description                                                    |
-| ------------- | ------------------------------------------------- | -------------------------------------------------------------- |
-| `layout`      | `'brick'`                                         |                                                                |
-| `orientation` | See [Orientation](#orientation)                   | Direction to arrange children (default: `'horizontal'`).       |
-| `vAlign?`     | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment (default: `'top'`).                         |
-| `hAlign?`     | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `'left'`).                      |
-| `vSize?`      | `number`                                          | Child height.                                                  |
-| `hSize?`      | `number`                                          | Child width.                                                   |
-| `vAdjust?`    | See [Size Adjustment](#size-adjustment)           | Vertical adjustment (ignored if `orientation='vertical'`).     |
-| `hAdjust?`    | See [Size Adjustment](#size-adjustment)           | Horizontal adjustment (ignored if `orientation='horizontal'`). |
-| `spacing?`    | `number`                                          | Spacing between children.                                      |
-| `vSpacing?`   | `number`                                          | Vertical spacing between children.                             |
-| `hSpacing?`   | `number`                                          | Horizontal spacing between children.                           |
+| Property             | Type                                              | Description                                                    |
+| -------------------- | ------------------------------------------------- | -------------------------------------------------------------- |
+| `layout`             | `'brick'`                                         |                                                                |
+| `orientation`        | See [Orientation](#orientation)                   | Direction to arrange children (default: `'horizontal'`).       |
+| `alignHorizontal?`   | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `'left'`).                      |
+| `alignVertical?`     | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment (default: `'top'`).                         |
+| `sizeHorizontal?`    | `number`                                          | Child width.                                                   |
+| `sizeVertical?`      | `number`                                          | Child height.                                                  |
+| `adjustHorizontal?`  | See [Size Adjustment](#size-adjustment)           | Horizontal adjustment (ignored if `orientation='horizontal'`). |
+| `adjustVertical?`    | See [Size Adjustment](#size-adjustment)           | Vertical adjustment (ignored if `orientation='vertical'`).     |
+| `spacingAll?`        | `number`                                          | Spacing between children.                                      |
+| `spacingHorizontal?` | `number`                                          | Horizontal spacingAll between children.                        |
+| `spacingVertical?`   | `number`                                          | Vertical spacingAll between children.                          |
 
 #### `conform`
 
 Adjusts children to match the container’s height and width.
 
-| Property      | Type                            | Description                                              |
-| ------------- | ------------------------------- | -------------------------------------------------------- |
-| `layout`      | `'conform'`                     |                                                          |
-| `orientation` | See [Orientation](#orientation) | Direction to arrange children (default: `'horizontal'`). |
-| `spacing?`    | `number`                        | Spacing between children.                                |
-| `vSpacing?`   | `number`                        | Vertical spacing.                                        |
-| `hSpacing?`   | `number`                        | Horizontal spacing.                                      |
+| Property             | Type                            | Description                                              |
+| -------------------- | ------------------------------- | -------------------------------------------------------- |
+| `layout`             | `'conform'`                     |                                                          |
+| `orientation`        | See [Orientation](#orientation) | Direction to arrange children (default: `'horizontal'`). |
+| `spacingAll?`        | `number`                        | Spacing between children.                                |
+| `spacingHorizontal?` | `number`                        | Horizontal spacingAll.                                   |
+| `spacingVertical?`   | `number`                        | Vertical spacingAll.                                     |
 
 #### `matrix`
 
 Arranges children in a grid.
 If the number of rows/columns is specified, it limits the number of items accordingly.
 
-| Property     | Type                               | Description                                                                    |
-| ------------ | ---------------------------------- | ------------------------------------------------------------------------------ |
-| `layout`     | `'matrix'`                         |                                                                                |
-| `vSize?`     | `number`                           | Child height.                                                                  |
-| `hSize?`     | `number`                           | Child width.                                                                   |
-| `spacing?`   | `number`                           | Spacing between children.                                                      |
-| `vSpacing?`  | `number`                           | Vertical spacing between children.                                             |
-| `hSpacing?`  | `number`                           | Horizontal spacing between children.                                           |
-| `vCount?`    | `number`                           | Number of rows.                                                                |
-| `hCount?`    | `number`                           | Number of columns.                                                             |
-| `vTemplate?` | `string` \| `(string \| number)[]` | CSS `grid-template-rows` syntax or an array specifying each row's height.      |
-| `hTemplate?` | `string` \| `(string \| number)[]` | CSS `grid-template-columns` syntax or an array specifying each column's width. |
+| Property              | Type                               | Description                                                                    |
+| --------------------- | ---------------------------------- | ------------------------------------------------------------------------------ |
+| `layout`              | `'matrix'`                         |                                                                                |
+| `sizeHorizontal?`     | `number`                           | Child width.                                                                   |
+| `sizeVertical?`       | `number`                           | Child height.                                                                  |
+| `spacingAll?`         | `number`                           | Spacing between children.                                                      |
+| `spacingHorizontal?`  | `number`                           | Horizontal spacingAll between children.                                        |
+| `spacingVertical?`    | `number`                           | Vertical spacingAll between children.                                          |
+| `countVertical?`      | `number`                           | Number of columns.                                                             |
+| `countVertical?`      | `number`                           | Number of rows.                                                                |
+| `templateHorizontal?` | `string` \| `(string \| number)[]` | CSS `grid-template-columns` syntax or an array specifying each column's width. |
+| `templateVertical?`   | `string` \| `(string \| number)[]` | CSS `grid-template-rows` syntax or an array specifying each row's height.      |
 
 #### `plot`
 
 Positions each child absolutely according to its `top`, `bottom`, `left`, and `right` styles.
 
-| Property | Type     | Description   |
-| -------- | -------- | ------------- |
-| `layout` | `'plot'` |               |
-| `vSize?` | `number` | Child height. |
-| `hSize?` | `number` | Child width.  |
+| Property          | Type     | Description   |
+| ----------------- | -------- | ------------- |
+| `layout`          | `'plot'` |               |
+| `sizeHorizontal?` | `number` | Child width.  |
+| `sizeVertical?`   | `number` | Child height. |
 
 #### `stack`
 
 Arranges children in a single row or column.
 The main differences from `balance` are:
 
-- No extra spacing when children are smaller than the container.
-- When `vAlign` is `middle` or `hAlign` is `center` and children exceed the container size, the top/left edges are not visible.
+- No extra spacingAll when children are smaller than the container.
+- When `alignVertical` is `middle` or `alignHorizontal` is `center` and children exceed the container size, the top/left edges are not visible.
 
-| Property      | Type                                              | Description                                              |
-| ------------- | ------------------------------------------------- | -------------------------------------------------------- |
-| `layout`      | `'stack'`                                         |                                                          |
-| `orientation` | See [Orientation](#orientation)                   | Direction to arrange children (default: `'horizontal'`). |
-| `vAlign?`     | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment (default: `'top'`).                   |
-| `hAlign?`     | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `'left'`).                |
-| `vSize?`      | `number`                                          | Child height.                                            |
-| `hSize?`      | `number`                                          | Child width.                                             |
-| `vAdjust?`    | See [Size Adjustment](#size-adjustment)           | Vertical size adjustment.                                |
-| `hAdjust?`    | See [Size Adjustment](#size-adjustment)           | Horizontal size adjustment.                              |
-| `spacing?`    | `number`                                          | Spacing between children.                                |
-| `vSpacing?`   | `number`                                          | Vertical spacing.                                        |
-| `hSpacing?`   | `number`                                          | Horizontal spacing.                                      |
+| Property             | Type                                              | Description                                              |
+| -------------------- | ------------------------------------------------- | -------------------------------------------------------- |
+| `layout`             | `'stack'`                                         |                                                          |
+| `orientation`        | See [Orientation](#orientation)                   | Direction to arrange children (default: `'horizontal'`). |
+| `alignHorizontal?`   | See [Horizontal Alignment](#horizontal-alignment) | Horizontal alignment (default: `'left'`).                |
+| `alignVertical?`     | See [Vertical Alignment](#vertical-alignment)     | Vertical alignment (default: `'top'`).                   |
+| `sizeHorizontal?`    | `number`                                          | Child width.                                             |
+| `sizeVertical?`      | `number`                                          | Child height.                                            |
+| `adjustHorizontal?`  | See [Size Adjustment](#size-adjustment)           | Horizontal size adjustment.                              |
+| `adjustVertical?`    | See [Size Adjustment](#size-adjustment)           | Vertical size adjustment.                                |
+| `spacingAll?`        | `number`                                          | Spacing between children.                                |
+| `spacingHorizontal?` | `number`                                          | Horizontal spacingAll.                                   |
+| `spacingVertical?`   | `number`                                          | Vertical spacingAll.                                     |
 
 ## Property Values
 
@@ -180,35 +180,35 @@ Specifies the direction to arrange children.
 | `'horizontal'` | Arrange children horizontally. |
 | `'vertical'`   | Arrange children vertically.   |
 
-### Vertical Alignment
-
-Specifies the vertical position of children.
-Generally relative to the container frame, but some layouts align relative to the allocated area for each child.
-
-| Value             | Description                        |
-| ----------------- | ---------------------------------- |
-| `'top'`           | Align to top.                      |
-| `'middle'`        | Center vertically.                 |
-| `'bottom'`        | Align to bottom.                   |
-| `'space-between'` | Evenly distribute spacing between. |
-| `'space-around'`  | Add spacing on both ends.          |
-| `'space-evenly'`  | Evenly distribute all spacing.     |
-| `'fit'`           | Stretch/shrink to fit container.   |
-
 ### Horizontal Alignment
 
 Specifies the horizontal position of children.
 Generally relative to the container frame, but some layouts align relative to the allocated area for each child.
 
-| Value             | Description                        |
-| ----------------- | ---------------------------------- |
-| `'left'`          | Align to left.                     |
-| `'center'`        | Center horizontally.               |
-| `'right'`         | Align to right.                    |
-| `'space-between'` | Evenly distribute spacing between. |
-| `'space-around'`  | Add spacing on both ends.          |
-| `'space-evenly'`  | Evenly distribute all spacing.     |
-| `'fit'`           | Stretch/shrink to fit container.   |
+| Value             | Description                           |
+| ----------------- | ------------------------------------- |
+| `'left'`          | Align to left.                        |
+| `'center'`        | Center horizontally.                  |
+| `'right'`         | Align to right.                       |
+| `'space-between'` | Evenly distribute spacingAll between. |
+| `'space-around'`  | Add spacingAll on both ends.          |
+| `'space-evenly'`  | Evenly distribute all spacingAll.     |
+| `'fit'`           | Stretch/shrink to fit container.      |
+
+### Vertical Alignment
+
+Specifies the vertical position of children.
+Generally relative to the container frame, but some layouts align relative to the allocated area for each child.
+
+| Value             | Description                           |
+| ----------------- | ------------------------------------- |
+| `'top'`           | Align to top.                         |
+| `'middle'`        | Center vertically.                    |
+| `'bottom'`        | Align to bottom.                      |
+| `'space-between'` | Evenly distribute spacingAll between. |
+| `'space-around'`  | Add spacingAll on both ends.          |
+| `'space-evenly'`  | Evenly distribute all spacingAll.     |
+| `'fit'`           | Stretch/shrink to fit container.      |
 
 ### Size Adjustment
 

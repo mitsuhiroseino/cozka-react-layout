@@ -70,100 +70,100 @@ export default function App() {
 
 子要素を一列均等に配置します。  
 `stack`との主な違いは子要素が親要素のサイズを下回った時には余白が設定されることと、  
-`vAlign`が`middle`や`hAlign`が`center`の時に子要素が親要素のサイズを上回っても子要素の上や左の端が表示される点です。
+`alignVertical`が`middle`や`alignHorizontal`が`center`の時に子要素が親要素のサイズを上回っても子要素の上や左の端が表示される点です。
 
-| プロパティ    | 型                                | 説明                                             |
-| ------------- | --------------------------------- | ------------------------------------------------ |
-| `layout`      | `'balance'`                       |                                                  |
-| `orientation` | [整列方向](#整列方向)参照         | 子要素を並べる方向（デフォルト: `'horizontal'`） |
-| `vAlign?`     | [縦位置](#縦位置)参照             | 子要素の縦方向の配置（デフォルト: `'top'`）      |
-| `hAlign?`     | [横位置](#横位置)参照             | 水平方向の配置（デフォルト: `'left'`）           |
-| `vSize?`      | `number`                          | 子要素の高さ                                     |
-| `hSize?`      | `number`                          | 子要素の幅                                       |
-| `vAdjust?`    | [サイズの調整](#サイズの調整)参照 | 垂直方向のサイズ調整                             |
-| `hAdjust?`    | [サイズの調整](#サイズの調整)参照 | 水平方向のサイズ調整                             |
-| `spacing?`    | `number`                          | 子要素の余白                                     |
-| `vSpacing?`   | `number`                          | 子要素の上下の余白                               |
-| `hSpacing?`   | `number`                          | 子要素の左右の余白                               |
+| プロパティ           | 型                                | 説明                                             |
+| -------------------- | --------------------------------- | ------------------------------------------------ |
+| `layout`             | `'balance'`                       |                                                  |
+| `orientation`        | [整列方向](#整列方向)参照         | 子要素を並べる方向（デフォルト: `'horizontal'`） |
+| `alignHorizontal?`   | [横位置](#横位置)参照             | 水平方向の配置（デフォルト: `'left'`）           |
+| `alignVertical?`     | [縦位置](#縦位置)参照             | 子要素の縦方向の配置（デフォルト: `'top'`）      |
+| `sizeHorizontal?`    | `number`                          | 子要素の幅                                       |
+| `sizeVertical?`      | `number`                          | 子要素の高さ                                     |
+| `adjustHorizontal?`  | [サイズの調整](#サイズの調整)参照 | 水平方向のサイズ調整                             |
+| `adjustVertical?`    | [サイズの調整](#サイズの調整)参照 | 垂直方向のサイズ調整                             |
+| `spacingAll?`        | `number`                          | 子要素の余白                                     |
+| `spacingHorizontal?` | `number`                          | 子要素の左右の余白                               |
+| `spacingVertical?`   | `number`                          | 子要素の上下の余白                               |
 
 #### `brick` （子要素を親要素のサイズに合わせて格子状に並べる）
 
 子要素を親要素のサイズに合わせて格子状に並べます。  
 親要素の`orientation`の方向のサイズを子要素が超えた場合には折り返されます。
 
-| プロパティ    | 型                                | 説明                                                         |
-| ------------- | --------------------------------- | ------------------------------------------------------------ |
-| `layout`      | `'brick'`                         |                                                              |
-| `orientation` | [整列方向](#整列方向)参照         | 子要素を並べる方向（デフォルト: `'horizontal'`）             |
-| `vAlign?`     | [縦位置](#縦位置)参照             | 子要素の縦方向の配置（デフォルト: `'top'`）                  |
-| `hAlign?`     | [横位置](#横位置)参照             | 水平方向の配置（デフォルト: `'left'`）                       |
-| `vSize?`      | `number`                          | 子要素の高さ                                                 |
-| `hSize?`      | `number`                          | 子要素の幅                                                   |
-| `vAdjust?`    | [サイズの調整](#サイズの調整)参照 | 垂直方向のサイズ調整(`orientation='vertical'`の場合は無効)   |
-| `hAdjust?`    | [サイズの調整](#サイズの調整)参照 | 水平方向のサイズ調整(`orientation='horizontal'`の場合は無効) |
-| `spacing?`    | `number`                          | 子要素の余白                                                 |
-| `vSpacing?`   | `number`                          | 子要素の上下の余白                                           |
-| `hSpacing?`   | `number`                          | 子要素の左右の余白                                           |
+| プロパティ           | 型                                | 説明                                                         |
+| -------------------- | --------------------------------- | ------------------------------------------------------------ |
+| `layout`             | `'brick'`                         |                                                              |
+| `orientation`        | [整列方向](#整列方向)参照         | 子要素を並べる方向（デフォルト: `'horizontal'`）             |
+| `alignHorizontal?`   | [横位置](#横位置)参照             | 水平方向の配置（デフォルト: `'left'`）                       |
+| `alignVertical?`     | [縦位置](#縦位置)参照             | 子要素の縦方向の配置（デフォルト: `'top'`）                  |
+| `sizeHorizontal?`    | `number`                          | 子要素の幅                                                   |
+| `sizeVertical?`      | `number`                          | 子要素の高さ                                                 |
+| `adjustHorizontal?`  | [サイズの調整](#サイズの調整)参照 | 水平方向のサイズ調整(`orientation='horizontal'`の場合は無効) |
+| `adjustVertical?`    | [サイズの調整](#サイズの調整)参照 | 垂直方向のサイズ調整(`orientation='vertical'`の場合は無効)   |
+| `spacingAll?`        | `number`                          | 子要素の余白                                                 |
+| `spacingHorizontal?` | `number`                          | 子要素の左右の余白                                           |
+| `spacingVertical?`   | `number`                          | 子要素の上下の余白                                           |
 
 #### `conform`
 
 子要素を親要素の高さと幅に合わせます。
 
-| プロパティ    | 型                        | 説明                                             |
-| ------------- | ------------------------- | ------------------------------------------------ |
-| `layout`      | `'conform'`               |                                                  |
-| `orientation` | [整列方向](#整列方向)参照 | 子要素を並べる方向（デフォルト: `'horizontal'`） |
-| `spacing?`    | `number`                  | 要素間の余白                                     |
-| `vSpacing?`   | `number`                  | 垂直方向の余白                                   |
-| `hSpacing?`   | `number`                  | 水平方向の余白                                   |
+| プロパティ           | 型                        | 説明                                             |
+| -------------------- | ------------------------- | ------------------------------------------------ |
+| `layout`             | `'conform'`               |                                                  |
+| `orientation`        | [整列方向](#整列方向)参照 | 子要素を並べる方向（デフォルト: `'horizontal'`） |
+| `spacingAll?`        | `number`                  | 要素間の余白                                     |
+| `spacingHorizontal?` | `number`                  | 水平方向の余白                                   |
+| `spacingVertical?`   | `number`                  | 垂直方向の余白                                   |
 
 #### `matrix`
 
 子要素を格子状に配置します。  
 子要素の縦、横方向の数が指定されている場合は要素数を制限します。
 
-| プロパティ   | 型                                 | 説明                                                                    |
-| ------------ | ---------------------------------- | ----------------------------------------------------------------------- |
-| `layout`     | `'matrix'`                         |                                                                         |
-| `vSize?`     | `number`                           | 子要素の高さ                                                            |
-| `hSize?`     | `number`                           | 子要素の幅                                                              |
-| `spacing?`   | `number`                           | 子要素の余白                                                            |
-| `vSpacing?`  | `number`                           | 子要素の上下の余白                                                      |
-| `hSpacing?`  | `number`                           | 子要素の左右の余白                                                      |
-| `vCount?`    | `number`                           | 子要素の縦方向の数                                                      |
-| `hCount?`    | `number`                           | 子要素の横方向の数                                                      |
-| `vTemplate?` | `string` \| `(string \| number)[]` | CSS の `grid-template-rows` 形式、または行ごとの高さを指定した配列      |
-| `hTemplate?` | `string` \| `(string \| number)[]` | CSS の `grid-template-columns` 形式、またはカラムごとの幅を指定した配列 |
+| プロパティ            | 型                                 | 説明                                                                    |
+| --------------------- | ---------------------------------- | ----------------------------------------------------------------------- |
+| `layout`              | `'matrix'`                         |                                                                         |
+| `sizeHorizontal?`     | `number`                           | 子要素の幅                                                              |
+| `sizeVertical?`       | `number`                           | 子要素の高さ                                                            |
+| `spacingAll?`         | `number`                           | 子要素の余白                                                            |
+| `spacingHorizontal?`  | `number`                           | 子要素の左右の余白                                                      |
+| `spacingVertical?`    | `number`                           | 子要素の上下の余白                                                      |
+| `countHorizontal?`    | `number`                           | 子要素の横方向の数                                                      |
+| `countVertical?`      | `number`                           | 子要素の縦方向の数                                                      |
+| `templateHorizontal?` | `string` \| `(string \| number)[]` | CSS の `grid-template-columns` 形式、またはカラムごとの幅を指定した配列 |
+| `templateVertical?`   | `string` \| `(string \| number)[]` | CSS の `grid-template-rows` 形式、または行ごとの高さを指定した配列      |
 
 #### `plot`
 
 各子要素に設定されたスタイル(`top`,`bottom`,`left`,`right`)に従い、子要素を絶対位置で配置します。
 
-| プロパティ | 型       | 説明         |
-| ---------- | -------- | ------------ |
-| `layout`   | `'plot'` |              |
-| `vSize?`   | `number` | 子要素の高さ |
-| `hSize?`   | `number` | 子要素の幅   |
+| プロパティ        | 型       | 説明         |
+| ----------------- | -------- | ------------ |
+| `layout`          | `'plot'` |              |
+| `sizeHorizontal?` | `number` | 子要素の幅   |
+| `sizeVertical?`   | `number` | 子要素の高さ |
 
 #### `stack`
 
 子要素を一列に配置します。
 `balance`との主な違いは子要素が親要素のサイズを下回ったても余白がされないことと、  
-`vAlign`が`middle`や`hAlign`が`center`の時に子要素が親要素のサイズを上回ると子要素の上や左の端が表示されなくなる点です。
+`alignVertical`が`middle`や`alignHorizontal`が`center`の時に子要素が親要素のサイズを上回ると子要素の上や左の端が表示されなくなる点です。
 
-| プロパティ    | 型                                | 説明                                             |
-| ------------- | --------------------------------- | ------------------------------------------------ |
-| `layout`      | `'stack'`                         |                                                  |
-| `orientation` | [整列方向](#整列方向)参照         | 子要素を並べる方向（デフォルト: `'horizontal'`） |
-| `vAlign?`     | [縦位置](#縦位置)参照             | 子要素の縦方向の配置（デフォルト: `'top'`）      |
-| `hAlign?`     | [横位置](#横位置)参照             | 水平方向の配置（デフォルト: `'left'`）           |
-| `vSize?`      | `number`                          | 子要素の高さ                                     |
-| `hSize?`      | `number`                          | 子要素の幅                                       |
-| `vAdjust?`    | [サイズの調整](#サイズの調整)参照 | 垂直方向のサイズ調整                             |
-| `hAdjust?`    | [サイズの調整](#サイズの調整)参照 | 水平方向のサイズ調整                             |
-| `spacing?`    | `number`                          | 要素間の余白                                     |
-| `vSpacing?`   | `number`                          | 垂直方向の余白                                   |
-| `hSpacing?`   | `number`                          | 水平方向の余白                                   |
+| プロパティ           | 型                                | 説明                                             |
+| -------------------- | --------------------------------- | ------------------------------------------------ |
+| `layout`             | `'stack'`                         |                                                  |
+| `orientation`        | [整列方向](#整列方向)参照         | 子要素を並べる方向（デフォルト: `'horizontal'`） |
+| `alignHorizontal?`   | [横位置](#横位置)参照             | 水平方向の配置（デフォルト: `'left'`）           |
+| `alignVertical?`     | [縦位置](#縦位置)参照             | 子要素の縦方向の配置（デフォルト: `'top'`）      |
+| `sizeHorizontal?`    | `number`                          | 子要素の幅                                       |
+| `sizeVertical?`      | `number`                          | 子要素の高さ                                     |
+| `adjustHorizontal?`  | [サイズの調整](#サイズの調整)参照 | 水平方向のサイズ調整                             |
+| `adjustVertical?`    | [サイズの調整](#サイズの調整)参照 | 垂直方向のサイズ調整                             |
+| `spacingAll?`        | `number`                          | 要素間の余白                                     |
+| `spacingHorizontal?` | `number`                          | 水平方向の余白                                   |
+| `spacingVertical?`   | `number`                          | 垂直方向の余白                                   |
 
 ## プロパティ値
 
@@ -176,22 +176,6 @@ export default function App() {
 | `'horizontal'` | 子要素を横方向に並べる |
 | `'vertical'`   | 子要素を縦方向に並べる |
 
-### 縦位置
-
-子要素の縦の位置を指定します。
-基本的には親要素の枠を基準とした位置ですが、
-一部のレイアウトは個々の子要素を配置した領域を基準とします。
-
-| 値                | 説明                   |
-| ----------------- | ---------------------- |
-| `'top'`           | 上寄せ                 |
-| `'middle'`        | 中央配置               |
-| `'bottom'`        | 下寄せ                 |
-| `'space-between'` | 要素間の余白を均等配置 |
-| `'space-around'`  | 両端に余白を追加       |
-| `'space-evenly'`  | すべての余白を均等配置 |
-| `'fit'`           | 親要素に合わせて伸縮   |
-
 ### 横位置
 
 子要素の横の位置を指定します。
@@ -203,6 +187,22 @@ export default function App() {
 | `'left'`          | 左寄せ                 |
 | `'center'`        | 中央配置               |
 | `'right'`         | 右寄せ                 |
+| `'space-between'` | 要素間の余白を均等配置 |
+| `'space-around'`  | 両端に余白を追加       |
+| `'space-evenly'`  | すべての余白を均等配置 |
+| `'fit'`           | 親要素に合わせて伸縮   |
+
+### 縦位置
+
+子要素の縦の位置を指定します。
+基本的には親要素の枠を基準とした位置ですが、
+一部のレイアウトは個々の子要素を配置した領域を基準とします。
+
+| 値                | 説明                   |
+| ----------------- | ---------------------- |
+| `'top'`           | 上寄せ                 |
+| `'middle'`        | 中央配置               |
+| `'bottom'`        | 下寄せ                 |
 | `'space-between'` | 要素間の余白を均等配置 |
 | `'space-around'`  | 両端に余白を追加       |
 | `'space-evenly'`  | すべての余白を均等配置 |
