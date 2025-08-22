@@ -1,7 +1,7 @@
 import proxyStyle from '@cozka/react-style-proxy';
 import ensureComponent from '@cozka/react-utils/ensureComponent';
 import transformContent from '@cozka/react-utils/transformContent';
-import { cloneElement, createElement, ElementType, forwardRef } from 'react';
+import { cloneElement, ElementType, forwardRef } from 'react';
 import createLayoutStyle from './createLayoutStyle';
 import { LAYOUT_PROPS_KEYS } from './layouts/_constants';
 import LayoutProps from './layouts/LayoutProps';
@@ -19,11 +19,7 @@ export default function withLayout<P = {}, T = unknown>(
 ) {
   const Comp = ensureComponent(Component);
   const name = Comp.displayName ?? 'unknown';
-  const {
-    displayName = `withLayout(${name})`,
-    jsxRuntime = createElement,
-    ...opts
-  } = options;
+  const { displayName = `withLayout(${name})`, ...opts } = options;
   /**
    * レイアウト機能を追加したコンテナー
    */
@@ -51,11 +47,11 @@ export default function withLayout<P = {}, T = unknown>(
             }
           });
 
-    return jsxRuntime(Comp, {
-      ref,
-      ...(containerProps as P),
-      children: styledChildren,
-    });
+    return (
+      <Comp ref={ref} {...(containerProps as P)}>
+        {styledChildren}
+      </Comp>
+    );
   });
   Layout.displayName = displayName;
   return Layout;

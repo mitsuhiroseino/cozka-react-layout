@@ -16,15 +16,15 @@ npm install @cozka/react-layout
 ```tsx
 import withLayout from '@cozka/react-layout';
 
-const LayoutBox = withLayout('div');
+const LayoutDiv = withLayout('div');
 
 export default function App() {
   return (
-    <LayoutBox layout="stack" orientation="horizontal" scroll>
+    <LayoutDiv layout="stack" orientation="horizontal" scroll>
       <div>Item 1</div>
       <div>Item 2</div>
       <div>Item 3</div>
-    </LayoutBox>
+    </LayoutDiv>
   );
 }
 ```
@@ -40,12 +40,11 @@ export default function App() {
 
 #### `WithLayoutOptions`
 
-| プロパティ        | 型                                                               | 説明                                                                                        |
-| ----------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `styleProp?`      | `'style'` \| `'css'` \| `'sx'` \| `string`                       | レイアウト用スタイルを適用するプロパティ（デフォルト: `style`）                             |
-| `styleApplyMode?` | `'merge'` \| `'append'`                                          | `styleProp` に既存のスタイルがある場合の適用方法（デフォルト: `merge`）                     |
-| `displayName?`    | `string`                                                         | 作成するコンポーネントの`displayName`（デフォルト: `withLayout(${Component.displayName})`） |
-| `jsxRuntime?`     | `(type: ElementType, props: unknown, key?: Key) => ReactElement` | jsxを返す関数（デフォルト: `jsx`）                                                          |
+| プロパティ        | 型                                         | 説明                                                                                        |
+| ----------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| `styleProp?`      | `'style'` \| `'css'` \| `'sx'` \| `string` | レイアウト用スタイルを適用するプロパティ（デフォルト: `style`）                             |
+| `styleApplyMode?` | `'merge'` \| `'append'`                    | `styleProp` に既存のスタイルがある場合の適用方法（デフォルト: `merge`）                     |
+| `displayName?`    | `string`                                   | 作成するコンポーネントの`displayName`（デフォルト: `withLayout(${Component.displayName})`） |
 
 #### 戻り値
 

@@ -16,15 +16,15 @@ npm install @cozka/react-layout
 ```tsx
 import withLayout from '@cozka/react-layout';
 
-const LayoutBox = withLayout('div');
+const LayoutDiv = withLayout('div');
 
 export default function App() {
   return (
-    <LayoutBox layout="stack" orientation="horizontal" scroll>
+    <LayoutDiv layout="stack" orientation="horizontal" scroll>
       <div>Item 1</div>
       <div>Item 2</div>
       <div>Item 3</div>
-    </LayoutBox>
+    </LayoutDiv>
   );
 }
 ```
@@ -40,12 +40,11 @@ export default function App() {
 
 #### `WithLayoutOptions`
 
-| Property          | Type                                                             | Description                                                                               |
-| ----------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `styleProp?`      | `'style'` \| `'css'` \| `'sx'` \| `string`                       | The prop to apply layout styles to (default: `style`).                                    |
-| `styleApplyMode?` | `'merge'` \| `'append'`                                          | How to apply styles when `styleProp` already has styles (default: `merge`).               |
-| `displayName?`    | `string`                                                         | `displayName` of the created component (default: `withLayout(${Component.displayName})`). |
-| `jsxRuntime?`     | `(type: ElementType, props: unknown, key?: Key) => ReactElement` | A function that returns JSX (default: `jsx`).                                             |
+| Property          | Type                                       | Description                                                                               |
+| ----------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `styleProp?`      | `'style'` \| `'css'` \| `'sx'` \| `string` | The prop to apply layout styles to (default: `style`).                                    |
+| `styleApplyMode?` | `'merge'` \| `'append'`                    | How to apply styles when `styleProp` already has styles (default: `merge`).               |
+| `displayName?`    | `string`                                   | `displayName` of the created component (default: `withLayout(${Component.displayName})`). |
 
 #### Returns
 
@@ -132,7 +131,7 @@ If the number of rows/columns is specified, it limits the number of items accord
 | `spacingAll?`         | `number`                           | Spacing between children.                                                      |
 | `spacingHorizontal?`  | `number`                           | Horizontal spacingAll between children.                                        |
 | `spacingVertical?`    | `number`                           | Vertical spacingAll between children.                                          |
-| `countVertical?`      | `number`                           | Number of columns.                                                             |
+| `countHorizontal?`    | `number`                           | Number of columns.                                                             |
 | `countVertical?`      | `number`                           | Number of rows.                                                                |
 | `templateHorizontal?` | `string` \| `(string \| number)[]` | CSS `grid-template-columns` syntax or an array specifying each column's width. |
 | `templateVertical?`   | `string` \| `(string \| number)[]` | CSS `grid-template-rows` syntax or an array specifying each row's height.      |

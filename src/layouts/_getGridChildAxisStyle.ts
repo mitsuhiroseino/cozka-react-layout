@@ -1,6 +1,5 @@
 import { CSSProperties } from 'react';
 import { MIN_MAX_PROPS } from './_constants';
-import _unit from './_unit';
 import {
   AlignHorizontal,
   AlignVertical,

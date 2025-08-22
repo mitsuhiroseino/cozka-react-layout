@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react';
-import _unit from './_unit';
 import {
   AlignHorizontal,
   AlignProps,

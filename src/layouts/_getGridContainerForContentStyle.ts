@@ -1,5 +1,5 @@
+import unit from '@cozka/react-utils/unit';
 import { CSSProperties } from 'react';
-import _unit from './_unit';
 import {
   AdjustProps,
   AlignHorizontal,
@@ -122,22 +122,22 @@ function _getGridMainAxisTemplate(
   if (align === 'fit') {
     // fitの場合
     if (count != null && childSize != null) {
-      return `repeat(${count}, minmax(${_unit(childSize)}, 1fr))`;
+      return `repeat(${count}, minmax(${unit(childSize)}, 1fr))`;
     } else if (count != null) {
       return `repeat(${count}, 1fr)`;
     } else if (childSize != null) {
-      return `repeat(auto-fill, minmax(${_unit(childSize)}, 1fr))`;
+      return `repeat(auto-fill, minmax(${unit(childSize)}, 1fr))`;
     } else {
       return 'repeat(auto-fill, minmax(0, 1fr))';
     }
   } else {
     // fit以外の場合
     if (count != null && childSize != null) {
-      return `repeat(${count}, ${_unit(childSize)})`;
+      return `repeat(${count}, ${unit(childSize)})`;
     } else if (count != null) {
       return `repeat(${count}, max-content)`;
     } else if (childSize != null) {
-      return `repeat(auto-fill, ${_unit(childSize)})`;
+      return `repeat(auto-fill, ${unit(childSize)})`;
     } else {
       return 'repeat(auto-fill, minmax(max-content, 100%))';
     }
@@ -154,13 +154,13 @@ function _getGridMainAxisTemplate(
 function _getGridClossAxisAuto(childSize: ChildSize, adjust: LayoutAdjust) {
   if (adjust === 'expand') {
     if (childSize != null) {
-      return `minmax(${_unit(childSize)}, 100%)`;
+      return `minmax(${unit(childSize)}, 100%)`;
     } else {
       return `minmax(auto, 100%)`;
     }
   } else if (adjust === 'narrow') {
     if (childSize != null) {
-      return `minmax(0, ${_unit(childSize)})`;
+      return `minmax(0, ${unit(childSize)})`;
     } else {
       return `minmax(0, auto)`;
     }

@@ -1,6 +1,6 @@
+import unit from '@cozka/react-utils/unit';
 import { CSSProperties } from 'react';
 import { MIN_MAX_PROPS } from './_constants';
-import _unit from './_unit';
 import {
   AlignHorizontal,
   AlignVertical,
@@ -56,7 +56,7 @@ export default function _getFlexMainAxisStyle(
   }
 
   if (size != null && size !== '') {
-    style.flexBasis = _unit(size);
+    style.flexBasis = unit(size);
   }
 
   return style;
